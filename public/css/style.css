@@ -3,3 +3,45 @@
     background-color: rgba(255, 255, 255, .1);
     border-color: rgba(255, 255, 255, .1);
 }
+
+.back-image{
+    background-image: url("../img/fond1.jpg");
+}
+
+.btn-outline-orange{
+    color: #DF691A;
+    background-color: transparent;
+    background-image: none;
+    border-color: #DF691A;
+}
+
+.btn-outline-orange:hover{
+    color: #fff;
+    background-color: #DF691A;
+    border-color: #DF691A;
+}
+
+.btn-orange{
+    color: #fff;
+    background-color: #DF691A;
+    border-color: #DF691A;
+}
+
+.btn-orange:hover {
+    color: #fff;
+    background-color: #bd5916;
+    border-color: #b15315;
+}
+
+.center{
+    color: #DF691A;
+    margin-top: 18rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40rem;
+    font-size: 2rem;
+}
+
+.center-btn{
+    font-size: 1.2rem;
+}

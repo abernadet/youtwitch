@@ -16,4 +16,14 @@ class HomeController extends Controller
             'controller_name' => 'HomeController',
         ]);
     }
+
+    /**
+     * @Route("/video", name="video")
+     */
+    public function video()
+    {
+        return $this->render('video.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }

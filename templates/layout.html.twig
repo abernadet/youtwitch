@@ -8,64 +8,15 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="icon" href="{{ asset('img/icon.png') }}" />
+    <link rel="icon" href="{{ asset('img/icon2.png') }}" />
 </head>
 <body>
 
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-1shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">YouTwitch</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-warning my-2 my-sm-0 mr-3 ml-3" type="submit">Connexion</button>
-    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Inscription</button>
-</nav>
+{{ include('includes/header.html.twig') }}
 
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar mt-5">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column mt-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <i class="fas fa-home"></i> Accueil
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fab fa-gripfire"></i> Tendances
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-user-tie"></i> Mon profil
-                        </a>
-                    </li>
-                </ul>
-
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Mes abonnement</span>
-                    <a class="d-flex align-items-center text-muted" href="#">
-                        <span data-feather="plus-circle"></span>
-                    </a>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-music"></i> Musique
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-football-ball"></i> Sport
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-gamepad"></i> Jeu vidéo
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        {{ include('includes/nav.html.twig') }}
 
         <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <h1 class="text-center mt-5">{% block titlepage %}{% endblock %}</h1>
@@ -76,9 +27,7 @@
     </div>
 </div>
 
-
-
-    <footer class="text-center mt-5">Footer tout pourri</footer>
+{{ include('includes/footer.html.twig') }}
 
 <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
 

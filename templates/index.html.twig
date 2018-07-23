@@ -1,22 +1,23 @@
-{# On utilise le mot clé extends qui permet de définir de quel layout cette vue va hériter
-Comme pour les classes en PHP, une vue ne peut hériter que d'un layout
-Par contre, une vue peut hériter d'un layout qui hérite lui même d'un autre layout
-Twig va chercher directement les vues dans templates/ #}
+{# Mon layout contient tous les éléments communs au pages de mon site #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    {# Je crée des blocks qui vont être remplis dynamiquement avec les infos propres à chaque page #}
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="icon" href="{{ asset('img/icon2.png') }}" />
+</head>
+<body class="back-image">
 
-{% extends 'layout.html.twig' %}
+{{ include('includes/header.html.twig') }}
 
-{% block title %}Page d'accueil{% endblock %}
+<section class="text-center">
+<h1 class="center">Regarder toutes vous vidéo favorite regroupées au même endroit</h1>
 
-{% block titlepage %}Page d'accueil en h1{% endblock %}
-
-{% block content %}
-
-    <h4 class="text-warning">Bonjour</h4>
-
-    {# Je peux inclure des templates (= vues twig) avec include() : si j'ai du code qui doit se retrouver sur plusieurs pages, cela évite la duplicxation de code
-    {{ include('includes/bonjour.html.twig') }}#}
-{% endblock %}
-
-{% block js %}
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-{% endblock %}
+<a href="#" class="btn btn-orange center-btn mt-2 text-uppercase font-weight-bold col-2">Rejoignez-nous</a>
+</section>
+</body>
+</html>
