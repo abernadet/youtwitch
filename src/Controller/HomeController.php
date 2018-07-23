@@ -18,11 +18,31 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/video", name="video")
+     * @Route("/user/video", name="video")
      */
     public function video()
     {
         return $this->render('video.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+    /*
+     * @Route("/twitch", name="twitch")
+     */
+    /*public function twitch()
+    {
+        return $this->render('twitch.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }*/
+
+    /**
+     * @Route("/user/visionnage", name="visionnage")
+     */
+    public function visionnage()
+    {
+        return $this->render('visionnage.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
