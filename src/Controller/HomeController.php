@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
      */
-    public function home()
+    public function index()
     {
 
         return $this->render('index.html.twig', [
@@ -18,18 +18,6 @@ class HomeController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/home/search", name="search")
-     */
-    public function listSearch($service)
-    {
-        searchListByKeyword($service,
-            'snippet',
-            array('maxResults' => 25, 'q' => 'squezzie', 'type' => 'video'));
-
-
-        return $this->render('home/search.html.twig');
-    }
 
     function searchListByKeyword($service, $part, $params) {
         $params = array_filter($params);
@@ -39,6 +27,16 @@ class HomeController extends Controller
         );
 
         print_r($response);
+    }
+
+    /**
+     * @Route("/video", name="video")
+     */
+    public function video()
+    {
+        return $this->render('video.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
     }
 
 }

@@ -4,20 +4,34 @@
 <head>
     <meta charset="UTF-8">
     {# Je crée des blocks qui vont être remplis dynamiquement avec les infos propres à chaque page #}
-    <title>Home Page</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="icon" href="{{ asset('img/icon2.png') }}" />
 </head>
-<body class="back-image">
+<body>
 
 {{ include('includes/header.html.twig') }}
 
-<section class="text-center">
-<h1 class="center">Regarder toutes vous vidéos favorites regroupées au même endroit</h1>
+<div class="container-fluid">
+    <div class="row">
+        {{ include('includes/nav.html.twig') }}
 
-<a href="#" class="btn btn-orange center-btn mt-2 text-uppercase font-weight-bold col-2">Rejoignez-nous</a>
-</section>
+        <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
+            <h1 class="text-center mt-5 mb-3">{% block titlepage %}{% endblock %}</h1>
+            {# Ce block contiendra le contenu de la page appelée #}
+            {% block content %}{% endblock %}
+        </main>
+
+    </div>
+</div>
+
+{{ include('includes/footer.html.twig') }}
+
+<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+
+{% block js %}{% endblock %}
+
 </body>
 </html>
