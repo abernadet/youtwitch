@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Vidéo{% endblock %}
+
+{% block content %}
+
+    <nav class="container mb-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Youtube</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Twitch</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="d-flex justify-content-around flex-wrap">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1TsVjvEkc4s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kbMqWXnpXcA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </section>
+
+{% endblock %}
