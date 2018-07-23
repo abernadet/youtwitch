@@ -12,9 +12,21 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         return $this->render('index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
+    }
+
+
+    function searchListByKeyword($service, $part, $params) {
+        $params = array_filter($params);
+        $response = $service->search->listSearch(
+            $part,
+            $params
+        );
+
+        print_r($response);
     }
 
     /**
@@ -26,4 +38,5 @@ class HomeController extends Controller
             'controller_name' => 'HomeController',
         ]);
     }
+
 }

@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    {% for sub in subs %}
+
+        <img src="{{ sub.snippet.thumbnails.default.url }}">-<h3>{{  sub.snippet.title }}</h3><br><hr>
+
+    {% endfor %}
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+    </script>
+{% endblock %}
