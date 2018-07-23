@@ -1,0 +1,8 @@
+{% extends 'layout.html.twig' %}
+{% block titlepage %}Mon profil{% endblock %}
+{% block content %}
+
+    Pseudo : {{ user.username }}
+    Email : {{ user.email }}
+
+{% endblock %}

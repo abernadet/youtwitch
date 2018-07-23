@@ -50,6 +50,11 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\Column(type="string", nullable = true)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->isActive = true; //par défaut, un user est actif
@@ -155,6 +160,16 @@ public function unserialize($serialized){
     {
         $this->isActive = $isActive;
 
+        return $this;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+    public function setImage($image)
+    {
+        $this->image = $image;
         return $this;
     }
 }
