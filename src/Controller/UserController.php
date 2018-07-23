@@ -24,9 +24,11 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/user/{id}", name="show-user", requirements={"id"="\d+"})
+     * @Route("/user/mon-profil", name="show-user")
      */
-    public function show(User $user){
+    public function show(){
+
+        $user = $this->getUser();
         return $this->render('user/user.html.twig', array('user' => $user));
     }
 
@@ -36,6 +38,9 @@ class UserController extends Controller
     public function updateUser(User $user, Request $request, FileUploader $uploader){
 
         //$this->denyAccessUnlessGranted('edit', $user);
+
+        $fileName = $user->getImage();
+
         if($user->getImage()){
             $user->setImage(new File($this->getParameter('users_images_directory') . '/' . $user->getImage()));
         }
@@ -50,11 +55,11 @@ class UserController extends Controller
             $user->setImage($fileName);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
-            $this->addFlash('succes', 'Profil Modifié ! ');
-            return $this->redirectToRoute('login');
+            $this->addFlash('success', 'Profil Modifié ! ');
+            return $this->redirectToRoute('show-user');
         }
         return $this->render('user/update.html.twig',
-                array('form' => $form->createView())
+            array('form' => $form->createView())
         );
     }
 }

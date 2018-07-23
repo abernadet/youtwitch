@@ -52,6 +52,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", nullable = true)
+     * @Assert\Image(maxSize="1000k")
      */
     private $image;
 
@@ -102,13 +103,13 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
-public function eraseCredentials(){
+    public function eraseCredentials(){
         $this->plainPassword = null;
-}
-public function getSalt(){
+    }
+    public function getSalt(){
         return null;
-}
-public function serialize(){
+    }
+    public function serialize(){
         return serialize(array(
             $this->id,
             $this->username,
@@ -116,8 +117,8 @@ public function serialize(){
             //see action on salt below
             //$this->salt,
         ));
-}
-public function unserialize($serialized){
+    }
+    public function unserialize($serialized){
         list(
             $this->id,
             $this->username,
@@ -125,7 +126,7 @@ public function unserialize($serialized){
             //see action on salt below
             //$this->salt,
             ) = unserialize($serialized,['allowed_classes' => false]);
-}
+    }
 
     public function getPlainPassword(): ?string
     {

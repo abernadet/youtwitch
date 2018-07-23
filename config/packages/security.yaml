@@ -19,6 +19,7 @@ security:
             form_login :
                 login_path: login #le formulaire est dispo à /login
                 check_path: login #on fait le traitement sur /login
+                default_target_path: video
 
             #pour se déconnecter
             logout:
@@ -41,7 +42,7 @@ security:
     access_control:
           #tous les url commencant par admin/ ne seront accessible que par les utilisateur ayant le rôle admin
          - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/user/, roles: ROLE_USER }
 
 
     #on peut définir des hiearchies entre les rôles

@@ -16,11 +16,15 @@ class UserUpdateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class)
+            ->add('username', TextType::class, array(
+                'label' => 'Pseudo'
+            ))
             ->add('email', EmailType::class)
             ->add('image', FileType::class, array('label' => 'Ajouter une image',
+                                                    'attr' => ['class' => 'form-control-file'],
                                                     'required' => false ))
-            ->add('Modifier', SubmitType::class);
+            ->add('Modifier', SubmitType::class,array
+            ('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange']));
     }
 
     public function configureOptions(OptionsResolver $resolver)

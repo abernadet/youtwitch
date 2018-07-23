@@ -3,8 +3,11 @@
 
 {% block content %}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <section class="container">
+    {{ form_start(form, {'attr': {'class': 'col-6 m-auto alert alert-dark'}}) }}
+    {{ form_widget(form) }} {#permet de créer les champs#}
+
     {{ form_end(form) }}
+    </section>
 
 {% endblock %}

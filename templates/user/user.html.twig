@@ -2,7 +2,32 @@
 {% block titlepage %}Mon profil{% endblock %}
 {% block content %}
 
-    Pseudo : {{ user.username }}
-    Email : {{ user.email }}
+    <div class="container">
+    <div class="row">
+        <div class="col-6 col-md-4">
+            <div class="sizeimg">
+                {% if user.image %}
+                    <img class="img-thumbnail" src="{{ asset('uploads/images/' ~ user.image)}}" alt="">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-6 col-md-4">
+            <p><strong>Pseudo</strong> : {{ user.username }}</p>
+            <p><strong>Email</strong> : {{ user.email }}</p>
+        </div>
+        <div class="col-6 col-md-4">
+            <a class="nav-link" href="{{ path('user-update',{id : app.user.id})}}">
+                <i class="fas fa-user-tie"></i> Modifier Mon profil
+            </a>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
 
 {% endblock %}

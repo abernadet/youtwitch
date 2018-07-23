@@ -9,6 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User as User;
 use App\Form\UserType;
+
 class SecurityController extends Controller
 {
     /**
@@ -45,7 +46,7 @@ class SecurityController extends Controller
             $this->addFlash('success', 'Vous êtes bien inscrit, vous pouvez vous connecter !');
             return $this->redirectToRoute('login');
         }
-        return $this->render('user_form/add.html.twig',
+        return $this->render('security/register.html.twig',
             array('form' =>$form->createView())
         );
     }
