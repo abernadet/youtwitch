@@ -1,0 +1,37 @@
+{# Mon layout contient tous les éléments communs au pages de mon site #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    {# Je crée des blocks qui vont être remplis dynamiquement avec les infos propres à chaque page #}
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="icon" href="{{ asset('img/icon2.png') }}" />
+</head>
+<body>
+
+{{ include('includes/header.html.twig') }}
+
+<div class="container-fluid">
+    <div class="row">
+        {{ include('includes/nav.html.twig') }}
+
+        <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h1 class="text-center mt-5">{% block titlepage %}{% endblock %}</h1>
+            {# Ce block contiendra le contenu de la page appelée #}
+            {% block content %}{% endblock %}
+        </main>
+
+    </div>
+</div>
+
+{{ include('includes/footer.html.twig') }}
+
+<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+
+{% block js %}{% endblock %}
+
+</body>
+</html>

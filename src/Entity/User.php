@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\InscriptionRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface, \Serializable
 {
@@ -49,6 +49,13 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="boolean")
      */
     private $isActive;
+
+    public function __construct()
+    {
+        $this->isActive = true; //par défaut, un user est actif
+
+    }
+
 
     public function getId()
     {
@@ -101,6 +108,8 @@ public function serialize(){
             $this->id,
             $this->username,
             $this->password,
+            //see action on salt below
+            //$this->salt,
         ));
 }
 public function unserialize($serialized){
@@ -108,7 +117,9 @@ public function unserialize($serialized){
             $this->id,
             $this->username,
             $this->password,
-            )= unserialize($serialized,['allowed_classes' => false]);
+            //see action on salt below
+            //$this->salt,
+            ) = unserialize($serialized,['allowed_classes' => false]);
 }
 
     public function getPlainPassword(): ?string
@@ -123,12 +134,12 @@ public function unserialize($serialized){
         return $this;
     }
 
-    public function getRoles(): ?string
+    public function getRoles(): ?array
     {
         return $this->roles;
     }
 
-    public function setRoles(string $roles): self
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 

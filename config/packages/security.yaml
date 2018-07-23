@@ -1,13 +1,32 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: ~ }
-    firewalls:
-        dev:
+      mon_user_provider:
+        entity: #on utilise une entity pour gérer les users
+          class: App\Entity\User
+          property: username # la propriété utilisée pour le
+      #in_memory: { memory: ~ } # memory veut dire en dur mais pas viable
+    encoders : #on lui indique comment encoder les mdp
+      App\Entity\User : bcrypt
+
+    firewalls: # les firewalls vont nous permettre de définir les pages accessibles aux utilisateurs connectés
+        dev: # Ne pas toucher, il permet d'accéder au web profiler sur toutes les pages
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            anonymous: true
+        main: #le firewall sur lequel on va travailler
+            anonymous: true #signifie que les pages seront accessibles aux utilisateurs anonymes
+
+            form_login :
+                login_path: login #le formulaire est dispo à /login
+                check_path: login #on fait le traitement sur /login
+
+            #pour se déconnecter
+            logout:
+              path: /logout
+              target: /
+
+              # path chemin utilisé pour se déconnecter
+              # target chemin de redirection quand c'est fait
 
             # activate different ways to authenticate
 
@@ -20,5 +39,12 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+          #tous les url commencant par admin/ ne seront accessible que par les utilisateur ayant le rôle admin
+         - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+
+    #on peut définir des hiearchies entre les rôles
+    role_hierarchy:
+        ROLE_AUTEUR: ROLE_USER #si j'ai ROLE_AUTEUR, j'ai aussi ROLE_USER
+        ROLE_ADMIN: [ROLE_AUTEUR, ROLE_MODERATEUR] #ROLEADMIN aura aussi ROLE_MODERATEUR et ROLE_USER
