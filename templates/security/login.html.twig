@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Connexion{% endblock %}
+{% block titlepage %}Connexion{% endblock %}
 
 {% block content %}
 
@@ -20,16 +21,21 @@
     </div>
     {% endif %}
 
-    {#le formulaire de login#}
-    <form action="{{ path('login') }}" method="POST">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="_password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-default">Login</button>
-    </form>
+    <section class="container">
+        {#le formulaire de login#}
+        <form action="{{ path('login') }}" method="POST" class="col-6 m-auto alert alert-dark">
+            <div class="form-group">
+                <label for="username">Pseudo</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre pseudo" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="_password" placeholder="Votre mot de passe" class="form-control">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-orange">Connexion</button>
+            </div>
+        </form>
+    </section>
+
 {% endblock %}

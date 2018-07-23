@@ -1,11 +1,27 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Inscription{% endblock %}
+{% block titlepage %}Inscription{% endblock %}
 
 {% block content %}
 
-    {{ form_start(form) }} {#permet de créer la balise <form>#}
-    {{ form_widget(form) }} {#permet de créer les champs#}
+<section class="container">
+    {{ form_start(form, {'attr': {'class': 'col-6 m-auto alert alert-dark'}}) }} {#permet de créer la balise <form>#}
+        {{ form_label(form.username) }}
+        {{ form_errors(form.username) }}
+        {{ form_widget(form.username, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un Pseudo'}}) }} {#permet de créer les champs#}
+
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un E-Mail'}}) }} {#permet de créer les champs#}
+
+        {{ form_widget(form.plainPassword) }} {#permet de créer les champs#}
+
+        <div class="text-center">
+            {{ form_row(form.ajouter) }}
+            {# Va générer le label, les erreurs et le champ Content en une instruction #}
+        </div>
     {{ form_end(form) }} {# va fermer la balise </form> en plus d'autres chose que l'on verra ensuite#}
+</section>
 
 {% endblock %}
