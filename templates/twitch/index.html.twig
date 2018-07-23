@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Test Twitch{% endblock %}
+
+
+{% block content %}
+
+{% for follow in follows %}
+    <img src="{{ follow.channel.logo }}"> <span>{{ follow.channel.display_name }}</span><br>
+{% endfor %}
+{% endblock %}
