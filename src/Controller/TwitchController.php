@@ -10,7 +10,7 @@ class TwitchController extends Controller
     /**
      * @Route("/twitch/{name}", name="twitch")
      */
-    
+
     public function getFollows($name)
     {
         dump($name);
@@ -21,7 +21,6 @@ class TwitchController extends Controller
             $obj = json_decode($json);
             $follows = $obj->follows;
         }catch(\Exception $e){
-            $json = false;
             $follows = [];
         }
 
