@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Page Admin{% endblock %}
+{% block titlepage %}Page de l'administrateur{% endblock %}
+
+{% block content %}
+    <a class="btn btn-orange mb-3" href="{{ path('admin-add-user') }}"><i class="fas fa-user-plus"></i> Ajouter un utilisateur</a>
+
+    {# Pour afficher tous type de message #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="d-flex justify-content-around flex-wrap">
+    {# Équivalent twig de la boucle foreach #}
+    {% for user in users %}
+        {# A chaque tour de boucle, on récupère user qui ici est un objet
+           Pour accéder au nom : user.username #}
+            <h3>
+                <a class="orange" href="{{ path('admin-show-user', {id: user.id}) }}">
+                    {{ user.username }}
+                </a>
+            </h3>
+    {% endfor %}
+    </div>
+
+{% endblock %}

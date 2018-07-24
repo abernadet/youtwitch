@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Entity\User as User;
 use App\Form\UserType;
 use App\Form\UserUpdateType;
 use  Symfony\Component\HttpFoundation\Request;

@@ -3,14 +3,7 @@
 {% block titlepage %}{{ user.username }}{% endblock %}
 {% block content %}
 
-    {# Pour afficher tous type de message #}
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="alert alert-{{ label }} text-center">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endfor %}
+    <a href="{{ path('admin')}}" class="btn btn-orange mb-3">Retour</a>
 
     <div class="container">
         <div class="row">
@@ -26,8 +19,11 @@
                 <p><strong>Email</strong> : {{ user.email }}</p>
             </div>
             <div class="col-6 col-md-4">
-                <a class="nav-link" href="{{ path('user-update',{id : user.id})}}">
-                    <i class="fas fa-user-tie"></i> Modifier Mon profil
+                <a class="nav-link orange" href="{{ path('admin-user-update',{id : user.id})}}">
+                    <i class="fas fa-edit"></i> Modifier Mon profil
+                </a>
+                <a class="nav-link orange" href="#">
+                    <i class="fas fa-trash-alt"></i> Supprimer
                 </a>
             </div>
         </div>
