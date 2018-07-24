@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class TwitchController extends Controller
 {
     /**
-     * @Route("/twitch/{name}", name="twitch")
+     * @Route("/testtwitch/{name}", name="testtwitch")
      */
-    
+
     public function getFollows($name)
     {
         dump($name);
@@ -21,7 +21,6 @@ class TwitchController extends Controller
             $obj = json_decode($json);
             $follows = $obj->follows;
         }catch(\Exception $e){
-            $json = false;
             $follows = [];
         }
 

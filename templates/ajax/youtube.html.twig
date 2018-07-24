@@ -1,0 +1,83 @@
+{{ include('includes/header.html.twig') }}
+
+<nav class="container mb-3">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" id="youtube" href="{{ path('video') }}">Youtube</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="twitch" href="{{ path('twitch') }}">Twitch</a>
+        </li>
+    </ul>
+</nav>
+
+<section class="d-flex justify-content-around flex-wrap">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/1TsVjvEkc4s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/kbMqWXnpXcA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</section>
+
+<section class="mt-5">
+    <h3>Recommandations</h3>
+    <div class="d-flex justify-content-around flex-wrap mt-3">
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+    </div>
+</section>
+
+<section class="mt-5">
+    <h3>Surf</h3>
+    <div class="d-flex justify-content-around flex-wrap mt-3">
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+    </div>
+</section>
+
+<section class="mt-5">
+    <h3>League Of Legends</h3>
+    <div class="d-flex justify-content-around flex-wrap mt-3">
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+        <a href="{{ path('visionnage') }}" class="text-dark col-3">
+            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
+            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
+        </a>
+    </div>
+</section>
