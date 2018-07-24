@@ -24,7 +24,8 @@ class UserType extends AbstractType
                 'first_options' => ['label' => 'Mot de passe', 'attr'=>['placeholder' => 'Mot de passe']],
                 'second_options' => ['label' => 'Répétez le mot de passe', 'attr'=>['placeholder' => 'Répétez le mot de passe']]
             ))
-            ->add('twitchLogin', TextType::class, array('label' => 'Identifiant de votre chaine Twitch'))
+            ->add('twitchLogin', TextType::class, array(
+                'label' => 'Identifiant de votre chaine Twitch'))
             ->add('ajouter', SubmitType::class,array
             ('label' => 'S\'inscrire', 'attr' => ['class' => 'btn btn-orange']))
 

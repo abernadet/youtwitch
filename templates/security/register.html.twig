@@ -17,6 +17,9 @@
 
         {{ form_widget(form.plainPassword) }} {#permet de créer les champs#}
 
+        {{ form_label(form.twitchLogin) }}
+        {{ form_widget(form.twitchLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Se trouve après "twitch.tv/" sur la page de votre chaine'} }) }}
+
         <div class="text-center">
             {{ form_row(form.ajouter) }}
             {# Va générer le label, les erreurs et le champ Content en une instruction #}
