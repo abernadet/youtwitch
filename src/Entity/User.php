@@ -22,7 +22,6 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=30)
-
      * @Assert\NotBlank()
      * @Assert\Length(max=30, maxMessage="Le pseudo ne doit pas faire plus de 30 caractères")
      */
@@ -36,13 +35,12 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=70)
-     * @Assert\NotBlank()
-     * @Assert\Length(min=6, minMessage="Le mot de passe doit faire au moins 6 caractères", max=30, maxMessage="Le mot de passe ne doit pas faire plus de 70 caractères")
      */
     private $password;
 
     /**
      * @param mixed
+     * @Assert\Length(min=6, minMessage="Le mot de passe doit faire au moins 6 caractères", max=30, maxMessage="Le mot de passe ne doit pas faire plus de 30 caractères")
      */
     private $plainPassword;
 
@@ -126,13 +124,13 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-public function eraseCredentials(){
-        $this->plainPassword = null;
-}
-public function getSalt(){
-        return null;
-}
+    public function eraseCredentials(){
+            $this->plainPassword = null;
+    }
 
+    public function getSalt(){
+            return null;
+    }
 
     public function serialize(){
 
@@ -153,11 +151,8 @@ public function getSalt(){
             $this->password,
             //see action on salt below
             //$this->salt,
-            ) = unserialize($serialized,['allowed_classes' => false]);
-}
-
-
-
+            ) = \unserialize($serialized,['allowed_classes' => false]);
+    }
 
     public function getPlainPassword(): ?string
     {

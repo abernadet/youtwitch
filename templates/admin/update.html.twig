@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Modification de l'utilisateur - YouTwitch{% endblock %}
+{% block titlepage %}Modification de l'utilisateur{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }} {# Permet de créer la balise <form> #}
+    {{ form_widget(form) }} {# Permet de créer les champs #}
+    {{ form_end(form) }} {# Va fermer la balise </form> #}
+{% endblock %}

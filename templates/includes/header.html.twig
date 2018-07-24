@@ -1,7 +1,14 @@
 <header>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-1shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('home') }}">YouTwitch</a>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('video') }}">YouTwitch</a>
+        {% else %}
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('home') }}">YouTwitch</a>
+        {% endif %}
+
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a class="btn btn-outline-orange my-2 my-sm-0 mr-3 ml-3" href="{{ path('logout') }}">Déconnexion</a>
         {% else %}
