@@ -1,0 +1,89 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Titre de la vidéo{% endblock %}
+{% block titlepage %}Titre de la vidéo{% endblock %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1TsVjvEkc4s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <section class="alert-secondary mt-5 p-4">
+        <div>
+            <h6 class="orange">{{ app.user.username }}</h6>
+            <p>
+                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
+                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
+                Lucianosaurus Aardonyx.
+            </p>
+        </div>
+        <hr>
+        <div>
+            <h6 class="orange">{{ app.user.username }}</h6>
+            <p>
+                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
+                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
+                Lucianosaurus Aardonyx.
+            </p>
+        </div>
+        <div>
+            <h6 class="orange">{{ app.user.username }}</h6>
+            <p>
+                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
+                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
+                Lucianosaurus Aardonyx.
+            </p>
+        </div>
+        <div>
+            <h6 class="orange">{{ app.user.username }}</h6>
+            <p>
+                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
+                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
+                Lucianosaurus Aardonyx.
+            </p>
+        </div>
+        <div>
+            <h6 class="orange">{{ app.user.username }}</h6>
+            <p>
+                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
+                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
+                Lucianosaurus Aardonyx.
+            </p>
+        </div>
+        <div>
+            <h6 class="orange">{{ app.user.username }}</h6>
+            <p>
+                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
+                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
+                Lucianosaurus Aardonyx.
+            </p>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block js %}
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<script>
+    $(function(){
+        $('#twitch').on('click', function(e) {
+            e.preventDefault();
+            var url = "{{ path('twitch') }}"; // On génère la route que l'on stocke dans une variable js
+
+            $.ajax({
+                type: 'post',
+                url: url,
+                dataType: 'html',
+                success: function (data) {
+                    $('#result').html(data);
+                },
+                error: function (error) {
+                    console.log(error.responseText)
+                }
+            })
+        })
+    })
+</script>
+{% endblock %}
