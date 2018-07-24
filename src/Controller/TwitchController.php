@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class TwitchController extends Controller
 {
     /**
-     * @Route("/twitch/{name}", name="twitch")
+     * @Route("/testtwitch/{name}", name="testtwitch")
      */
 
     public function getFollows($name)

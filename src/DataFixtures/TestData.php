@@ -28,9 +28,7 @@ class TestData extends Fixture
             $user->setEmail('user'.$i.'@mail.com');
 
             $plainPassword = 'mdp' . $i;
-            //j'utilise l'encoder pour être sur d'encode avec la bonne méthode (définie dans config/packages/security.yaml) le mot de passe
             $mdpEncoded = $this->encoder->encodePassword($user, $plainPassword);
-            //j'envoie dans mon attribu password
             $user->setPassword($mdpEncoded);
             if($user->getUsername() == 'user1'){
                 $user->setRoles(array('ROLE_USER', 'ROLE_ADMIN'));
@@ -39,10 +37,10 @@ class TestData extends Fixture
 
                 $user->setRoles(array('ROLE_USER'));
             }
-            $user->setIsActive(true);
             
             $manager->persist($user);
         }
+        $manager->flush();
     }
 
 }
