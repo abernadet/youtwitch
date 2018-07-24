@@ -6,6 +6,15 @@
 {% block content %}
 
 {% for follow in follows %}
-    <img src="{{ follow.channel.logo }}"> <span>{{ follow.channel.display_name }}</span><br>
+
+    <img height="42" width="42" src="{{ follow.profile_image_url }}"> <span>{{ follow.display_name }}</span>
+
+    {% if follow.id in streams_user_id %}
+
+    <i style="color:green" class="fas fa-circle"></i>
+    
+    {% endif %}
+    <br>
+
 {% endfor %}
 {% endblock %}
