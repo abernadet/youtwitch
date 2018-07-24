@@ -37,6 +37,7 @@ class TestData extends Fixture
 
                 $user->setRoles(array('ROLE_USER'));
             }
+            $user->setTwitchLogin('zerator');
             
             $manager->persist($user);
         }

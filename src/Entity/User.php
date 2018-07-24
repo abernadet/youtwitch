@@ -62,6 +62,11 @@ class User implements UserInterface, \Serializable
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string", length=255, name="twitchLogin", nullable = true)
+     */
+    private $twitchLogin;
+
     public function __construct()
     {
         $this->isActive = true; //par défaut, un user est actif
@@ -105,6 +110,18 @@ class User implements UserInterface, \Serializable
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getTwitchLogin(): ?string
+    {
+        return $this->twitchLogin;
+    }
+
+    public function setTwitchLogin(string $twitchLogin): self
+    {
+        $this->twitchLogin = $twitchLogin;
 
         return $this;
     }
@@ -184,6 +201,7 @@ public function getSalt(){
     public function setImage($image)
     {
         $this->image = $image;
+
         return $this;
     }
 
