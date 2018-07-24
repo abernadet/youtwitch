@@ -16,8 +16,9 @@
 
 <div class="container-fluid">
     <div class="row">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {{ include('includes/nav.html.twig') }}
-
+        {% endif %}
         <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
             <h1 class="text-center mt-5 mb-3">{% block titlepage %}{% endblock %}</h1>
             {# Ce block contiendra le contenu de la page appelée #}
@@ -27,7 +28,9 @@
     </div>
 </div>
 
+
 {#{{ include('includes/footer.html.twig') }}#}
+
 
 <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
 

@@ -19,6 +19,7 @@ class HomeController extends Controller
     }
 
 
+
     function searchListByKeyword($service, $part, $params) {
         $params = array_filter($params);
         $response = $service->search->listSearch(
@@ -32,13 +33,13 @@ class HomeController extends Controller
     /**
      * @Route("/user/video", name="video")
      */
+
     public function video()
     {
         return $this->render('video.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
-
 
     /*
      * @Route("/twitch", name="twitch")

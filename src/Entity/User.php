@@ -22,6 +22,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=30)
+
      * @Assert\NotBlank()
      * @Assert\Length(max=30, maxMessage="Le pseudo ne doit pas faire plus de 30 caractères")
      */
@@ -55,9 +56,16 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\Column(type="string", nullable = true)
+     * @Assert\Image(maxSize="1000k")
+     */
+    private $image;
+
     public function __construct()
     {
         $this->isActive = true; //par défaut, un user est actif
+
     }
 
     public function getId()
@@ -100,13 +108,17 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+
 public function eraseCredentials(){
         $this->plainPassword = null;
 }
 public function getSalt(){
         return null;
 }
-public function serialize(){
+
+
+    public function serialize(){
+
         return serialize(array(
             $this->id,
             $this->username,
@@ -115,7 +127,9 @@ public function serialize(){
             //$this->salt,
         ));
 }
-public function unserialize($serialized){
+
+    public function unserialize($serialized){
+
         list(
             $this->id,
             $this->username,
@@ -124,6 +138,9 @@ public function unserialize($serialized){
             //$this->salt,
             ) = unserialize($serialized,['allowed_classes' => false]);
 }
+
+
+
 
     public function getPlainPassword(): ?string
     {
@@ -160,4 +177,14 @@ public function unserialize($serialized){
 
         return $this;
     }
+    public function getImage()
+    {
+        return $this->image;
+    }
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+
 }
