@@ -20,9 +20,9 @@
             </div>
             <div class="col-6 col-md-4">
                 <a class="nav-link orange" href="{{ path('admin-user-update',{id : user.id})}}">
-                    <i class="fas fa-edit"></i> Modifier Mon profil
+                    <i class="fas fa-edit"></i> Modifier
                 </a>
-                <a class="nav-link orange" href="#">
+                <a class="nav-link orange" href="{{ path('admin-user-delete',{id : user.id})}}">
                     <i class="fas fa-trash-alt"></i> Supprimer
                 </a>
             </div>

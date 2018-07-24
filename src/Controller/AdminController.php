@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserUpdateType;
 use App\Form\AdminType;
+use App\Form\AdminUpdateType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\FileUploader;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 class AdminController extends Controller
 {
@@ -87,14 +89,17 @@ class AdminController extends Controller
         if($user->getImage()){
             # Pour pouvoir générer le formulaire, on doit transformer le nom du fichier stocké pour l'instant dans l'attribut image en instance de la classe File
             #(ce qui est attendu par le formulaire)
-            $user->setImage(new File($this->getParameter('articles_image_directory') . '/' . $user->getImage()));
+            $user->setImage(new File($this->getParameter('users_images_directory') . '/' . $user->getImage()));
         }
 
-        $form = $this->createForm(AdminType::class, $user);
+        $form = $this->createForm(AdminUpdateType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $user = $form->getData();
+
+            $roles = $request->request->get('roles');
+            $user->setRoles($roles);
 
             # Je ne fais le traitement d'upload que si on m'a envoyé un fichier
             if ($user->getImage()){
@@ -114,5 +119,24 @@ class AdminController extends Controller
         }
 
         return $this->render('admin/update.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @Route("admin/delete/{id}", name="admin-user-delete", requirements={"id"="\d+"})
+     */
+    public function deleteUser(User $user){
+
+        $entityManager = $this->getDoctrine()->getManager(); # Récupération de l'entity manager
+
+        # Je veux supprimer cet utilisateur
+        $entityManager->remove($user);
+
+        # J'exécute la requête
+        $entityManager->flush();
+
+        # Créer un message flash et renvoyer sur la liste des dernières catégories
+        $this->addFlash('danger', 'Utilisateur supprimé !');
+
+        return $this->redirectToRoute('admin');
     }
 }
