@@ -69,7 +69,6 @@ class TwitchController extends Controller
         $result = json_decode($json_result);
 
         return $result;
-        
     }
 
     //Return a twitch user's data from twitch user's id
