@@ -44,7 +44,7 @@ class TwitchController extends Controller
     //PRIVATE FUNCTIONS
 
     //Return all live streams from an array of channel IDs
-    private function getLiveStreams(array $channelIDs)
+    public function getLiveStreams(array $channelIDs)
     {
         $url = 'https://api.twitch.tv/helix/streams';
         $i = 1;
@@ -72,7 +72,7 @@ class TwitchController extends Controller
     }
 
     //Return a twitch user's data from twitch user's id
-    private function getUserFromId($user_id)
+    public function getUserFromId($user_id)
     {
         $url = 'https://api.twitch.tv/helix/users?id='.$user_id;
         $opts = [
@@ -89,7 +89,7 @@ class TwitchController extends Controller
     }
 
     //Return multiple twitch user's data from and array of twitch user's id
-    private function getUsersFromId(array $users_id)
+    public function getUsersFromId(array $users_id)
     {
         $url = 'https://api.twitch.tv/helix/users';
         $i = 0;
@@ -119,7 +119,7 @@ class TwitchController extends Controller
     }
 
     //Return a twitch user's data from user's twitch login
-    private function getUserFromLogin($login)
+    public function getUserFromLogin($login)
     {
         $url = 'https://api.twitch.tv/helix/users?login='.$login;
         $opts = [
@@ -136,7 +136,7 @@ class TwitchController extends Controller
     }
 
     //Return user's twitch id from user's twitch login
-    private function getUserIdFromLogin($login)
+    public function getUserIdFromLogin($login)
     {
 
         try{
@@ -150,7 +150,7 @@ class TwitchController extends Controller
     }
 
     //Return user's follows id
-    private function getUserFollowsId($user_id)
+    public function getUserFollowsId($user_id)
     {
 
         $url = 'https://api.twitch.tv/helix/users/follows?from_id='.$user_id.'&first=100';
