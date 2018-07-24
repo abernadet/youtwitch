@@ -9,11 +9,11 @@ class YoutubeController extends Controller
 {
 
     /**
-     * @Route("/youtube/search/", name="Ysearch")
+     * @Route("youtube/search/{id}", name="Ysearch", requirements={"id"="\d+"})
      */
-    public function search()
+    public function search($id)
     {
-        $url = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=UCCpKmtXcI-ZkKxBP7KnvX4w&key=AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M";
+        $url = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&key=AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M";
         try {
             $json = file_get_contents($url);
             $obj = json_decode($json);

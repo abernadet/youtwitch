@@ -3,16 +3,38 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+    <div id="search">
+        <input type="search" name="" id="champsRecherche" placeholder="Saisir l'id de votre chaine">
+        <button type="submit" id="check">Check !</button>
+    </div>
 
+    <div id="result"></div>
+    {% block js %}
+        <script>
+            $('#check').on('click',function(){
+                var url = "{{ path('Ysearch',{id:'0'}) }}";
+                console.log(url);
+                url = url.replace('0',$('#champsRecherche').val());
+                console.log(url);
+
+                $.ajax({
+                    type:'get',
+                    url:url,
+                    timeout:'3000',
+                    dataType:'html',
+                    success: function(data){
+                        $('#result').html(data);
+                    },
+                    error: function (error){
+                        console.log(error.responseText);
+                    }
+                })
+            })
+        </script>
+    {% endblock %}
     {% for sub in subs %}
 
-        <img src="{{ sub.snippet.thumbnails.default.url }}">-<h3>{{  sub.snippet.title }}</h3><br><hr>
+        <img src="{{ sub.snippet.thumbnails.default.url }}" style="padding-top: 5px"><h3>{{  sub.snippet.title }}</h3><br><hr>
 
     {% endfor %}
-
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous">
-    </script>
 {% endblock %}
