@@ -144,30 +144,31 @@ class TwitchApiService
      * array $channel : logins of channels where we search for clips
      * $trending : get results by popularity, otherwise get most viewed clips (default = true)
      */
-    public function getClipsFromChannels(array $channels, $period = 'week', $max = 5, $trending = true)
+    public function getClipsFromChannels(array $channel_names, $period = 'week', $max = '5', $trending = 'true')
     {
         $url = 'https://api.twitch.tv/kraken/clips/top?channel=';
 
         $i = 1;
-        foreach($channels as $channel)
+        foreach($channel_names as $channel_name)
         {
             if($i == 1)
             {
-                $url .= $channel;
+                $url .= $channel_name;
                 $i++;
             }
             else
             {
-                $url .= ','.$channel;
+                $url .= ','.$channel_name;
             }
         }
         $url .= '&trending='.$trending;
         $url .= '&limit='.$max;
-
+        
         $opts = [
             "http" => [
                 "method" => "GET",
-                "header" => "Client-ID: ".$this->client_id
+                "header" => "Client-ID: ".$this->client_id,
+                'Accept: application/vnd.twitchtv.v5+json'
             ]
         ];
         $context = stream_context_create($opts);
