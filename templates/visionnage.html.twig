@@ -1,19 +1,40 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Titre de la vidéo{% endblock %}
-{% block titlepage %}Titre de la vidéo{% endblock %}
+{% block titlepage %}{{ app.request.get('display_name') }}{% endblock %}
 
 {% block content %}
 
     <div class="d-flex justify-content-center">
+        {# Depuis un lien twitch, 2 paramètre dans l'url : 'player' & 'login', si le player est "twitch", affiche une iframe twitch #}
+        {% if app.request.get('player') == "twitch" %}
+
+        <iframe src="https://player.twitch.tv/?channel={{ app.request.get('login') }}&autoplay=true&muted=false"  
+                frameborder="0" 
+                allowfullscreen="true" 
+                scrolling="no" 
+                height="567"
+                 width="930">
+        </iframe>
+        <iframe src="https://www.twitch.tv/embed/{{ app.request.get('login') }}/chat" frameborder="0" scrolling="no" height="567" width="350"></iframe>
+
+        {% else %}
+
         <iframe width="560" height="315" src="https://www.youtube.com/embed/1TsVjvEkc4s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        
+        {% endif %}
+
     </div>
 
+<<<<<<< HEAD
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
 
 
+=======
+    {% if app.request.get('type') != 'stream' %}
+>>>>>>> master
 
     <section class="alert-secondary mt-5 p-4">
         {% for message in messages %}
@@ -27,6 +48,8 @@
     {%  endfor %}
 
     </section>
+
+    {% endif %}
 
 {% endblock %}
 

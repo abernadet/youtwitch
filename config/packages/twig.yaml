@@ -4,4 +4,4 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes: ['bootstrap_4_layout.html.twig']
     globals: # On définit des variables qui seront disponibles dans toutes nos vues
-          image_directory: 'uploads/img/'
+          image_directory: 'uploads/images/'

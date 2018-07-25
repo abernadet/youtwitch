@@ -1,9 +1,18 @@
-{% extends 'layout.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    {# Je crée des blocks qui vont être remplis dynamiquement avec les infos propres à chaque page #}
+    <title>Connexion - YouTwitch</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="icon" href="{{ asset('img/icon2.png') }}" />
+</head>
+<body>
 
-{% block title %}Connexion{% endblock %}
-{% block titlepage %}Connexion{% endblock %}
+{{ include('includes/header.html.twig') }}
 
-{% block content %}
 
     {# Pour afficher tous type de message #}
     {% for label, messages in app.flashes %}
@@ -21,6 +30,7 @@
     </div>
     {% endif %}
 
+<<<<<<< HEAD
     <section class="container">
         {#le formulaire de login#}
         <form action="{{ path('change_password',{email : app.user.email})}}" method="POST" class="col-6 m-auto alert alert-dark">
@@ -34,12 +44,38 @@
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-orange">Connexion</button>
+=======
+    <br><br><br><br>
+
+    <h1 class="text-center mt-5 mb-3">Connexion</h1>
+
+    <section class="d-flex justify-content-center">
+        <div class="card col-5">
+            <div class="card-body">
+                {#le formulaire de login#}
+                <form action="{{ path('login') }}" method="POST" class="">
+                    <div class="form-group">
+                        <label for="username">Pseudo</label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre pseudo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" name="_password" placeholder="Votre mot de passe" class="form-control">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-orange col-6">Connexion</button>
+                        <a href="{{ path('register') }}" class="btn btn-outline-orange mt-2 mb-2 col-6">Rejoignez-nous !</a><br>
+                        <a href="{{ path('reset-password') }}" class="">Mot de passe oublié ?</a>
+                    </div>
+                </form>
+>>>>>>> master
             </div>
-        </form>
+        </div>
     </section>
     <div class="text-center">
         <a href="{{ path('lost') }}">Mot de passe oublié ?</a>
     </div>
 
 
-{% endblock %}
+</body>
+</html>

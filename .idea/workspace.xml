@@ -2,10 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4ff8a4d-e2bd-48d0-bd62-87a28d34805f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/LastPasswordController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/LostPasswordType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LostPasswordType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/last_password/index.html.twig" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/00400dae94579996b0dc341fe7efece4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/12912c252a03f79cf70e4e8882949802.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/1bc85e795ef6c9a0e615833a3f057fca.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/1f7b718a403dae18b1e5b2647057abf0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/4e1309841b64d17f81e71d2094c54142.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/560506f60fce72dabe9f55e8aece7227.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/8c7a7667ba15627784a6f7d0f684e1bb.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/ad6a71f73a4f784fd5ea4ba6372c2883.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/c33342fda014a7ef2bd445019068d166.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/c87d17a5e3b8098e259f949751abb85d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/d3e0a3ff5d726571f200e347b3f12666.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/IncludesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/AdminType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/AdminUpdateType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Security/Voter/UserVoter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/TwitchApiService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/Security/newPassword.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/Security/passwordUpdate.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/Security/resetPassword.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/User/askEmail.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/add.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/update.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/user.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/lost_password/registration.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/propos.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/LostPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/LostPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TwitchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TwitchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TestData.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TestData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserUpdateType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserUpdateType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180724082720.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20180724082720.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180724130828.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20180724130828.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180724131212.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20180724131212.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180725090604.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20180725090604.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180725115048.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20180725115048.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/LostPasswordRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LostPasswordRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/includes/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/nav.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lost_password/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lost_password/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/twitch/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/twitch/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user_form/add.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/visionnage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/visionnage.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,62 +71,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/security/login.html.twig">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/user/update.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/user/user.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="18" column="78" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LostPasswordController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/LostPasswordController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="64" />
+            <state relative-caret-position="-1207">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
               <folding>
-                <element signature="e#34#81#0#PHP" expanded="true" />
+                <element signature="e#30#62#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="changemotdepasse.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/lost_password/changemotdepasse.html.twig">
+      <file leaf-file-name="LostPasswordRepository.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Repository/LostPasswordRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="920">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
-              <folding>
-                <element signature="e#34#81#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="593">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -116,19 +129,20 @@
         <option value="$PROJECT_DIR$/src/Entity/Message.php" />
         <option value="$PROJECT_DIR$/src/Controller/MessageController.php" />
         <option value="$PROJECT_DIR$/templates/visionnage.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/HomeController.php" />
         <option value="$PROJECT_DIR$/src/Form/UserUpdateType.php" />
         <option value="$PROJECT_DIR$/templates/user/update.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
-        <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Entity/LostPassword.php" />
         <option value="$PROJECT_DIR$/src/Controller/LastPasswordController.php" />
         <option value="$PROJECT_DIR$/templates/lost_password/email.html.twig" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/Form/LostPasswordType.php" />
-        <option value="$PROJECT_DIR$/src/Controller/LostPasswordController.php" />
         <option value="$PROJECT_DIR$/templates/lost_password/changemotdepasse.html.twig" />
         <option value="$PROJECT_DIR$/templates/security/login.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/HomeController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/LostPasswordController.php" />
+        <option value="$PROJECT_DIR$/src/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/Repository/LostPasswordRepository.php" />
       </list>
     </option>
   </component>
@@ -376,12 +390,12 @@
       <workItem from="1532088095472" duration="5245000" />
       <workItem from="1532346496942" duration="10264000" />
       <workItem from="1532417698882" duration="20419000" />
-      <workItem from="1532504569214" duration="10733000" />
+      <workItem from="1532504569214" duration="11356000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46661000" />
+    <option name="totallyTimeSpent" value="47284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -539,23 +553,6 @@
     <entry file="file://$PROJECT_DIR$/config/packages/swiftmailer.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/video.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
@@ -655,16 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/LostPasswordController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="64" />
-          <folding>
-            <element signature="e#34#81#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="920">
@@ -674,9 +661,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/LostPasswordRepository.php">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/user_form/add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
@@ -710,6 +694,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="413">
           <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="91" column="50" lean-forward="true" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="50" />
+          <folding>
+            <element signature="e#34#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/LostPasswordController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1400">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+          <folding>
+            <element signature="e#34#81#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1207">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+          <folding>
+            <element signature="e#30#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/LostPasswordRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>

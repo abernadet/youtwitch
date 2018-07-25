@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -68,13 +69,5 @@ class LostPasswordController extends Controller
         );
     }
 
-     /**
-      * @Route("/lost/password", name="lost_password")
-     */
-    public function index()
-    {
-        return $this->render('lost_password/index.html.twig', [
-            'controller_name' => 'LostPasswordController',
-        ]);
-    }
 }
+

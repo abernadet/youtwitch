@@ -19,6 +19,18 @@ class LostPasswordRepository extends ServiceEntityRepository
         parent::__construct($registry, LostPassword::class);
     }
 
+    # Requête pour chercher le token et l'ID dans la BDD
+    public function searcheToken(string $token, int $idUser)
+    {
+        $querybuilder = $this->createQueryBuilder('r')
+            ->andWhere('r.token = :token','r.user_id = :userId')
+            ->setParameter('token', $token)
+            ->setParameter('userId',$idUser)
+            ->getQuery();
+        return $querybuilder->execute();
+    }
+
+
 //    /**
 //     * @return LostPassword[] Returns an array of LostPassword objects
 //     */
