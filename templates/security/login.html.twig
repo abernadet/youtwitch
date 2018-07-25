@@ -35,22 +35,26 @@
     <h1 class="text-center mt-5 mb-3">Connexion</h1>
 
     <section class="d-flex justify-content-center">
-        {#le formulaire de login#}
-        <form action="{{ path('login') }}" method="POST" class="col-5 alert alert-secondary">
-            <div class="form-group">
-                <label for="username">Pseudo</label>
-                <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre pseudo" class="form-control">
+        <div class="card col-5">
+            <div class="card-body">
+                {#le formulaire de login#}
+                <form action="{{ path('login') }}" method="POST" class="">
+                    <div class="form-group">
+                        <label for="username">Pseudo</label>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre pseudo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" name="_password" placeholder="Votre mot de passe" class="form-control">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-orange col-6">Connexion</button>
+                        <a href="{{ path('register') }}" class="btn btn-outline-orange mt-2 mb-2 col-6">Rejoignez-nous !</a><br>
+                        <a href="{{ path('reset-password') }}" class="">Mot de passe oublié ?</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="_password" placeholder="Votre mot de passe" class="form-control">
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-orange col-6">Connexion</button>
-                <a href="{{ path('register') }}" class="btn btn-outline-orange mt-2 mb-2 col-6">Rejoignez-nous !</a><br>
-                <a href="{{ path('reset-password') }}" class="">Mot de passe oublié ?</a>
-            </div>
-        </form>
+        </div>
     </section>
 
 </body>
