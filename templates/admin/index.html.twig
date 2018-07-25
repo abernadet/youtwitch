@@ -4,7 +4,9 @@
 {% block titlepage %}Page de l'administrateur{% endblock %}
 
 {% block content %}
-    <a class="btn btn-orange mb-3" href="{{ path('admin-add-user') }}"><i class="fas fa-user-plus"></i> Ajouter un utilisateur</a>
+    <div class="text-center">
+        <a class="btn btn-orange mb-5" href="{{ path('admin-add-user') }}"><i class="fas fa-user-plus"></i> Ajouter un utilisateur</a>
+    </div>
 
     {# Pour afficher tous type de message #}
     {% for label, messages in app.flashes %}
@@ -15,6 +17,7 @@
         {% endfor %}
     {% endfor %}
 
+    <section class="container">
     {# Équivalent twig de la boucle foreach #}
     {% for user in users %}
         {# A chaque tour de boucle, on récupère user qui ici est un objet
@@ -25,5 +28,6 @@
             <a href="{{ path('admin-show-user', {id: user.id}) }}" class="btn btn-outline-orange">Voir</a>
         </div><hr>
     {% endfor %}
+    </section>
 
 {% endblock %}
