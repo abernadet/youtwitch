@@ -15,17 +15,15 @@
         {% endfor %}
     {% endfor %}
 
-    <div class="d-flex justify-content-around flex-wrap">
     {# Équivalent twig de la boucle foreach #}
     {% for user in users %}
         {# A chaque tour de boucle, on récupère user qui ici est un objet
            Pour accéder au nom : user.username #}
-            <h3>
-                <a class="orange" href="{{ path('admin-show-user', {id: user.id}) }}">
-                    {{ user.username }}
-                </a>
-            </h3>
+        <div class="d-flex justify-content-around">
+            <h3>{{ user.username }}</h3>
+            <p>{{ user.email }}</p>
+            <a href="{{ path('admin-show-user', {id: user.id}) }}" class="btn btn-outline-orange">Voir</a>
+        </div><hr>
     {% endfor %}
-    </div>
 
 {% endblock %}
