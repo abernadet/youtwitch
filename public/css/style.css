@@ -59,3 +59,13 @@
     width: 200px;
     height: 150px;
 }
+
+.twitch-sidebar-link{
+    text-decoration: none;
+    color: black;
+}
+
+.twitch-sidebar-link:hover{
+    text-decoration: none;
+    color: rgb(27, 27, 27);
+}

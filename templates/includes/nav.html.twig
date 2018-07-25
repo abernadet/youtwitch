@@ -39,12 +39,12 @@
         {% for follow in follows %}
 
             {% if follow.id in streams_user_id %}
-
-            <div class="d-flex mb-2 ml-3">
-                <img class="mr-2" height="30" width="30" src="{{ follow.profile_image_url }}"> <span class="mr-2">{{ follow.display_name }}</span>
-                <hr>
-            </div>
-
+            <a class="twitch-sidebar-link" href="{{ path('visionnage', {'player': 'twitch', 'type': 'stream', 'login': follow.login, 'display_name': follow.display_name}) }}">
+                <div class="d-flex mb-2 ml-3">
+                    <img class="mr-2" height="30" width="30" src="{{ follow.profile_image_url }}"> <span class="mr-2">{{ follow.display_name }}</span>
+                    <hr>
+                </div>
+            </a>
             {% endif %}
             
         {% endfor %}

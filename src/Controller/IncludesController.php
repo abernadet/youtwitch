@@ -34,6 +34,8 @@ class IncludesController extends Controller
             $live_streams_user_id[] = $stream->user_id;
         }
 
+        dump($follows);
+
         return $this->render('includes/nav.html.twig', [
             'follows' => $follows,
             'live_streams' => $live_streams,
