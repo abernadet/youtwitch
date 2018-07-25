@@ -23,6 +23,7 @@ class UserUpdateType extends AbstractType
             ->add('image', FileType::class, array('label' => 'Ajouter une image',
                                                     'attr' => ['class' => 'form-control-file'],
                                                     'required' => false ))
+            ->add('twitchLogin', TextType::class, array('label' => 'Identifiant de votre chaine Twitch'))
             ->add('Modifier', SubmitType::class,array
             ('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange']));
     }

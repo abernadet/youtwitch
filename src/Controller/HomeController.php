@@ -61,4 +61,15 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/user/propos", name="propos")
+     */
+
+    public function aPropos()
+    {
+        return $this->render('propos.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
 }
