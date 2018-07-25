@@ -27,8 +27,7 @@ class UserType extends AbstractType
             ->add('twitchLogin', TextType::class, array(
                 'label' => 'Identifiant de votre chaine Twitch'))
             ->add('ajouter', SubmitType::class,array
-            ('label' => 'S\'inscrire', 'attr' => ['class' => 'btn btn-orange']))
-
+            ('label' => 'Inscrivez-vous !', 'attr' => ['class' => 'btn btn-orange col-4']))
         ;
     }
 
