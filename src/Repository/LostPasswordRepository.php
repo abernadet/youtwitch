@@ -20,10 +20,10 @@ class LostPasswordRepository extends ServiceEntityRepository
     }
 
     # Requête pour chercher le token et l'ID dans la BDD
-    public function searcheToken(string $token, int $idUser)
+    public function searchToken(string $token, int $idUser)
     {
-        $querybuilder = $this->createQueryBuilder('r')
-            ->andWhere('r.token = :token','r.user_id = :userId')
+        $querybuilder = $this->createQueryBuilder('l')
+            ->andWhere('l.token = :token','l.user_id = :userId')
             ->setParameter('token', $token)
             ->setParameter('userId',$idUser)
             ->getQuery();

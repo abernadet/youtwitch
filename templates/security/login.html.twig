@@ -9,53 +9,54 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="icon" href="{{ asset('img/icon2.png') }}" />
 </head>
-<body>
+<body class="back-image">
 
 {{ include('includes/header.html.twig') }}
 
+<br><br><br><br>
 
-    {# Pour afficher tous type de message #}
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="alert alert-{{ label }} text-center">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endfor %}
+<section class="d-flex justify-content-center">
+    <div class="card col-5">
+        <div class="card-body">
 
-    {# affichage des messages d'erreurs le cas échéant#}
-    {% if error %}
-    <div>
-        {{ error.messageKey | trans(error.messageData,'security') }}
-    </div>
-    {% endif %}
-
-    <br><br><br><br>
-
-    <h1 class="text-center mt-5 mb-3">Connexion</h1>
-
-    <section class="d-flex justify-content-center">
-        <div class="card col-5">
-            <div class="card-body">
-                {#le formulaire de login#}
-                <form action="{{ path('login') }}" method="POST" class="">
-                    <div class="form-group">
-                        <label for="username">Pseudo</label>
-                        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre pseudo" class="form-control">
+            {# Pour afficher tous type de message #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} text-center">
+                        {{ message }}
                     </div>
-                    <div class="form-group">
-                        <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="_password" placeholder="Votre mot de passe" class="form-control">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-orange col-6">Connexion</button>
-                        <a href="{{ path('register') }}" class="btn btn-outline-orange mt-2 mb-2 col-6">Rejoignez-nous !</a><br>
-                        <a href="{{ path('reset-password') }}" class="">Mot de passe oublié ?</a>
-                    </div>
-                </form>
-            </div>
+                {% endfor %}
+            {% endfor %}
+
+            {# affichage des messages d'erreurs le cas échéant#}
+            {% if error %}
+                <div>
+                    {{ error.messageKey | trans(error.messageData,'security') }}
+                </div>
+            {% endif %}
+
+            <h3 class="card-title titleOrange" style="text-align: center;font-weight: bold;">Connexion</h3>
+            <br>
+
+            {#le formulaire de login#}
+            <form action="{{ path('login') }}" method="POST">
+                <div class="form-group">
+                    <label for="username">Pseudo</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre pseudo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="_password" placeholder="Votre mot de passe" class="form-control">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-orange col-6">Connexion</button>
+                    <a href="{{ path('register') }}" class="btn btn-outline-orange mt-2 mb-2 col-6">Rejoignez-nous !</a><br>
+                    <a href="{{ path('reset-password') }}" class="text-dark">Mot de passe oublié ?</a>
+                </div>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 
 </body>
 </html>

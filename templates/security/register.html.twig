@@ -9,34 +9,40 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="icon" href="{{ asset('img/icon2.png') }}" />
 </head>
-<body>
+<body class="back-image">
 
 {{ include('includes/header.html.twig') }}
 
 <br><br><br><br>
 
-<h1 class="text-center mt-5 mb-3">Connexion</h1>
-
 <section class="d-flex justify-content-center">
-    {{ form_start(form, {'attr': {'class': 'col-5 alert alert-dark'}}) }} {#permet de créer la balise <form>#}
-        {{ form_label(form.username) }}
-        {{ form_errors(form.username) }}
-        {{ form_widget(form.username, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un Pseudo'}}) }} {#permet de créer les champs#}
+     <div class="card col-5">
+          <div class="card-body">
 
-        {{ form_label(form.email) }}
-        {{ form_errors(form.email) }}
-        {{ form_widget(form.email, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un E-Mail'}}) }} {#permet de créer les champs#}
+              <h3 class="card-title titleOrange" style="text-align: center;font-weight: bold;">Inscription</h3>
+              <br>
 
-        {{ form_widget(form.plainPassword) }} {#permet de créer les champs#}
+               {{ form_start(form) }} {#permet de créer la balise <form>#}
+                    {{ form_label(form.username) }}
+                    {{ form_errors(form.username) }}
+                    {{ form_widget(form.username, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un Pseudo'}}) }} {#permet de créer les champs#}
 
-        {{ form_label(form.twitchLogin) }}
-        {{ form_widget(form.twitchLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Se trouve après "twitch.tv/" sur la page de votre chaine'} }) }}
+                    {{ form_label(form.email) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email, {'attr' : {'class' : 'mb-3', 'placeholder' : '@'}}) }} {#permet de créer les champs#}
 
-        <div class="text-center">
-            {{ form_row(form.ajouter) }}
-            {# Va générer le label, les erreurs et le champ Content en une instruction #}
-        </div>
-    {{ form_end(form) }} {# va fermer la balise </form> en plus d'autres chose que l'on verra ensuite#}
+                    {{ form_widget(form.plainPassword) }} {#permet de créer les champs#}
+
+                    {{ form_label(form.twitchLogin) }}
+                    {{ form_widget(form.twitchLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Se trouve après "twitch.tv/" sur la page de votre chaine'} }) }}
+
+                    <div class="text-center">
+                         {{ form_row(form.ajouter) }}
+                         {# Va générer le label, les erreurs et le champ Content en une instruction #}
+                    </div>
+               {{ form_end(form) }} {# va fermer la balise </form> en plus d'autres chose que l'on verra ensuite#}
+          </div>
+     </div>
 </section>
 
 </body>
