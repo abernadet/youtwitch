@@ -23,7 +23,7 @@
 
     <section class="container">
         {#le formulaire de login#}
-        <form action="{{ path('login') }}" method="POST" class="col-6 m-auto alert alert-dark">
+        <form action="{{ path('change_password',{email : app.user.email})}}" method="POST" class="col-6 m-auto alert alert-dark">
             <div class="form-group">
                 <label for="username">Pseudo</label>
                 <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre pseudo" class="form-control">
