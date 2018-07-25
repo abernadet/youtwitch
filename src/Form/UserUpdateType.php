@@ -21,7 +21,6 @@ class UserUpdateType extends AbstractType
             ))
             ->add('email', EmailType::class)
             ->add('image', FileType::class, array('label' => 'Ajouter une image',
-                                                    'attr' => ['class' => 'form-control-file'],
                                                     'required' => false ))
             ->add('Modifier', SubmitType::class,array
             ('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange']));

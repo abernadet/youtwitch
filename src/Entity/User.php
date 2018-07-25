@@ -7,6 +7,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Message;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="user")
+ * @UniqueEntity(fields="email", message="Email déjà pris")
+ * @UniqueEntity(fields="username", message="Username déjà pris")
+ */
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -21,23 +31,20 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
-
+     * @ORM\Column(type="string", length=30, unique= true)
      * @Assert\NotBlank()
      * @Assert\Length(max=30, maxMessage="Le pseudo ne doit pas faire plus de 30 caractères")
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique = true)
      * @Assert\NotBlank()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=70)
-     * @Assert\NotBlank()
-     * @Assert\Length(min=6, minMessage="Le mot de passe doit faire au moins 6 caractères", max=30, maxMessage="Le mot de passe ne doit pas faire plus de 70 caractères")
      */
     private $password;
 
@@ -61,6 +68,11 @@ class User implements UserInterface, \Serializable
      * @Assert\Image(maxSize="1000k")
      */
     private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
+     */
+    private $message;
 
     public function __construct()
     {
@@ -185,6 +197,10 @@ public function getSalt(){
     {
         $this->image = $image;
         return $this;
+    }
+
+    public function getMessage() : Collection{
+        return $this->message;
     }
 
 }

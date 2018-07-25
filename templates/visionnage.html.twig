@@ -9,56 +9,23 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/1TsVjvEkc4s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+
+
     <section class="alert-secondary mt-5 p-4">
+        {% for message in messages %}
         <div>
             <h6 class="orange">{{ app.user.username }}</h6>
             <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
+                {{ message.contenu }}
             </p>
         </div>
         <hr>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
+    {%  endfor %}
+
     </section>
 
 {% endblock %}
