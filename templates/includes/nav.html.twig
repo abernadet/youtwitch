@@ -25,28 +25,30 @@
             {% endif %}
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-3 text-muted">
             <span>Mes abonnement</span>
             <a class="d-flex align-items-center text-muted" href="#">
                 <span data-feather="plus-circle"></span>
             </a>
-        </h6>
+        </h5>
+            
+            <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted"><i style="color:green" class="mr-1 fas fa-circle"></i>Maintenant en live sur Twitch !</h6>
+
         <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">
-                    <i class="fas fa-music"></i> Musique
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">
-                    <i class="fas fa-football-ball"></i> Sport
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">
-                    <i class="fas fa-gamepad"></i> Jeu vidéo
-                </a>
-            </li>
+            
+        {% for follow in follows %}
+
+            {% if follow.id in streams_user_id %}
+
+            <div class="d-flex mb-2 ml-3">
+                <img class="mr-2" height="30" width="30" src="{{ follow.profile_image_url }}"> <span class="mr-2">{{ follow.display_name }}</span>
+                <hr>
+            </div>
+
+            {% endif %}
+            
+        {% endfor %}
+
         </ul>
     </div>
     <div class="mt-5">

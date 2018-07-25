@@ -5,17 +5,17 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Service\TwitchApiService;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-class TwitchController extends Controller
+class IncludesController extends Controller
 {
-    //ROUTES
-
     /**
-     * @Route("/testtwitch/{login}", name="testtwitch")
+     * 
      */
-
-    public function showFollowedChannels($login, TwitchApiService $twitch_api)
+    public function showSidebar(UserInterface $user, TwitchApiService $twitch_api)
     {
+        $login = $user->getTwitchLogin();
+        dump($login);
 
         if($user_id = $twitch_api->getUserIdFromLogin($login))
         {
@@ -34,7 +34,7 @@ class TwitchController extends Controller
             $live_streams_user_id[] = $stream->user_id;
         }
 
-        return $this->render('twitch/index.html.twig', [
+        return $this->render('includes/nav.html.twig', [
             'follows' => $follows,
             'live_streams' => $live_streams,
             'streams_user_id' => $live_streams_user_id
