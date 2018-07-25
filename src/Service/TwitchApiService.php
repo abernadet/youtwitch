@@ -3,6 +3,7 @@ namespace App\Service;
 
 class TwitchApiService
 {
+    private $client_id = 'wb57fz1kqexwbl5w03vrig184qh78h';
     
     //Return all live streams from an array of channel IDs
     public function getLiveStreams(array $channelIDs)
@@ -22,7 +23,7 @@ class TwitchApiService
         $opts = [
             "http" => [
                 "method" => "GET",
-                "header" => "Client-ID: wb57fz1kqexwbl5w03vrig184qh78h"
+                "header" => "Client-ID: ".$this->client_id
             ]
         ];
         $context = stream_context_create($opts);
@@ -39,7 +40,7 @@ class TwitchApiService
         $opts = [
             "http" => [
                 "method" => "GET",
-                "header" => "Client-ID: wb57fz1kqexwbl5w03vrig184qh78h"
+                "header" => "Client-ID: ".$this->client_id
             ]
         ];
         $context = stream_context_create($opts);
@@ -66,10 +67,11 @@ class TwitchApiService
                 $url .= '&id='.$user_id;
             }
         }
+
         $opts = [
             "http" => [
                 "method" => "GET",
-                "header" => "Client-ID: wb57fz1kqexwbl5w03vrig184qh78h"
+                "header" => "Client-ID: ".$this->client_id
             ]
         ];
         $context = stream_context_create($opts);
@@ -86,7 +88,7 @@ class TwitchApiService
         $opts = [
             "http" => [
                 "method" => "GET",
-                "header" => "Client-ID: wb57fz1kqexwbl5w03vrig184qh78h"
+                "header" => "Client-ID: ".$this->client_id
             ]
         ];
         $context = stream_context_create($opts);
@@ -110,7 +112,6 @@ class TwitchApiService
         
     }
 
-    //Return user's follows id
     public function getUserFollowsId($user_id)
     {
 
@@ -118,7 +119,7 @@ class TwitchApiService
         $opts = [
             "http" => [
                 "method" => "GET",
-                "header" => "Client-ID: wb57fz1kqexwbl5w03vrig184qh78h"
+                "header" => "Client-ID: ".$this->client_id
             ]
         ];
         $context = stream_context_create($opts);
@@ -134,7 +135,47 @@ class TwitchApiService
             $channels_id[] = $follow->to_id;
         }
 
+        dump($channels_id);
         return $channels_id;
+    }
+
+    /**
+     * $max : number of clips returned
+     * array $channel : logins of channels where we search for clips
+     * $trending : get results by popularity, otherwise get most viewed clips (default = true)
+     */
+    public function getClipsFromChannels(array $channels, $period = 'week', $max = 5, $trending = true)
+    {
+        $url = 'https://api.twitch.tv/kraken/clips/top?channel=';
+
+        $i = 1;
+        foreach($channels as $channel)
+        {
+            if($i == 1)
+            {
+                $url .= $channel;
+                $i++;
+            }
+            else
+            {
+                $url .= ','.$channel;
+            }
+        }
+        $url .= '&trending='.$trending;
+        $url .= '&limit='.$max;
+
+        $opts = [
+            "http" => [
+                "method" => "GET",
+                "header" => "Client-ID: ".$this->client_id
+            ]
+        ];
+        $context = stream_context_create($opts);
+        dump($url);
+        $json_result = file_get_contents($url, false, $context);
+        $result = json_decode($json_result);
+
+        return $result;
     }
 
 }

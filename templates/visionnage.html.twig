@@ -1,7 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Titre de la vidéo{% endblock %}
-{% block titlepage %}{{ app.request.get('display_name') }}{% endblock %}
+
+{% block titlepage %}
+
+{% if app.request.get('player') == "twitch" %}
+    {{ app.request.get('display_name') }}
+{% endif %}
+
+{% endblock %}
 
 {% block content %}
 
@@ -97,6 +104,7 @@
                 type: 'post',
                 url: url,
                 dataType: 'html',
+                timeout: 10000,
                 success: function (data) {
                     $('#result').html(data);
                 },

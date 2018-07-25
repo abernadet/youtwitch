@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
     <section id="result">
         <nav class="container mb-3">
             <ul class="nav nav-tabs">
@@ -104,6 +103,7 @@
                 type: 'post',
                 url: url,
                 dataType: 'html',
+                timeout: 10000,
                 success: function (data) {
                     $('#result').html(data);
                 },
@@ -121,6 +121,7 @@
                 type: 'post',
                 url: url,
                 dataType: 'html',
+                timeout: 5000,
                 success: function (data) {
                     $('#result').html(data);
                 },
