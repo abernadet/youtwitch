@@ -3,16 +3,24 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+
     <div id="search">
         <input type="search" name="" id="champsRecherche" placeholder="Saisir l'id de votre chaine">
         <button type="submit" id="check">Check !</button>
     </div>
 
-    <div id="result"></div>
+    <div id="search2">
+        <input type="search" name="" id="champsRecherche2" placeholder="Saisissez une chaine a rechercher">
+        <button type="button" id="check2" class="btn-dark">Chercher</button>
+    </div>
+
+    <div id ="result"></div>
+{% endblock %}
     {% block js %}
         <script>
-            $('#check').on('click',function(){
-                var url = "{{ path('Ysearch',{id:'0'}) }}";
+            $('body').on('click','#check',function(e){
+                e.preventDefault();
+                var url = "{{ path('YsearchSubs',{id:'0'}) }}";
                 console.log(url);
                 url = url.replace('0',$('#champsRecherche').val());
                 console.log(url);
@@ -30,11 +38,28 @@
                     }
                 })
             })
+
+
+            $('body').on('click','#check2',function(e){
+                e.preventDefault();
+                var url2 = "{{ path('Ysearch',{terme:'exemple'}) }}";
+                console.log(url2);
+                url2 = url2.replace('exemple',$('#champsRecherche2').val());
+                console.log(url2);
+
+                $.ajax({
+                    type:'get',
+                    url:url2,
+                    timeout:'3000',
+                    dataType:'html',
+                    success: function(data){
+                        $('#result').html(data);
+                    },
+                    error: function (error){
+                        console.log(error.responseText);
+                    }
+                })
+            })
         </script>
     {% endblock %}
-    {% for sub in subs %}
 
-        <img src="{{ sub.snippet.thumbnails.default.url }}" style="padding-top: 5px"><h3>{{  sub.snippet.title }}</h3><br><hr>
-
-    {% endfor %}
-{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% for detail in details %}
+        <img src="{{ detail.snippet.thumbnails.default.url }}" style="padding-top: 5px"></a><h3>{{ detail.snippet.title }}</h3><br>
+        Membres depuis le : {{ detail.snippet.publishedAt|date('d M Y') }}
+        <hr>
+
+        <b>Vues totales: {{ detail.statistics.viewCount|number_format(0, '', ' ') }}</b> || <b>Nombre totale de vidéos : {{ detail.statistics.videoCount }}</b><hr>
+
+    {% endfor %}
+{% endblock %}
