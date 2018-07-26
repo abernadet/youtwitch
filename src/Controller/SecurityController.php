@@ -131,6 +131,7 @@ class SecurityController extends Controller
         $password = $request->request->get('password', 0);
         //metre en cript le mdp
         $idUser = $request->request->get('idUser');
+        dump($idUser);
         $user = $this->getDoctrine()->getRepository(User::class )->find($idUser);
         if($user){
             $mdpEncoded = $encoder->encodePassword($user, $password);

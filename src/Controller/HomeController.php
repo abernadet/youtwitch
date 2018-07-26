@@ -72,4 +72,12 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/RGPD", name="rgpd")
+     */
+    public function rgpd()
+    {
+        return $this->render('rgpd.html.twig');
+    }
+
 }

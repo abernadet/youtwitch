@@ -73,3 +73,37 @@
     text-decoration: none;
     color: rgb(27, 27, 27);
 }
+
+.cookie_bar{
+    background: rgba(0,0,0,0.7);
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    right: 0;
+    font-size: 0.9rem;
+    padding: 5px;
+    position: fixed;
+    text-align: center;
+    z-index: 999;
+    line-height: 1.5rem;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+#cookie_bar > a {
+    color: #DF691A;
+    font-family: Arial;
+}
+
+#cookie_bar > a:hover{
+    color: #5eb5e0;
+    text-decoration: none;
+}
+
+.cookie_btn{
+    background: #f1f1f1 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 2px;
+    padding: 2px 8px;
+    color: #000;
+    margin: 5px;
+    font-size: 0.9rem;
+}

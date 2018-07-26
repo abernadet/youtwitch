@@ -23,7 +23,7 @@ class LostPasswordRepository extends ServiceEntityRepository
     public function searchToken(string $token, int $idUser)
     {
         $querybuilder = $this->createQueryBuilder('l')
-            ->andWhere('l.token = :token','l.user_id = :userId')
+            ->andWhere('l.token = :token','l.user = :userId')
             ->setParameter('token', $token)
             ->setParameter('userId',$idUser)
             ->getQuery();

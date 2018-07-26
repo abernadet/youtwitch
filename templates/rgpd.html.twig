@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    {# Je crée des blocks qui vont être remplis dynamiquement avec les infos propres à chaque page #}
+    <title>RGPD - YouTwitch</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="icon" href="{{ asset('img/icon.png') }}" />
+</head>
+<body class="back-image">
+
+{{ include('includes/header.html.twig') }}
+
+<br><br><br><br>
+
+<section class="d-flex justify-content-center">
+    <div class="card col-5">
+        <div class="card-body">
+            <h3 class="card-title titleOrange col-10 ml-5" style="text-align: center;font-weight: bold;">Règlement Général sur la Protection des Données personnelles</h3>
+            <br>
+            <section class="container-fluid">
+                <p>
+                    Le groupe YOUTWITCH est soucieux de la protection des données personnelles. Il s'engage à assurer le meilleur niveau de protection à vos données personnelles en conformité avec les
+                    réglementations européennes et françaises qui lui sont applicables en matière de protection des données personnelles.<br>
+                    Pour toute information sur la protection des données personnelles, vous pouvez également consulter le site de la Commission Informatique et Liberté
+                    <a href="https://www.cnil.fr/professionnel" class="orange">www.cnil.fr</a>.
+                </p>
+            </section>
+        </div>
+    </div>
+</section>
+
+<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+<script src="{{ asset('js/js.cookie.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+
+</body>
+</html>
+
