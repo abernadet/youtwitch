@@ -171,7 +171,6 @@ class TwitchApiService
             ]
         ];
         $context = stream_context_create($opts);
-        dump($url);
         $json_result = file_get_contents($url, false, $context);
         $result = json_decode($json_result);
 
@@ -195,5 +194,24 @@ class TwitchApiService
         $result = json_decode($json_result);
 
         return $result;
+    }
+
+    public function getVideosFromChannel($user_id, $period = 'week', $max = '5', $sort = 'time')
+    {
+        $url = 'https://api.twitch.tv/helix/videos?user_id='.$user_id.'&period='.$period.'&first='.$max.'&sort='.$sort;
+
+        $opts = [
+            "http" => [
+                "method" => "GET",
+                "header" => "Client-ID: ".$this->client_id
+            ]
+        ];
+        dump($url);
+        $context = stream_context_create($opts);
+        $json_result = file_get_contents($url, false, $context);
+        $result = json_decode($json_result);
+
+        return $result;
+
     }
 }

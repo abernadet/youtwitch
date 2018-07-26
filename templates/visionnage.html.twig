@@ -12,124 +12,40 @@
 
 {% block content %}
 
-    <div class="d-flex justify-content-center mb-4">
-        {# Depuis un lien twitch, 2 paramètre dans l'url : 'player' & 'login', si le player est "twitch", affiche une iframe twitch #}
-        {% if app.request.get('player') == "twitch" %}
+    {% block video %}
 
-        <iframe src="https://player.twitch.tv/?channel={{ app.request.get('login') }}&autoplay=true&muted=false"  
-                frameborder="0" 
-                allowfullscreen="true" 
-                scrolling="no" 
-                height="567"
-                 width="930">
-        </iframe>
-        <iframe src="https://www.twitch.tv/embed/{{ app.request.get('login') }}/chat" frameborder="0" scrolling="no" height="567" width="350"></iframe>
+    {% endblock %}
 
-        {% else %}
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/1TsVjvEkc4s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        
-        {% endif %}
-
-    </div>
-
-    {% if app.request.get('type') != 'stream' %}
-
-    <section class="alert-secondary mt-5 p-4">
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <hr>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-        <div>
-            <h6 class="orange">{{ app.user.username }}</h6>
-            <p>
-                Suzhousaurus Ugrosaurus Ammosaurus Tastavinsaurus Barsboldia Dimodosaurus Dinheirosaurus Danubiosaurus Sinosauropteryx Latirhinus Lexovisaurus Veterupristisaurus Demandasaurus Ozraptor
-                Gobisaurus Cathetosaurus Zhejiangosaurus Riojasuchus Incisivosaurus Echinodon Uintasaurus Magyarosaurus Scolosaurus Brachytrachelopan Siamotyrannus Sauropelta Xuanhuaceratops Aristosaurus
-                Lucianosaurus Aardonyx.
-            </p>
-        </div>
-    </section>
-
-    {% else %}
     <h5 class="ml-4
     mb-3">Clips de la semaine : </h5>
-    <div class="d-flex justify-content-around">
+    <div class="d-flex justify-content-around mb-3">
         {% for clip in clips.clips %}
-
-        <iframe 
-            src='{{ clip.embed_url }}&autoplay=false' 
-            width='320' 
-            height='180' 
-            frameborder='0' 
-            scrolling='no' 
-            allowfullscreen='true'>
-        </iframe>
-            
+        <div class="d-flex flex-column">
+            <a href="{{ path('twitch-clip', {'login': login, 'slug': clip.slug}) }}">
+                <img src="{{ clip.thumbnails.small }}" alt="miniature du clip">
+            </a>
+            <h6 class="text-muted">{{ clip.game }}, le {{ clip.created_at|date('d M') }}</h6>
+        </div>   
         {% endfor %}
     </div>
-    {% endif %}
+
+    <hr>
+
+    <h5 class="ml-4
+    mb-3">Replays récents : </h5>
+    <div class="d-flex justify-content-around mb-3">
+        {% for clip in clips.clips %}
+        <div class="d-flex flex-column">
+            <a href="{{ path('twitch-clip', {'login': login, 'slug': clip.slug}) }}">
+                <img src="{{ clip.thumbnails.small }}" alt="miniature du clip">
+            </a>
+            <h6 class="text-muted">{{ clip.game }}, le {{ clip.created_at|date('d M') }}</h6>
+        </div>   
+        {% endfor %}
+    </div>
 
 {% endblock %}
 
 {% block js %}
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-<script>
-    $(function(){
-        $('#twitch').on('click', function(e) {
-            e.preventDefault();
-            var url = "{{ path('twitch') }}"; // On génère la route que l'on stocke dans une variable js
-
-            $.ajax({
-                type: 'post',
-                url: url,
-                dataType: 'html',
-                timeout: 10000,
-                success: function (data) {
-                    $('#result').html(data);
-                },
-                error: function (error) {
-                    console.log(error.responseText)
-                }
-            })
-        })
-    })
-</script>
 {% endblock %}
