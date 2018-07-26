@@ -42,7 +42,7 @@ security:
     access_control:
           #tous les url commencant par admin/ ne seront accessible que par les utilisateur ayant le rôle admin
          - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/user/, roles: ROLE_USER }
+         - { path: ^/user/, roles: ROLE_USER } #tous les url commencant par user/ ne seront accessible que par les utilisateur ayant le rôle user
 
 
     #on peut définir des hiearchies entre les rôles

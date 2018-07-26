@@ -25,7 +25,7 @@ class UserUpdateType extends AbstractType
                                                     'required' => false ))
             ->add('twitchLogin', TextType::class, array('label' => 'Identifiant de votre chaine Twitch'))
             ->add('Modifier', SubmitType::class,array
-            ('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange']));
+            ('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange col-3']));
     }
 
     public function configureOptions(OptionsResolver $resolver)

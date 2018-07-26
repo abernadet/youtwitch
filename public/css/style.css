@@ -50,13 +50,21 @@
     color: #DF691A;
 }
 
-.titleOrange {
-    color: #DF691A;
-}
-
 .orange:hover {
     color: #000;
     text-decoration: none;
+}
+
+.titleFont{
+    font-family: 'Permanent Marker', cursive;
+}
+
+.card-body > h3{
+    font-family: 'Audiowide', cursive;
+}
+
+.titleOrange {
+    color: #DF691A;
 }
 
 .sizeimg{

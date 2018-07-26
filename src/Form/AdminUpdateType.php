@@ -17,7 +17,7 @@ class AdminUpdateType extends AbstractType
         $builder
             ->add('username', TextType::class, array('label' => 'Choisir le pseudo', 'attr'=>['placeholder' => 'Pseudo']))
             ->add('image', FileType::class, array('label' => 'Ajouter une image SVP', 'required' => false))
-            ->add('ajouter', SubmitType::class, array('label' => 'Envoyer', 'attr' => ['class' => 'btn btn-orange']));
+            ->add('modifier', SubmitType::class, array('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange col-3']));
         ;
     }
 

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="icon" href="{{ asset('img/icon.png') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Permanent+Marker|Rock+Salt" rel="stylesheet">
 </head>
 <body>
 
@@ -20,7 +21,7 @@
             {{ render(controller('App\\Controller\\IncludesController::showSidebar')) }}
         {% endif %}
         <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
-            <h1 class="text-center mt-5 mb-3">{% block titlepage %}{% endblock %}</h1>
+            <h1 class="text-center mt-5 mb-3 titleFont">{% block titlepage %}{% endblock %}</h1>
             {# Ce block contiendra le contenu de la page appelée #}
             {% block content %}{% endblock %}
         </main>
