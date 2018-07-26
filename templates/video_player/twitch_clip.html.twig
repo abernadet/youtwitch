@@ -1,0 +1,18 @@
+{% extends 'visionnage.html.twig' %}
+
+{% block video %}
+<div class="d-flex justify-content-center mb-4 mt-4">
+
+    {% if params.slug is defined %}
+
+    <iframe src="https://clips.twitch.tv/embed?clip={{ params.slug }}&tt_medium=clips_api&tt_content=embed"  
+        frameborder="0" 
+        allowfullscreen="true" 
+        scrolling="no" 
+        height="567"
+        width="930">
+    </iframe>
+
+    {% endif %}
+</div>
+{% endblock %}

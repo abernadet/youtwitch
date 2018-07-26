@@ -75,7 +75,7 @@ class SecurityController extends Controller
                 $entityManager->flush();
                 $user_id = $user['0']->getId(); // avec getId je recupere l'element
                 dump($user_id);
-                $message = (new \Swift_Message('Reset Mot de Passe'))
+                $message = (new \Swift_Message('Modification du Mot de Passe'))
                     ->setFrom('youtwitch123@gmail.com')
                     ->setTo($email)
                     ->setBody(
@@ -97,27 +97,31 @@ class SecurityController extends Controller
         }
         return $this->render('user/askEmail.html.twig');
     }
+
     /**
      * @Route("/new-password", name="new-password")
      */
     public function newPassword(Request $request)
     {
         $token = $request->query->get('token', 0);
-        $user_id = $request->query->get('iduser', 0);
-        if($token && $user_id){
+        $user = $request->query->get('iduser', 0);
+        dump($token);
+        dump($user);
+        if($token && $user){
             //verifier que le token et le user id existe dans ma bdd
             $repository=$this->getDoctrine()->getRepository(LostPassword::class);
-            $resetPassword=$repository->searchToken($token,$user_id);
+            $resetPassword=$repository->searchToken($token,$user);
             if(!$resetPassword){
                 //token et id incorrects donc redirectionner
                 $this->addFlash('danger',"Erreur !! Paramètres invalides");
                 return $this->redirectToRoute('reset-password');
             }
         }else{
-            $this->addFlash('error',"ERREUR !!");
+            $this->addFlash('danger',"ERREUR !!");
         }
-        return $this->render('security/newPassword.html.twig', array('idUser'=>$user_id) );
+        return $this->render('security/newPassword.html.twig', array('idUser'=>$user) );
     }
+
     /**
      * @Route("/ResetPasswordOk", name="reset-password-ok")
      */
@@ -127,6 +131,7 @@ class SecurityController extends Controller
         $password = $request->request->get('password', 0);
         //metre en cript le mdp
         $idUser = $request->request->get('idUser');
+        dump($idUser);
         $user = $this->getDoctrine()->getRepository(User::class )->find($idUser);
         if($user){
             $mdpEncoded = $encoder->encodePassword($user, $password);

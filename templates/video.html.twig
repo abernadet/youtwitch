@@ -4,7 +4,6 @@
 
 {% block content %}
 
-
     <section id="result">
         <nav class="container mb-3">
             <ul class="nav nav-tabs">
@@ -25,19 +24,19 @@
         <section class="mt-5">
             <h3>Recommandations</h3>
             <div class="d-flex justify-content-around flex-wrap mt-3">
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
@@ -47,19 +46,19 @@
         <section class="mt-5">
             <h3>Surf</h3>
             <div class="d-flex justify-content-around flex-wrap mt-3">
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
@@ -69,19 +68,19 @@
         <section class="mt-5">
             <h3>League Of Legends</h3>
             <div class="d-flex justify-content-around flex-wrap mt-3">
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
-                <a href="{{ path('visionnage') }}" class="text-dark col-3">
+                <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
                     <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
                     <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
                 </a>
@@ -104,6 +103,7 @@
                 type: 'post',
                 url: url,
                 dataType: 'html',
+                timeout: 10000,
                 success: function (data) {
                     $('#result').html(data);
                 },
@@ -121,6 +121,7 @@
                 type: 'post',
                 url: url,
                 dataType: 'html',
+                timeout: 5000,
                 success: function (data) {
                     $('#result').html(data);
                 },

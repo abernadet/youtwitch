@@ -10,7 +10,7 @@ class LostPasswordController extends Controller
     /**
      * @Route("/lost/password", name="lost_password")
      */
-    public function index()#$name, \Swift_Mailer $mailer
+    /*public function index()#$name, \Swift_Mailer $mailer
     {
         // Create the Transport
         $transport = (new \Swift_SmtpTransport('user1@mail.com', 25))
@@ -26,7 +26,7 @@ class LostPasswordController extends Controller
         */
 
         // Create the Mailer using your created Transport
-        $mailer = new \Swift_Mailer($transport);
+        /*$mailer = new \Swift_Mailer($transport);
 
         // Create a message
         $message = (new \Swift_Message('Wonderful Subject'))
@@ -41,5 +41,5 @@ class LostPasswordController extends Controller
         return $this->render('lost_password/registration.html.twig', [
             'controller_name' => 'LostPasswordController',
         ]);
-    }
+    }*/
 }
