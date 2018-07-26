@@ -77,7 +77,8 @@ class HomeController extends Controller
 
         return $this->render('video_player/twitch_stream.html.twig', [
             'clips' => $clips,
-            'login' => $login
+            'login' => $login,
+            'replays' => $replays["data"]
         ]);
     }
 
@@ -97,11 +98,29 @@ class HomeController extends Controller
         {
             $clips = [];
         }
+        
+        $user_id = $twitch_api->getUserIdFromLogin($login);
+
+        $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
+
+        $replay_tab = $replays->data;
+
+
+
+        foreach($replay_tab as $replay)
+        {
+            $replay->thumbnail_url = preg_replace('#(.+)%{width}(.+)#', '$1 260 $2', $replay->thumbnail_url);
+            $replay->thumbnail_url = preg_replace('#(.+)%{height}(.+)#', '$1 147 $2', $replay->thumbnail_url);
+            $replay->thumbnail_url = str_replace(' ', '', $replay->thumbnail_url);
+        }
+        
+        dump($replay_tab);     
 
         return $this->render('video_player/twitch_clip.html.twig', [
             'params' => $params,
             'login' => $login,
-            'clips' => $clips
+            'clips' => $clips,
+            'replays' => $replay_tab
         ]);
     }
 
