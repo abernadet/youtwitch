@@ -12,7 +12,7 @@
 
 {% block content %}
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mb-4">
         {# Depuis un lien twitch, 2 paramètre dans l'url : 'player' & 'login', si le player est "twitch", affiche une iframe twitch #}
         {% if app.request.get('player') == "twitch" %}
 
@@ -87,6 +87,23 @@
         </div>
     </section>
 
+    {% else %}
+    <h5 class="ml-4
+    mb-3">Clips de la semaine : </h5>
+    <div class="d-flex justify-content-around">
+        {% for clip in clips.clips %}
+
+        <iframe 
+            src='{{ clip.embed_url }}&autoplay=false' 
+            width='320' 
+            height='180' 
+            frameborder='0' 
+            scrolling='no' 
+            allowfullscreen='true'>
+        </iframe>
+            
+        {% endfor %}
+    </div>
     {% endif %}
 
 {% endblock %}
