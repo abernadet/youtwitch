@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Service\TwitchApiService;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class HomeController extends Controller
 {
@@ -54,10 +56,20 @@ class HomeController extends Controller
     /**
      * @Route("/user/visionnage", name="visionnage")
      */
-    public function visionnage()
+    public function visionnage(TwitchApiService $twitch_api)
     {
+        $login = '';
+        if(!empty($_GET['login'])){
+            $login = $_GET['login'];
+            $clips = $twitch_api->getClipsFromChannel($login, 'week', 4);
+        }else{
+            $clips = [];
+        }
+
+        dump($clips);
+
         return $this->render('visionnage.html.twig', [
-            'controller_name' => 'HomeController',
+            'clips' => $clips
         ]);
     }
 
