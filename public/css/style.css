@@ -145,6 +145,11 @@ main{
     display: block;
 }
 
+.link-no-style{
+    color: black;
+    text-decoration: none;
+}
+
 @media (max-width: 576px){
     /*On cache le menu et on fait apparaitre l'icone burger */
     .nav-burger{

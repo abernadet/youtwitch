@@ -15,11 +15,14 @@
 <section>
     {% for follow_data in data %}
 
-    <h4>{{ follow_data.display_name }}
-        {% if follow_data.user_id in streams_user_id %}
-            <small><a href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">est en live !</a></small>
-        {% endif %}
-    </h4>
+    <a class="link-no-style" href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">
+        <h4>{{ follow_data.display_name }}
+            {% if follow_data.user_id in streams_user_id %}
+                <i style="color:green" class="mr-1 fas fa-circle"></i></a>
+            {% endif %}
+        </h4>
+    </a>
+    
     <div class="clip">
         
     </div>
