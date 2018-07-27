@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-        <meta charset="UTF-8">
-    {# Je crée des blocks qui vont être remplis dynamiquement avec les infos propres à chaque page #}
-        <title>Inscription - YouTwitch</title>
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="icon" href="{{ asset('img/icon.png') }}" />
-</head>
-<body class="back-image">
+{% extends 'logLayout.html.twig' %}
 
-{{ include('includes/header.html.twig') }}
+{% block title %}Inscription - YouTwitch{% endblock %}
 
-<br><br><br><br>
+{% block content %}
 
 <section class="d-flex justify-content-center">
      <div class="card col-5">
@@ -45,9 +34,4 @@
      </div>
 </section>
 
-<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-<script src="{{ asset('js/js.cookie.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-
-</body>
-</html>
+{% endblock %}

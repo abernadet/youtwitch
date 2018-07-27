@@ -1,3 +1,4 @@
+{# Début Nav #}
 <nav class="col-md-2 d-none d-md-block bg-light sidebar mt-5">
     <div class="sidebar-sticky">
         <ul class="nav flex-column mt-3">
@@ -25,7 +26,11 @@
             {% endif %}
         </ul>
 
+<<<<<<< HEAD
         <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-3 text-muted">
+=======
+        <h5 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-3 text-muted"  style="font-family: 'Rock Salt', cursive;">
+>>>>>>> 3d8490ff785f7ec1f84838e248811f5bf60e5a9d
             <span>Mes abonnements</span>
             <a class="d-flex align-items-center text-muted" href="#">
                 <span data-feather="plus-circle"></span>
@@ -51,14 +56,15 @@
 
         </ul>
     </div>
-    <div class="mt-5">
+    <div class="mt-5"  style="font-family: 'Rock Salt', cursive;">
         <ul class="nav flex-column mt-3">
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{ path('propos') }}">A propos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#">Confidantialité</a>
+                <a class="nav-link text-dark" href="{{ path('rgpd') }}">Confidantialité</a>
             </li>
         </ul>
     </div>
 </nav>
+{# Fin Nav #}

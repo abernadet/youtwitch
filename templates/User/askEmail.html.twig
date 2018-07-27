@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    {# Je crée des blocks qui vont être remplis dynamiquement avec les infos propres à chaque page #}
-    <title>Mot de passe - YouTwitch</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="icon" href="{{ asset('img/icon.png') }}" />
-</head>
-<body class="back-image">
+{% extends 'logLayout.html.twig' %}
 
-{{ include('includes/header.html.twig') }}
+{% block title %}Mot de passe - YouTwitch{% endblock %}
 
-<br><br><br><br>
+{% block content %}
 
 <section class="d-flex justify-content-center">
     <div class="card" style="width: 30rem; margin: 50px; padding: 30px;">
@@ -26,7 +15,7 @@
                     </div>
                 {% endfor %}
             {% endfor %}
-            <h4 class="card-title titleOrange" style="text-align: center;font-weight: bold;">Mot de passe oublié ?</h4>
+            <h3 class="card-title titleOrange" style="text-align: center;font-weight: bold;">Mot de passe oublié ?</h3>
             <br>
             <p>Ça arrive à tout le monde ! Nous allons vous envoyer la marche à suivre par e-mail.<br>C'est simple et rapide ☻</br></p>
             {# le formulaire de login #}
@@ -43,9 +32,4 @@
     </div>
 </section>
 
-<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-<script src="{{ asset('js/js.cookie.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-
-</body>
-</html>
+{% endblock %}

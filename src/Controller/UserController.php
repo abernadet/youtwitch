@@ -51,12 +51,12 @@ class UserController extends Controller
             $user = $form->getData();
             if($user->getImage()){
                 $file = $user->getImage();
-                $fileName = $uploader->upload($file);
+                $fileName = $uploader->upload($file, $fileName);
             }
             $user->setImage($fileName);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
-            $this->addFlash('success', 'Profil Modifié ! ');
+            $this->addFlash('orange', 'Profil Modifié ! ');
             return $this->redirectToRoute('show-user');
         }
         return $this->render('user/update.html.twig',

@@ -1,35 +1,47 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Ajout d'un utilisateur - YouTwitch{% endblock %}
-{% block titlepage %}Ajouter un utilisateur{% endblock %}
 
 {% block content %}
-    {{ form_start(form) }} {# Permet de créer la balise <form> #}
+<section class="d-flex justify-content-center">
+    <div class="card col-8 bg-dark mt-5">
+        <div class="card-body">
 
-        {{ form_label(form.username) }}
-        {{ form_errors(form.username) }}
-        {{ form_widget(form.username, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+            <h3 class="card-title titleOrange" style="text-align: center;font-weight: bold;">Ajouter un utilisateur</h3>
+            <br>
 
-        {{ form_label(form.email) }}
-        {{ form_errors(form.email) }}
-        {{ form_widget(form.email, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+            {{ form_start(form, {'attr' : {'class' : 'text-light'}}) }} {# Permet de créer la balise <form> #}
 
-        {{ form_errors(form.plainPassword) }}
-        {{ form_widget(form.plainPassword) }} {# Permet de créer les champs #}
+                {{ form_label(form.username) }}
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.username, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
 
-        <label for="roles">Choisir un rôle</label>
-        <select name="roles[]" multiple id="roles" class="form-control mb-3">
-            <option value="" selected disabled>Choisir un rôle</option>
-            <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-            <option value="ROLE_USER">ROLE_USER</option>
-            <option value="ROLE_AUTEUR">ROLE_AUTEUR</option>
-        </select>
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
 
-        {{ form_label(form.image) }}
-        {{ form_errors(form.image) }}
-        {{ form_widget(form.image) }} {# Permet de créer les champs #}
+                {{ form_errors(form.plainPassword) }}
+                {{ form_widget(form.plainPassword) }} {# Permet de créer les champs #}
 
-        {{ form_widget(form.ajouter) }} {# Permet de créer les champs #}
+                <label for="roles">Choisir un rôle</label>
+                <select name="roles[]" multiple id="roles" class="form-control mb-3">
+                    <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+                    <option value="ROLE_USER">ROLE_USER</option>
+                    <option value="ROLE_AUTEUR">ROLE_AUTEUR</option>
+                </select>
 
-    {{ form_end(form) }} {# Va fermer la balise </form> #}
+                {{ form_label(form.image) }}
+                {{ form_errors(form.image) }}
+                {{ form_widget(form.image) }} {# Permet de créer les champs #}
+
+                <div class="text-center">
+                    {{ form_row(form.ajouter) }}
+                    {# Va générer le label, les erreurs et le champ Content en une instruction #}
+                </div>
+
+            {{ form_end(form) }} {# Va fermer la balise </form> #}
+
+        </div>
+    </div>
+</section>
 {% endblock %}

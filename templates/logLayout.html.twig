@@ -9,38 +9,28 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="icon" href="{{ asset('img/icon.png') }}" />
-<<<<<<< HEAD
-    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-    <script src="{{ asset('js/js.cookie.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-=======
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Permanent+Marker|Rock+Salt" rel="stylesheet">
     <meta name="viewport" content="initial-scale=1">
->>>>>>> 3d8490ff785f7ec1f84838e248811f5bf60e5a9d
 </head>
-<body>
+<body class="back-image">
 
-{{ include('includes/header.html.twig') }}
-
-<div class="container-fluid">
-    <div class="row">
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            {{ render(controller('App\\Controller\\IncludesController::showSidebar')) }}
-        {% endif %}
-        {{ include('includes/navBurger.html.twig') }}
-        <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
-            <h1 class="text-center mt-5 mb-3 titleFont">{% block titlepage %}{% endblock %}</h1>
-            {# Ce block contiendra le contenu de la page appelée #}
-            {% block content %}{% endblock %}
-        </main>
-
-    </div>
+<div class="text-center mb-5">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('video') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="YouTwitch Logo" title="Logo YouTwitch">
+        </a>
+    {% else %}
+        <a href="{{ path('home') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="YouTwitch Logo" title="Logo YouTwitch">
+        </a>
+    {% endif %}
 </div>
 
+{% block content %}{% endblock %}
 
-{#{{ include('includes/footer.html.twig') }}#}
-
-
+<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+<script src="{{ asset('js/js.cookie.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 
 

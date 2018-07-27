@@ -18,16 +18,41 @@
     {% endfor %}
 
     <section class="container">
-    {# Équivalent twig de la boucle foreach #}
-    {% for user in users %}
-        {# A chaque tour de boucle, on récupère user qui ici est un objet
-           Pour accéder au nom : user.username #}
-        <div class="d-flex justify-content-around">
-            <h3>{{ user.username }}</h3>
-            <p>{{ user.email }}</p>
-            <a href="{{ path('admin-show-user', {id: user.id}) }}" class="btn btn-outline-orange">Voir</a>
-        </div><hr>
-    {% endfor %}
+        {#<div class="card">
+            <div class="card-body">
+                {# Équivalent twig de la boucle foreach #}
+                {#{% for user in users %}
+                    {# A chaque tour de boucle, on récupère user qui ici est un objet
+                       Pour accéder au nom : user.username #}
+                {#<div class="d-flex justify-content-around">
+                    <h3 class="col-4">{{ user.username }}</h3>
+                    <p class="col-4">{{ user.email }}</p>
+                    <a href="{{ path('admin-show-user', {id: user.id}) }}" class="btn btn-outline-orange col-1">Voir</a>
+                </div><hr>
+            {% endfor %}
+        </div>
+        </div>#}
+
+        <div class="table-responsive-sm">
+            <table class="table text-center table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Adresse E-Mail</th>
+                    <th scope="col">Plus d'infos</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td><a href="{{ path('admin-show-user', {id: user.id}) }}" class="orange col-6"><i class="fas fa-info-circle"></i> Voir</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 
 {% endblock %}
