@@ -78,7 +78,7 @@ class HomeController extends Controller
         return $this->render('video_player/twitch_stream.html.twig', [
             'clips' => $clips,
             'login' => $login,
-            'replays' => $replays["data"]
+            'replays' => $replays->data
         ]);
     }
 
