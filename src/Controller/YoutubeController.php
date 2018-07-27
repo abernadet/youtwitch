@@ -140,17 +140,8 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
 
 
 
-        ## A FAIRE : Une fois la personne retrouvé avec : youtube.channels.list // part = snippet,contentDetails,statistics // ex id : UCus9EeXDcLaCJhVXYd6PJcg
-        ## récupérer l'id de la playlist upload :   "contentDetails": {
-        ##"relatedPlaylists": {
-        ##"uploads": "UUus9EeXDcLaCJhVXYd6PJcg", <--- id de l'ensemble des vidéos upload
-        ##"watchHistory": "HL",
-        ##"watchLater": "WL"
-
-        ## Ensuite on récupère les vidéos de la playliste upload  dans la requete suivante :PlaylistItems: list
-        ##playlistId : UUus9EeXDcLaCJhVXYd6PJcg
-        ##maxResults :25
-        ##part : snippet,contentDetails
+        ##A FAIRE : Pour la recherche par mot, si y a un espace le remplacer par un +
+        ## Ne prend pas en compte les espaces sinon.
 
 
 
