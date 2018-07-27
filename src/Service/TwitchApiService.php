@@ -4,6 +4,26 @@ namespace App\Service;
 class TwitchApiService
 {
     private $client_id = 'wb57fz1kqexwbl5w03vrig184qh78h';
+
+    public function getLiveStream($channelID)
+    {
+        $url = 'https://api.twitch.tv/helix/streams?user_id'.$channelID;
+
+        //Option de requête
+        $opts = [
+            "http" => [
+                "method" => "GET",
+                "header" => "Client-ID: ".$this->client_id
+            ]
+        ];
+        $context = stream_context_create($opts);
+        $json_result = file_get_contents($url, false, $context);
+        $result = json_decode($json_result);
+
+        dump($result);
+
+        return $result;
+    }
     
     //Return all live streams from an array of channel IDs
     public function getLiveStreams(array $channelIDs)
@@ -57,7 +77,7 @@ class TwitchApiService
         $i = 0;
         foreach($users_id as $user_id)
         {
-            if($i === 0)
+            if($i == 0)
             {
                 $url .= '?id='.$user_id;
                 $i++;
@@ -177,9 +197,9 @@ class TwitchApiService
         return $result;
     }
 
-    public function getClipsFromChannel($channel_name, $period = 'week', $max = 5, $trending = true)
+    public function getClipsFromChannel($channel_name, $period = 'week', $max = 5)
     {
-        $url = 'https://api.twitch.tv/kraken/clips/top?channel='.$channel_name.'&limit='.$max.'&period='.$period.'&trending='.$trending;
+        $url = 'https://api.twitch.tv/kraken/clips/top?channel='.$channel_name.'&limit='.$max.'&period='.$period;
 
         $opts = [
             "http" => [
@@ -206,12 +226,46 @@ class TwitchApiService
                 "header" => "Client-ID: ".$this->client_id
             ]
         ];
-        dump($url);
+
         $context = stream_context_create($opts);
         $json_result = file_get_contents($url, false, $context);
         $result = json_decode($json_result);
 
         return $result;
 
+    }
+
+    public function getRandomUserFollowsId($user_id, $max)
+    {
+        $follows_id = $this->getUserFollowsId($user_id);
+        $random_follows_id = [];
+
+        if($follows_id <= $max)
+        {
+            return $follows_id;
+        }
+
+        $random_index_array = [];
+
+        for($i=0; $i<$max; $i++)
+        {
+            $loop = true;
+            $random_nb = 0;
+
+            while($loop === true)
+            {
+                $random_nb = rand(0, count($follows_id) - 1);
+
+                if(!in_array($random_nb, $random_index_array))
+                {
+                    $loop = false;
+                    $random_index_array[] = $random_nb;
+                }
+            }
+
+            $random_follows_id[] = $follows_id[$random_nb];
+        }
+
+        return $random_follows_id;
     }
 }

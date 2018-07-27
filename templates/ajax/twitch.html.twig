@@ -12,73 +12,24 @@
     </ul>
 </nav>
 
-<section class="d-flex justify-content-around flex-wrap">
-    <iframe src="https://player.twitch.tv/?channel=krakantas" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
-    <iframe src="https://player.twitch.tv/?channel=baguette_restream" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
-</section>
+<section>
+    {% for follow_data in data %}
 
-<section class="mt-5">
-    <h3>Recommandations</h3>
-    <div class="d-flex justify-content-around flex-wrap mt-3">
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini1.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
+    <h4>{{ follow_data.display_name }}
+        {% if follow_data.user_id in streams_user_id %}
+            <small><a href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">est en live !</a></small>
+        {% endif %}
+    </h4>
+    <div class="clip">
+        
     </div>
-</section>
 
-<section class="mt-5">
-    <h3>Surf</h3>
-    <div class="d-flex justify-content-around flex-wrap mt-3">
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-    </div>
+    {% endfor %}
 </section>
-
-<section class="mt-5">
-    <h3>League Of Legends</h3>
-    <div class="d-flex justify-content-around flex-wrap mt-3">
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="{{ path('twitch-stream') }}" class="text-dark col-3">
-            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-    </div>
-</section>
+                            <!-- <iframe src="https://clips.twitch.tv/embed?clip={# clip.slug #}&tt_medium=clips_api&tt_content=embed"  
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            scrolling="no" 
+                            height="567"
+                            width="930">
+                            </iframe>

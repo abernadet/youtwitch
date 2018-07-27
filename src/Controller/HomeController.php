@@ -38,10 +38,12 @@ class HomeController extends Controller
      * @Route("/user/video", name="video")
      */
 
-    public function video()
+    public function video(UserInterface $user, TwitchApiService $twitch_api)
     {
+        
+
         return $this->render('video.html.twig', [
-            'controller_name' => 'HomeController',
+
         ]);
     }
 
