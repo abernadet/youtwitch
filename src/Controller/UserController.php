@@ -51,7 +51,7 @@ class UserController extends Controller
             $user = $form->getData();
             if($user->getImage()){
                 $file = $user->getImage();
-                $fileName = $uploader->upload($file);
+                $fileName = $uploader->upload($file, $fileName);
             }
             $user->setImage($fileName);
             $entityManager = $this->getDoctrine()->getManager();

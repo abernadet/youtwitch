@@ -1,29 +1,11 @@
-{# Mon layout contient tous les éléments communs au pages de mon site #}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    {# Je crée des blocks qui vont être remplis dynamiquement avec les infos propres à chaque page #}
-    <title>Bienvenue sur YouTwitch</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="icon" href="{{ asset('img/icon.png') }}" />
-</head>
-<body class="back-image">
+{% extends 'logLayout.html.twig' %}
 
-{{ include('includes/header.html.twig') }}
+{% block title %}Bienvenue sur YouTwitch{% endblock %}
 
+{% block content %}
 <section class="text-center">
-
     <h1 class="center">Regarder toutes vos vidéos favorites regroupées au même endroit</h1>
 
     <a href="{{ path('login') }}" class="btn btn-orange center-btn mt-2 text-uppercase font-weight-bold col-2">Rejoignez-nous</a>
 </section>
-
-<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-<script src="{{ asset('js/js.cookie.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-
-</body>
-</html>
+{% endblock %}
