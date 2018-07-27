@@ -117,32 +117,21 @@
 }
 
 main{
-    z-index: -1;
+    z-index: 0;
 }
 
 .burger{display: none;}
 
 .nav-burger{
     display: none;
+    z-index: 1;
 }
 
-.nav-burger a{
-    display: block;
-    padding: 5px 10px;
-}
-
-.nav-burger a:hover{
-    background: #DF691A;
-    color: white;
-    text-decoration: none;
-}
-
-.nav-burger ul li{
-    display: inline-block;
-}
-
-.nav-burger ul li:hover{
-    display: block;
+.alert-orange {
+    color: #000;
+    background-color: #DF691A;
+    border-color: #c6c8ca;
+    opacity: 0.8;
 }
 
 @media (max-width: 576px){

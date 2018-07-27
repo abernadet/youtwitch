@@ -44,7 +44,7 @@ class SecurityController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            $this->addFlash('success', 'Vous êtes bien inscrit, vous pouvez vous connecter !');
+            $this->addFlash('dark', 'Vous êtes bien inscrit, vous pouvez vous connecter !');
             return $this->redirectToRoute('login');
         }
         return $this->render('security/register.html.twig',
@@ -87,7 +87,7 @@ class SecurityController extends Controller
                         'text/html'
                     );
                 if ($mailer->send($message)) {
-                    $this->addFlash('success', "L'e-mail a bien été envoyé !");
+                    $this->addFlash('dark', "L'e-mail a bien été envoyé !");
                 }else{
                     $this->addFlash('danger',"Erreur lors de l'envoi de l'e-mail veuillez verifier votre adresse e-mail.");
                 }
@@ -144,7 +144,7 @@ class SecurityController extends Controller
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
-                $this->addFlash('success', "Mot de passe modifié !");
+                $this->addFlash('dark', "Mot de passe modifié !");
             }else{
                 $this->addFlash('danger',"Le mot de passe n'a pa pu être modifié");
             }
