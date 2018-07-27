@@ -10,12 +10,18 @@
     {{ form_errors(form.username) }}
     {{ form_widget(form.username, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
 
+
+
+
     <label for="roles">Choisir un rôle</label>
+    {{ dump(user) }}
     <select name="roles[]" multiple id="roles" class="form-control mb-3">
-        <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-        <option value="ROLE_USER">ROLE_USER</option>
-        <option value="ROLE_AUTEUR">ROLE_AUTEUR</option>
+        <option value="ROLE_ADMIN" {% if user.roles == 'ROLE_ADMIN' %} selected{% endif %}>ROLE_ADMIN</option>
+        <option value="ROLE_USER" {% if user.roles == 'ROLE_USER' %} selected{% endif %}>ROLE_USER</option>
+        <option value="ROLE_AUTEUR" {% if user.roles == 'ROLE_AUTEUR' %} selected{% endif %}>ROLE_AUTEUR</option>
     </select>
+
+
 
     {{ form_label(form.image) }}
     {{ form_errors(form.image) }}

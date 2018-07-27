@@ -26,15 +26,16 @@
 
     </div>
 
-<<<<<<< HEAD
-    {{ form_start(form) }}
+{#
+{{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
 
+#}
 
-=======
+
+
     {% if app.request.get('type') != 'stream' %}
->>>>>>> master
 
     <section class="alert-secondary mt-5 p-4">
         {% for message in messages %}
