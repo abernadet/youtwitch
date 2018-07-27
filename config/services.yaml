@@ -7,7 +7,6 @@ parameters:
     locale: 'fr'
     users_images_directory: '%kernel.project_dir%/public/uploads/images'
 
-
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -38,4 +37,4 @@ services:
             arguments:
             #fait référence à notre paramètre crée plus haut
               $directory : '%users_images_directory%'
-
+    #J'enregistre le service de google

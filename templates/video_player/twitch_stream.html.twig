@@ -1,0 +1,16 @@
+{% extends 'visionnage.html.twig' %}
+
+{% block video %}
+<div class="d-flex justify-content-center mb-4 mt-4">
+
+    <iframe src="https://player.twitch.tv/?channel={{ app.request.get('login') }}&autoplay=true&muted=false"  
+        frameborder="0" 
+        allowfullscreen="true" 
+        scrolling="no" 
+        height="567"
+        width="930">
+    </iframe>
+    <iframe src="https://www.twitch.tv/embed/{{ app.request.get('login') }}/chat" frameborder="0" scrolling="no" height="567" width="350"></iframe>
+
+</div>
+{% endblock %}

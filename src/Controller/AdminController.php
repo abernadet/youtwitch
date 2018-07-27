@@ -26,7 +26,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/mon-profil/{id}", name="admin-show-user", requirements={"id"="\d+"})
+     * @Route("/admin/profil-user/{id}", name="admin-show-user", requirements={"id"="\d+"})
      */
     public function showUser(User $user){
 

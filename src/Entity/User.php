@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -32,6 +33,8 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @ORM\OneToMany(targetEntity="App\Entity\LostPassword", mappedBy="user")
+     * @JoinColumn(name="user_id")
      * @Assert\NotBlank()
      * @Assert\Length(max=30, maxMessage="Le pseudo ne doit pas faire plus de 30 caractères")
      */

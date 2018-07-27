@@ -1,10 +1,14 @@
-<header>
+<header id="header">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-1shadow">
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('video') }}">YouTwitch</a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('video') }}">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" title="Logo" class="w-50">
+            </a>
         {% else %}
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('home') }}">YouTwitch</a>
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('home') }}">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" title="Logo" class="w-50">
+            </a>
         {% endif %}
 
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">

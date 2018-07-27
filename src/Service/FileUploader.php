@@ -10,8 +10,7 @@ class FileUploader
 
     public function __construct($directory)
     {
-        //Lors de l'instanciation, on remplit la propriété avec le chemin vers
-        //le dossier d'upload
+        //Lors de l'instanciation, on remplit la propriété avec le chemin vers le dossier d'upload
         $this->targetDirectory = $directory;
     }
 

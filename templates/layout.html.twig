@@ -8,19 +8,22 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="icon" href="{{ asset('img/icon2.png') }}" />
+    <link rel="icon" href="{{ asset('img/icon.png') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Permanent+Marker|Rock+Salt" rel="stylesheet">
+    <meta name="viewport" content="initial-scale=1">
 </head>
 <body>
 
-{# {{ include('includes/header.html.twig') }} #}
+ {{ include('includes/header.html.twig') }}
 
 <div class="container-fluid">
     <div class="row">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {{ render(controller('App\\Controller\\IncludesController::showSidebar'))}}
         {% endif %}
+        {{ include('includes/navBurger.html.twig') }}
         <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
-            <h1 class="text-center mt-5 mb-3">{% block titlepage %}{% endblock %}</h1>
+            <h1 class="text-center mt-5 mb-3 titleFont">{% block titlepage %}{% endblock %}</h1>
             {# Ce block contiendra le contenu de la page appelée #}
             {% block content %}{% endblock %}
         </main>
@@ -31,8 +34,29 @@
 
 {#{{ include('includes/footer.html.twig') }}#}
 
-
 <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+<script src="{{ asset('js/js.cookie.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
+<script>
+    // Je stocks les éléments dans des variables
+    let burger = document.getElementById('svg-burger');
+    let menu = document.getElementById("menu-principal");
+    // Quand je clique sur le burger je vérifie
+    // Si j'ai le menu caché donc différent de block alors je l'affiche
+    // Sinon je le cache car il est affiché
+    burger.onclick = function(){
+        if (menu.style.display !== "block") {
+            // Ici j'attribue la propriété display avec la valeur block pour afficher le bloc
+            menu.style.display = 'block';
+        }else{
+            menu.style.display = 'none';
+        }
+    };
+</script>
 
 {% block js %}{% endblock %}
 

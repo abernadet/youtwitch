@@ -1,16 +1,23 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Modification de l'utilisateur - YouTwitch{% endblock %}
-{% block titlepage %}Modification de l'utilisateur{% endblock %}
 
 {% block content %}
-    {{ form_start(form) }} {# Permet de créer la balise <form> #}
+<section class="d-flex justify-content-center">
+    <div class="card col-8 bg-dark mt-5">
+        <div class="card-body">
 
-    {{ form_label(form.username) }}
-    {{ form_errors(form.username) }}
-    {{ form_widget(form.username, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+            <h3 class="card-title titleOrange titleFontForm" style="text-align: center;font-weight: bold;">Modification de l'utilisateur</h3>
+            <br>
+
+<<<<<<< HEAD
 
 
+            {{ form_start(form, {'attr' : {'class' : 'text-light'}}) }} {# Permet de créer la balise <form> #}
+
+            {{ form_label(form.username) }}
+            {{ form_errors(form.username) }}
+            {{ form_widget(form.username, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
 
 
     <label for="roles">Choisir un rôle</label>
@@ -22,12 +29,18 @@
     </select>
 
 
-
     {{ form_label(form.image) }}
     {{ form_errors(form.image) }}
     {{ form_widget(form.image) }} {# Permet de créer les champs #}
 
-    {{ form_widget(form.ajouter) }} {# Permet de créer les champs #}
+                <div class="text-center">
+                    {{ form_row(form.modifier) }}
+                    {# Va générer le label, les erreurs et le champ Content en une instruction #}
+                </div>
 
-    {{ form_end(form) }} {# Va fermer la balise </form> #}
+            {{ form_end(form) }} {# Va fermer la balise </form> #}
+
+        </div>
+    </div>
+</section>
 {% endblock %}

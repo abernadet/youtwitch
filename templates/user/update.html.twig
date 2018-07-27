@@ -3,13 +3,41 @@
 
 {% block content %}
 
-    <section class="container">
-    {{ form_start(form, {'attr': {'class': 'col-6 m-auto alert alert-dark'}}) }}
+    <section class="d-flex justify-content-center">
+        <div class="card col-8 bg-dark mt-5">
+            <div class="card-body">
 
 
-        {{ form_widget(form) }}
+                <h3 class="card-title titleOrange" style="text-align: center;font-weight: bold;">Modification</h3>
+                <br>
 
-    {{ form_end(form) }}
+                {{ form_start(form, {'attr' : {'class' : 'text-light'}}) }}
+
+                    {{ form_label(form.username) }}
+                    {{ form_errors(form.username) }}
+                    {{ form_widget(form.username, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un Pseudo'}}) }} {#permet de créer les champs#}
+
+                    {{ form_label(form.email) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un Pseudo'}}) }} {#permet de créer les champs#}
+
+                    {{ form_label(form.image) }}
+                    {{ form_errors(form.image) }}
+                    {{ form_widget(form.image, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Choisir une image'}}) }} {#permet de créer les champs#}
+
+                    {{ form_label(form.twitchLogin) }}
+                    {{ form_errors(form.twitchLogin) }}
+                    {{ form_widget(form.twitchLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un Pseudo'}}) }} {#permet de créer les champs#}
+
+                    <div class="text-center">
+                        {{ form_row(form.Modifier) }}
+                        {# Va générer le label, les erreurs et le champ Content en une instruction #}
+                    </div>
+
+                {{ form_end(form) }}
+
+            </div>
+        </div>
     </section>
 
 {% endblock %}

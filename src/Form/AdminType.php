@@ -27,7 +27,7 @@ class AdminType extends AbstractType
                 'second_options' => ['label' => 'Répétez le mot de passe', 'attr'=>['placeholder' => 'Répétez le mot de passe']]
             ))
             ->add('image', FileType::class, array('label' => 'Ajouter une image SVP', 'required' => false))
-            ->add('ajouter', SubmitType::class, array('label' => 'Envoyer', 'attr' => ['class' => 'btn btn-orange']));
+            ->add('ajouter', SubmitType::class, array('label' => 'Ajouter', 'attr' => ['class' => 'btn btn-orange col-3']));
         ;
     }
 

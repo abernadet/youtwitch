@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use  Symfony\Component\HttpFoundation\Request;
 use App\Entity\Message as Message;
 use App\Form\MessageType;
+use App\Service\TwitchApiService;
+use App\Service\TextFormatService;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class HomeController extends Controller
@@ -56,29 +59,131 @@ class HomeController extends Controller
     }*/
 
     /**
-     * @Route("/user/visionnage", name="visionnage")
+     * @Route("/user/twitch_stream", name="twitch-stream")
      */
-    public function visionnage(Request $request)
+
+
+    public function playTwitchStream(TwitchApiService $twitch_api, TextFormatService $text_format, Request $request)
     {
+        $params = $request->query->all();
 
-        $repository = $this->getDoctrine()->getRepository(Message::class);
-        $messages = $repository->findAll();
-
-        $message = new Message();
-        $form = $this->createForm(MessageType::class,$message);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $message = $form->getData();
-            $message->setDateenvoi(new \DateTime(date('Y-m-d H:i:s')));
-            $message->setUser($this->getUser());
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($message);
-            $entityManager->flush();
-            $this->addFlash('success', 'commentaire ajouté ! ');
-            return $this->redirectToRoute('visionnage');
+        $login = '';
+        if(!empty($params['login'])){
+            $login = $params['login'];
+            $clips = $twitch_api->getClipsFromChannel($login, 'week', 4);
+        }else{
+            $clips = [];
         }
-        return $this->render('visionnage.html.twig',
-            array('form' => $form->createView(), 'messages' => $messages));
+
+        $user_id = $twitch_api->getUserIdFromLogin($login);
+
+        $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
+
+        $replay_tab = $replays->data;
+
+
+
+        foreach($replay_tab as $replay)
+        {
+            $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
+        }
+
+        dump($replays); 
+
+        return $this->render('video_player/twitch_stream.html.twig', [
+            'clips' => $clips,
+            'login' => $login,
+            'replays' => $replay_tab
+        ]);
+    }
+
+    /**
+     * @Route("/user/twitch_clip", name="twitch-clip")
+     */
+    public function playTwitchClip(TwitchApiService $twitch_api, TextFormatService $text_format, Request $request)
+    {
+        $params = $request->query->all();
+        $login = '';
+        if(!empty($params['login']))
+        {
+            $login = $params['login'];
+            $clips = $twitch_api->getClipsFromChannel($login, 'week', 4);
+        }
+        else
+        {
+            $clips = [];
+        }
+        
+        $user_id = $twitch_api->getUserIdFromLogin($login);
+
+        $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
+
+        $replay_tab = $replays->data;
+
+
+
+        foreach($replay_tab as $replay)
+        {
+            $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
+        }
+        
+        dump($replay_tab);     
+
+        return $this->render('video_player/twitch_clip.html.twig', [
+            'params' => $params,
+            'login' => $login,
+            'clips' => $clips,
+            'replays' => $replay_tab
+        ]);
+    }
+
+    /**
+     * @Route("/user/twitch_video", name="twitch-video")
+     */
+    public function playTwitchVideo(TwitchApiService $twitch_api, TextFormatService $text_format, Request $request)
+    {
+        $params = $request->query->all();
+        $login = '';
+        if(!empty($params['login']))
+        {
+            $login = $params['login'];
+            $clips = $twitch_api->getClipsFromChannel($login, 'week', 4);
+        }
+        else
+        {
+            $clips = [];
+        }
+        if(!empty($params['vid_id']))
+        {
+            $vid_id = $params['vid_id'];
+        }
+        else{
+            $vid_id = false;
+        }
+        
+        $user_id = $twitch_api->getUserIdFromLogin($login);
+
+        $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
+
+        $replay_tab = $replays->data;
+
+
+
+        foreach($replay_tab as $replay)
+        {
+            $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
+        }
+
+        dump($replay_tab); 
+
+        return $this->render('video_player/twitch_video.html.twig', [
+            'params' => $params,
+            'clips' => $clips,
+            'replays' => $replay_tab,
+            'vid_id' => $vid_id,
+            'login' => $login
+        ]);
+
     }
 
 
@@ -91,6 +196,14 @@ class HomeController extends Controller
         return $this->render('propos.html.twig', [
             'controller_name' => 'HomeController',
         ]);
+    }
+
+    /**
+     * @Route("/RGPD", name="rgpd")
+     */
+    public function rgpd()
+    {
+        return $this->render('rgpd.html.twig');
     }
 
 }
