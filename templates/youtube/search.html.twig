@@ -1,19 +1,11 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}{% endblock %}
-
+{% block title %}Chercher une chaîne{% endblock %}
 {% block content %}
-
     <div id="search">
         <input type="search" name="" id="champsRecherche" placeholder="Saisir l'id de votre chaine">
         <button type="submit" id="check">Check !</button>
     </div>
-
-    <div id="search2">
-        <input type="search" name="" id="champsRecherche2" placeholder="Saisissez une chaine a rechercher">
-        <button type="button" id="check2" class="btn-dark">Chercher</button>
-    </div>
-
     <div id ="result"></div>
 {% endblock %}
     {% block js %}
@@ -28,28 +20,6 @@
                 $.ajax({
                     type:'get',
                     url:url,
-                    timeout:'3000',
-                    dataType:'html',
-                    success: function(data){
-                        $('#result').html(data);
-                    },
-                    error: function (error){
-                        console.log(error.responseText);
-                    }
-                })
-            })
-
-
-            $('body').on('click','#check2',function(e){
-                e.preventDefault();
-                var url2 = "{{ path('Ysearch',{terme:'exemple'}) }}";
-                console.log(url2);
-                url2 = url2.replace('exemple',$('#champsRecherche2').val());
-                console.log(url2);
-
-                $.ajax({
-                    type:'get',
-                    url:url2,
                     timeout:'3000',
                     dataType:'html',
                     success: function(data){

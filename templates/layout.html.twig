@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="icon" href="{{ asset('img/icon.png') }}" />
+    <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
+    <script src="{{ asset('js/js.cookie.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
 
@@ -31,9 +34,7 @@
 
 {#{{ include('includes/footer.html.twig') }}#}
 
-<script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
-<script src="{{ asset('js/js.cookie.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+
 
 {% block js %}{% endblock %}
 
