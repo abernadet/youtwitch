@@ -1,0 +1,19 @@
+{% extends 'visionnage.html.twig' %}
+
+{% block video %}
+{% if vid_id %}
+
+<div class="d-flex justify-content-center mb-4 mt-4">
+
+    <iframe src="https://player.twitch.tv/?video={{ vid_id }}&autoplay=true&muted=false"  
+        frameborder="0" 
+        allowfullscreen="true" 
+        scrolling="no" 
+        height="567"
+        width="930">
+    </iframe>
+
+</div>
+
+{% endif %}
+{% endblock %}

@@ -42,10 +42,10 @@
         {% for replay in replays %}
 
         <div class="d-flex flex-column">
-            <a href="">
+            <a href="{{ path('twitch-video', {'vid_id': replay.id, 'login': login}) }}">
                 <img src="{{ replay.thumbnail_url }}" alt="miniature du clip">
             </a>
-            <h6 class="text-muted">, le </h6>
+            <h6 class="text-muted">Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</h6>
         </div>   
 
         {% endfor %}
