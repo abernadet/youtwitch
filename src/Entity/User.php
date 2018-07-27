@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface, \Serializable
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -68,9 +69,25 @@ class User implements UserInterface, \Serializable
      */
     private $twitchLogin;
 
+    /**
+     * //on indique a doctrine la relation oneToMany
+     * @ORM\OneToMany(targetEntity="App\Entity\Tabo", mappedBy="user")
+     * ceci ne va pas rajouter de champs dans la table
+     */
+    private $Tabo;
+
+    /**
+     * //on indique a doctrine la relation oneToMany
+     * @ORM\OneToMany(targetEntity="App\Entity\Yabo", mappedBy="user")
+     * ceci ne va pas rajouter de champs dans la table
+     */
+    private $Yabo;
+
     public function __construct()
     {
         $this->isActive = true; //par défaut, un user est actif
+        $this->Tabo = new ArrayCollection();
+        $this->Yabo = new ArrayCollection();
 
     }
 
@@ -203,4 +220,17 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
+    /**
+     * @return Collection|Tabo[]
+     */
+    public function getTabo(): Collection{
+        return $this->Tabo;
+    }
+
+    /**
+     * @return Collection|Yabo[]
+     */
+    public function getYabo(): Collection{
+        return $this->Yabo;
+    }
 }

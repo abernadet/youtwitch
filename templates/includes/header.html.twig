@@ -11,13 +11,35 @@
             </a>
         {% endif %}
 
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id="check2">
+        {% block js %}
+            <script>
+                $('body').on('keyup','#check2',function(e){
+                    e.preventDefault();
+                    var url2 = "{{  path('Ysearch',{terme:'exemple'}) }}";
+                    console.log(url2);
+                    url2 = url2.replace('exemple',$('#check2').val());
+                    console.log(url2);
 
+                    $.ajax({
+                        type:'get',
+                        url:url2,
+                        timeout:'3000',
+                        dataType:'html',
+                        success: function(data){
+                            $('#result').html(data);
+                        },
+                        error: function (error){
+                            console.log(error.responseText);
+                        }
+                    })
+                })
+            </script>
+        {% endblock %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a class="btn btn-outline-orange my-2 my-sm-0 mr-3 ml-3" href="{{ path('logout') }}">Déconnexion</a>
         {% else %}
             <a href="{{ path('login') }}" class="btn btn-outline-orange my-2 my-sm-0 mr-3 ml-3">Connexion</a>
         {% endif %}
-
     </nav>
 </header>
