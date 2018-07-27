@@ -127,6 +127,13 @@ main{
     z-index: 1;
 }
 
+.alert-orange {
+    color: #000;
+    background-color: #DF691A;
+    border-color: #c6c8ca;
+    opacity: 0.8;
+}
+
 @media (max-width: 576px){
     /*On cache le menu et on fait apparaitre l'icone burger */
     .nav-burger{

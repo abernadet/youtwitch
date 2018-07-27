@@ -71,7 +71,7 @@ class AdminController extends Controller
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Utilisateur ajouté !');
+            $this->addFlash('orange', 'Utilisateur ajouté !');
 
             return $this->redirectToRoute('admin');
         }
@@ -113,7 +113,7 @@ class AdminController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
-            $this->addFlash('success', 'Utilisateur modifié !');
+            $this->addFlash('orange', 'Utilisateur modifié !');
 
             return $this->redirectToRoute('admin');
         }

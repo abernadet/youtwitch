@@ -14,8 +14,17 @@
 </head>
 <body class="back-image">
 
-{{ include('includes/header.html.twig') }}
-<br><br><br><br>
+<div class="text-center mb-5">
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('video') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="YouTwitch Logo" title="Logo YouTwitch">
+        </a>
+    {% else %}
+        <a href="{{ path('home') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="YouTwitch Logo" title="Logo YouTwitch">
+        </a>
+    {% endif %}
+</div>
 
 {% block content %}{% endblock %}
 
