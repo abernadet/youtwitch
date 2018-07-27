@@ -4,7 +4,7 @@ security:
       mon_user_provider:
         entity: #on utilise une entity pour gérer les users
           class: App\Entity\User
-          property: username # la propriété utilisée pour le
+          property: username # la propriété utilisée pour le provider
       #in_memory: { memory: ~ } # memory veut dire en dur mais pas viable
     encoders : #on lui indique comment encoder les mdp
       App\Entity\User : bcrypt
