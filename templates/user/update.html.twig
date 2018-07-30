@@ -20,6 +20,18 @@
                     {{ form_errors(form.email) }}
                     {{ form_widget(form.email, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un Pseudo'}}) }} {#permet de créer les champs#}
 
+                    {{ form_label(form.phone) }}
+                    {{ form_errors(form.phone) }}
+                    {{ form_widget(form.phone, {'attr' : {'class' : 'mb-3', 'placeholder' : '0000000000'}}) }} {#permet de créer les champs#}
+
+                    {{ form_label(form.address) }}
+                    {{ form_errors(form.address) }}
+                    {{ form_widget(form.address, {'attr' : {'class' : 'mb-3', 'placeholder' : '3, Avenue du bonheur'}}) }} {#permet de créer les champs#}
+
+                    {{ form_label(form.birthdate) }}
+                    {{ form_errors(form.birthdate) }}
+                    {{ form_widget(form.birthdate, {'attr' : {'class' : 'mb-3'}}) }} {#permet de créer les champs#}
+
                     {{ form_label(form.image) }}
                     {{ form_errors(form.image) }}
                     {{ form_widget(form.image, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Choisir une image'}}) }} {#permet de créer les champs#}
