@@ -16,10 +16,17 @@
 
     {% endblock %}
 
-    <h5 class="ml-4
-    mb-3">Clips de la semaine : </h5>
+    {% if clips.clips is empty %}
+
+        <h5 class="text-muted h-150 m-5 p-5">Aucun clip récent</h5>
+    
+    {% else %}
+
+    <h5 class="ml-4 mb-3">Clips de la semaine : </h5>
     <div class="d-flex justify-content-between mb-3">
 
+
+    
         {% for clip in clips.clips %}
 
         <div class="d-flex flex-column">
@@ -30,10 +37,17 @@
         </div>   
 
         {% endfor %}
-
     </div>
+    {% endif %}
+    
 
     <hr>
+
+    {% if replays is empty %}
+
+        <h5 class="text-muted h-150 m-5 p-5">Aucun replay récent</h5>
+
+    {% else %}
 
     <h5 class="ml-4
     mb-3">Replays récents : </h5>
@@ -51,7 +65,7 @@
         {% endfor %}
 
     </div>
-
+    {% endif %}
 {% endblock %}
 
 {% block js %}

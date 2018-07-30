@@ -147,6 +147,32 @@ main{
     height: 150px;
 }
 
+/* Nav, scrollbar des abonnements Twitch */
+.scrollbar {
+    padding-right: 10px; 
+    max-height: 200px;
+    margin-bottom: 25px;
+    margin-left: 22px;
+    margin-top: 40px;
+    overflow-y: scroll;
+    overflow-x: hidden; 
+}
+
+#twitch-scrollbar::-webkit-scrollbar{
+    width: 12px;
+
+}
+
+#twitch-scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #555;
+}
+
+#twitch-scrollbar::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #d3d3d3;
+}
+
 @media (max-width: 576px){
     /*On cache le menu et on fait apparaitre l'icone burger */
     .nav-burger{
