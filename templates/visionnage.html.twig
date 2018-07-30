@@ -18,7 +18,7 @@
 
     <h5 class="ml-4
     mb-3">Clips de la semaine : </h5>
-    <div class="d-flex justify-content-around mb-3">
+    <div class="d-flex justify-content-between mb-3">
 
         {% for clip in clips.clips %}
 
@@ -26,7 +26,7 @@
             <a href="{{ path('twitch-clip', {'login': login, 'slug': clip.slug}) }}">
                 <img src="{{ clip.thumbnails.small }}" alt="miniature du clip">
             </a>
-            <h6 class="text-muted">{{ clip.game }}, le {{ clip.created_at|date('d M') }}</h6>
+            <h6 class="text-muted w-260">{{ clip.game }} <br> le {{ clip.created_at|date('d M') }}</h6>
         </div>   
 
         {% endfor %}
@@ -37,7 +37,7 @@
 
     <h5 class="ml-4
     mb-3">Replays récents : </h5>
-    <div class="d-flex justify-content-around mb-3">
+    <div class="d-flex justify-content-between mb-3">
 
         {% for replay in replays %}
 
@@ -45,7 +45,7 @@
             <a href="{{ path('twitch-video', {'vid_id': replay.id, 'login': login}) }}">
                 <img src="{{ replay.thumbnail_url }}" alt="miniature du clip">
             </a>
-            <h6 class="text-muted">Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</h6>
+            <h6 class="text-muted w-260">Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</h6>
         </div>   
 
         {% endfor %}

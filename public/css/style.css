@@ -139,6 +139,14 @@ main{
     text-decoration: none;
 }
 
+.w-260{
+    width: 260px;
+}
+
+.h-150{
+    height: 150px;
+}
+
 @media (max-width: 576px){
     /*On cache le menu et on fait apparaitre l'icone burger */
     .nav-burger{

@@ -11,7 +11,7 @@
                     <a class="nav-link active" id="youtube" href="{{ path('video') }}">Youtube</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="twitch" href="{{ path('twitch') }}">Twitch</a>
+                    <a class="nav-link twitch" id="twitch" href="{{ path('twitch') }}">Twitch</a>
                 </li>
             </ul>
         </nav>
@@ -95,7 +95,7 @@
 
 <script>
     $(function(){
-        $('#twitch').on('click', function(e) {
+        $('body').on('click', '#twitch', function(e) {
             e.preventDefault();
             var url = "{{ path('twitch') }}"; // On génère la route que l'on stocke dans une variable js
 
@@ -103,7 +103,7 @@
                 type: 'post',
                 url: url,
                 dataType: 'html',
-                timeout: 100000,
+                timeout: 10000,
                 success: function (data) {
                     $('#result').html(data);
                 },
@@ -113,7 +113,7 @@
             })
         })
 
-        $('#youtube').on('click', function(e) {
+        $('body').on('click', '#youtube', function(e) {
             e.preventDefault();
             var url = "{{ path('youtube') }}"; // On génère la route que l'on stocke dans une variable js
 
@@ -121,7 +121,7 @@
                 type: 'post',
                 url: url,
                 dataType: 'html',
-                timeout: 5000,
+                timeout: 10000,
                 success: function (data) {
                     $('#result').html(data);
                 },

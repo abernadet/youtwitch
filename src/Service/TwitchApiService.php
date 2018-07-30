@@ -213,6 +213,8 @@ class TwitchApiService
         $json_result = file_get_contents($url, false, $context);
         $result = json_decode($json_result);
 
+        dump($result);
+
         return $result;
     }
 
@@ -254,7 +256,7 @@ class TwitchApiService
 
             while($loop === true)
             {
-                $random_nb = rand(0, count($follows_id) - 1);
+                $random_nb = rand(1, count($follows_id) - 1);
 
                 if(!in_array($random_nb, $random_index_array))
                 {
