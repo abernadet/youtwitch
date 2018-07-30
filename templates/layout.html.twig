@@ -48,7 +48,7 @@
             $.getJSON("{{ path('chat-add') }}")
                 .done(function(data){
                     console.log(data);
-                    $('#result').html(data);
+                    $('#result-chat').html(data);
                 })
                 .fail(function(error){
                     console.log("erreur ajax:" + error.responseText);
@@ -70,7 +70,7 @@
                 timeout: 5000, // Si pas de réponse au bout de 5 secondes, erreur
                 dataType: 'html', // On s'attend à récupérer du HTML
                 success: function(result){
-                    $('#result').html(result);{{ app.user.username }}
+                    $('#result-chat').html(result);{{ app.user.username }}
                 },
                 error: function(error){
                     console.log(error.responseText);
