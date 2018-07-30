@@ -20,10 +20,11 @@
         <section class="followed-user d-flex mt-5">
             <div class="col-md-2">
                 <a class="link-no-style" href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">
-                    <h4>{{ follow_data.display_name }}
+                    <h4>
                         {% if follow_data.user_id in streams_user_id %}
-                            <i style="color:green" class="mr-1 fas fa-circle"></i></a>
+                            <i style="color:green" class="mr-1 fas fa-circle"></i>
                         {% endif %}
+                        {{ follow_data.display_name }}
                     </h4>
 
                     {% for user in followed_users %}

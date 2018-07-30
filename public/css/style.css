@@ -159,8 +159,7 @@ main{
 }
 
 #twitch-scrollbar::-webkit-scrollbar{
-    width: 12px;
-
+    width: 10px;
 }
 
 #twitch-scrollbar::-webkit-scrollbar-thumb {
