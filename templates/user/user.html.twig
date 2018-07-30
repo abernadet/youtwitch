@@ -24,6 +24,14 @@
             <div class="col-6 col-md-4">
                 <p><strong>Pseudo</strong> : {{ user.username }}</p>
                 <p><strong>Email</strong> : {{ user.email }}</p>
+                <p><strong>Date de naissance</strong> : {{ user.birthdate|date("d/m/Y") }}</p>
+                {% if user.phone %}
+                    <p><strong>Numéro de téléphone</strong> : {{ user.phone }}</p>
+                {% endif %}{% if user.address %}
+                    <p><strong>Adresse</strong> : {{ user.address }}</p>
+                {% endif %}{% if user.twitchLogin %}
+                    <p><strong>Date de naissance</strong> : {{ user.twitchLogin }}</p>
+                {% endif %}
             </div>
             <div class="col-6 col-md-4">
                 <a class="nav-link orange" href="{{ path('user-update',{id : user.id})}}">

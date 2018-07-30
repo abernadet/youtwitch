@@ -28,8 +28,10 @@
         {{ include('includes/navBurger.html.twig') }}
         <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
             <h1 class="text-center mt-5 mb-3 titleFont">{% block titlepage %}{% endblock %}</h1>
+            {{ include('includes/chat.html.twig') }}
             {# Ce block contiendra le contenu de la page appelée #}
             {% block content %}{% endblock %}
+
         </main>
 
     </div>
@@ -40,7 +42,45 @@
 
 
 
+<script>
+    $(function(){
+        function chat() {
+            $.getJSON("{{ path('chat-add') }}")
+                .done(function(data){
+                    console.log(data);
+                    $('#result').html(data);
+                })
+                .fail(function(error){
+                    console.log("erreur ajax:" + error.responseText);
+                });
+        }
 
+        chat();
+
+        $('#action').on('click', function(event){
+            event.preventDefault();
+            url = "{{ path('chat-add') }}";
+                console.log($('form').serialize());
+
+            $.ajax({
+                // On peut paramétrer notre requête ajax
+                type: 'POST', // On utilise POST
+                data: $('#message').serialize(),
+                url: url,
+                timeout: 5000, // Si pas de réponse au bout de 5 secondes, erreur
+                dataType: 'html', // On s'attend à récupérer du HTML
+                success: function(result){
+                    $('#result').html(result);{{ app.user.username }}
+                },
+                error: function(error){
+                    console.log(error.responseText);
+                }
+            })
+        })
+
+        setInterval(chat, 5000);
+    })
+</script>
 
 <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
 <script>
