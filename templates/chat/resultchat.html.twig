@@ -1,0 +1,3 @@
+{% for chat in chats %}
+    <li>{{ app.user.username }}{{ chat.dateenvoie|date('d:m:Y') }} : {{ chat.message }}</li>
+{% endfor %}

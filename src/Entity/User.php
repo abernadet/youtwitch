@@ -32,7 +32,7 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=191)
      * @Assert\NotBlank()
      */
     private $email;
@@ -82,6 +82,22 @@ class User implements UserInterface, \Serializable
      * ceci ne va pas rajouter de champs dans la table
      */
     private $Yabo;
+
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\Regex("#0[1-9][0-9]{8}#")
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $birthdate;
 
     public function __construct()
     {
@@ -232,5 +248,41 @@ class User implements UserInterface, \Serializable
      */
     public function getYabo(): Collection{
         return $this->Yabo;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(?string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(\DateTimeInterface $birthdate): self
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -15,6 +16,12 @@ class UserUpdateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // on stocke les années à afficher dans le formulaire
+        // pour le champ date de naissance dans un tableau
+        for($i=date('Y');$i>=1900; $i--){
+            $birthdate[] = $i;
+        }
+
         $builder
             ->add('username', TextType::class, array(
                 'label' => 'Pseudo'
@@ -23,7 +30,10 @@ class UserUpdateType extends AbstractType
             ->add('image', FileType::class, array('label' => 'Ajouter une image',
                                                     'attr' => ['class' => 'form-control-file'],
                                                     'required' => false ))
-            ->add('twitchLogin', TextType::class, array('label' => 'Identifiant de votre chaine Twitch'))
+            ->add('phone', TextType::class, array('label' => 'Votre numéro de téléphone', 'required' => false))
+            ->add('address', TextType::class, array('label' => 'Votre adresse', 'required' => false))
+            ->add('birthdate', BirthdayType::class, array('label' => 'Votre date de naissance'))
+            ->add('twitchLogin', TextType::class, array('label' => 'Identifiant de votre chaine Twitch', 'required' => false))
             ->add('Modifier', SubmitType::class,array
             ('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange col-3']));
     }

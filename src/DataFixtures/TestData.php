@@ -29,6 +29,15 @@ class TestData extends Fixture
 
             $plainPassword = 'mdp' . $i;
             $mdpEncoded = $this->encoder->encodePassword($user, $plainPassword);
+
+            # On va générer une date aléatoire
+            # Generate a timestamp using mt_rand
+            $timestamp = mt_rand(1, time());
+            # Format that timestamp into a readable date string
+            $randomDate = date("Y-m-d", $timestamp);
+            # On l'envoie dans l'article
+            $user->setBirthdate(new \DateTime($randomDate));
+
             $user->setPassword($mdpEncoded);
             if($user->getUsername() == 'user1'){
                 $user->setRoles(array('ROLE_USER', 'ROLE_ADMIN'));
