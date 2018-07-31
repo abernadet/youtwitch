@@ -47,16 +47,6 @@ class HomeController extends Controller
         ]);
     }
 
-    /*
-     * @Route("/twitch", name="twitch")
-     */
-    /*public function twitch()
-    {
-        return $this->render('twitch.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }*/
-
     /**
      * @Route("/user/twitch_stream", name="twitch-stream")
      */
@@ -78,19 +68,20 @@ class HomeController extends Controller
 
         $replay_tab = $replays->data;
 
-
-
         foreach($replay_tab as $replay)
         {
             $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
         }
 
-        dump($replays); 
+        $stream_data = $twitch_api->getLiveStreamFromLogin($login);
+
+        dump($stream_data->data[0]); 
 
         return $this->render('video_player/twitch_stream.html.twig', [
             'clips' => $clips,
             'login' => $login,
-            'replays' => $replay_tab
+            'replays' => $replay_tab,
+            'stream_data' => $stream_data->data[0]
         ]);
     }
 
