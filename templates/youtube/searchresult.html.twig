@@ -1,7 +1,12 @@
 {% block content %}
-{{ url }}<br>
-    {{ text }}<br>
-    {% for result in results %}
-        <a href="{{ path('OwnerChan', {channelId: result.snippet.channelId}) }}"><img src="{{ result.snippet.thumbnails.default.url }}" style="padding-top: 5px"></a><h3>{{  result.snippet.title }}</h3><br><hr>
-    {% endfor %}
+    {# url #}
+    {% if results %}
+
+        {% for result in results %}
+            <a href="{{ path('OwnerChan', {channelId: result.snippet.channelId}) }}" class="list-group-item list-group-item-action"> | {{  result.snippet.title }}
+                <img src="{{ result.snippet.thumbnails.default.url }}" style="padding: 5px"></a>
+        {% endfor %}
+
+    {% endif %}
+
 {% endblock %}

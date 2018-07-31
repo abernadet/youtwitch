@@ -53,7 +53,7 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
     public function search($terme)
     {
 
-        $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=$terme&type=channel&key=$this->Gkey";
+        $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=$terme&type=channel&key=$this->Gkey";
 
         try {
             $json = file_get_contents($url);

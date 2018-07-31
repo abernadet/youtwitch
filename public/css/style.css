@@ -122,6 +122,9 @@ main{
 
 .burger{display: none;}
 
+nav {
+
+}
 .nav-burger{
     display: none;
     z-index: 1;
@@ -133,6 +136,23 @@ main{
     border-color: #c6c8ca;
     opacity: 0.8;
 }
+
+.searchDiv{
+    z-index: 1;
+    width: 60%;
+    top : 60px;
+    position: absolute;
+    text-align: left;
+    right: 300px;
+    color: #DF691A;
+}
+
+.isize{
+    font-size: 2rem!important;
+    color: #DF691A;
+}
+
+
 
 @media (max-width: 576px){
     /*On cache le menu et on fait apparaitre l'icone burger */
