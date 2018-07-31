@@ -97,18 +97,34 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
 
             $details2 = $obj2->items;
 
+            $idVideo = $obj2->items[0]->snippet->resourceId->videoId;
 
         } catch (\Exception $e) {
             $details2 = [];
+            $idVideo = [];
 
         }
+
+        $url3 = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideo&key=$this->Gkey";
+        try {
+            $json3 = file_get_contents($url3);
+            $obj3 = json_decode($json3);
+
+            $details3 = $obj3->items;
+
+
+        } catch (\Exception $e) {
+            $details3 = [];
+
+        }
+
         if (empty($details)){
             $text='c\'est vide';
         }else{
             $text = 'ya un truc';
         }
         return $this->render('youtube/detailschan.html.twig', [
-            'details' => $details, 'url' => $url,'text'=>$text, 'details2'=>$details2,'channelId'=>$channelId
+            'details' => $details, 'url' => $url,'text'=>$text, 'details2'=>$details2,'channelId'=>$channelId,'details3'=>$details3
         ]);
     }
 

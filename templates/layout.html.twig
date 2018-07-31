@@ -70,7 +70,7 @@
                 timeout: 5000, // Si pas de réponse au bout de 5 secondes, erreur
                 dataType: 'html', // On s'attend à récupérer du HTML
                 success: function(result){
-                    $('#result-chat').html(result);{{ app.user.username }}
+                    $('#result-chat').html(result);
                 },
                 error: function(error){
                     console.log(error.responseText);
