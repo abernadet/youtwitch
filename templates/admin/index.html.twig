@@ -11,13 +11,13 @@
     {# Pour afficher tous type de message #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
-            <div class="alert alert-{{ label }} text-center">
+            <div class="alert alert-{{ label }} text-center col-8 m-auto">
                 {{ message }}
             </div>
         {% endfor %}
     {% endfor %}
 
-    <section class="container">
+    <section class="container mt-5">
         {#<div class="card">
             <div class="card-body">
                 {# Équivalent twig de la boucle foreach #}

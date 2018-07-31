@@ -17,6 +17,11 @@
                     <i class="fas fa-user-tie"></i> Mon profil
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="{{ path('chat') }}">
+                    <i class="fas fa-user-tie"></i> Chat
+                </a>
+            </li>
             {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{ path('admin')}}">
@@ -35,9 +40,11 @@
             </a>
         </h5>
             
-            <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted"><i style="color:green" class="mr-1 fas fa-circle"></i>Maintenant en live sur Twitch !</h6>
+            {# Chaines suivies en ligne #}
+        <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted"><i style="color:green" class="mr-1 fas fa-circle"></i>Maintenant en live sur Twitch !</h6>
+        
 
-        <ul class="nav flex-column mb-2">
+        <ul id="twitch-scrollbar" class="nav flex-column flex-nowrap mb-2 scrollbar">
             
         {% for follow in follows %}
 
@@ -53,6 +60,36 @@
         {% endfor %}
 
         </ul>
+
+
+        {# Chaines suivies hors ligne #}
+        <a id="offline-users-dropdown" href="#">
+            <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted-bis">
+                Hors ligne
+                <i class="fas fa-angle-down mr-2 dropdown-icon"></i>
+            </h6>
+        </a>
+        
+
+        <div style="display:none;" id="offline-users">
+            <ul id="twitch-scrollbar" class="nav flex-column flex-nowrap mb-2 scrollbar">
+                
+            {% for follow in follows %}
+
+                {% if follow.id not in streams_user_id %}
+                <a class="twitch-sidebar-link" href="{{ path('twitch-stream', {'login': follow.login, 'display_name': follow.display_name}) }}">
+                    <div class="d-flex mb-2 ml-3">
+                        <img class="mr-2" height="30" width="30" src="{{ follow.profile_image_url }}"> <span class="mr-2 text-muted">{{ follow.display_name }}</span>
+                        <hr>
+                    </div>
+                </a>
+                {% endif %}
+                
+            {% endfor %}
+
+            </ul>
+        </div>
+
     </div>
     <div class="mt-5"  style="font-family: 'Rock Salt', cursive;">
         <ul class="nav flex-column mt-3">
@@ -65,4 +102,16 @@
         </ul>
     </div>
 </nav>
+<script>
+$(function(){
+    $('#offline-users-dropdown').on('click', function(e){
+        e.preventDefault();
+        if ($('#offline-users').css('display') === "none") {
+            $('#offline-users').css('display', 'block');
+        } else {
+            $('#offline-users').css('display', 'none');
+        }
+    })
+})
+</script>
 {# Fin Nav #}

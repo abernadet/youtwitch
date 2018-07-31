@@ -22,9 +22,23 @@
 
                     {{ form_widget(form.plainPassword) }} {#permet de créer les champs#}
 
+
+                    {{ form_label(form.phone) }}
+                    {{ form_errors(form.phone) }}
+                    {{ form_widget(form.phone, {'attr' : {'class' : 'mb-3', 'placeholder' : '0000000000'}}) }} {#permet de créer les champs#}
+
+                    {{ form_label(form.address) }}
+                    {{ form_errors(form.address) }}
+                    {{ form_widget(form.address, {'attr' : {'class' : 'mb-3', 'placeholder' : '3, Avenue du bonheur'}}) }} {#permet de créer les champs#}
+
+                    {{ form_label(form.birthdate) }}
+                    {{ form_errors(form.birthdate) }}
+                    {{ form_widget(form.birthdate, {'attr' : {'class' : 'mb-3'}}) }} {#permet de créer les champs#}
+
                     {{ form_label(form.twitchLogin) }}
                     {{ form_widget(form.twitchLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Se trouve après "twitch.tv/" sur la page de votre chaine'} }) }}
 
+                    <span class="text-danger">* champ obligatoire</span>
                     <div class="text-center">
                          {{ form_row(form.ajouter) }}
                          {# Va générer le label, les erreurs et le champ Content en une instruction #}
