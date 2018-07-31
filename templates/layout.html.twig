@@ -43,7 +43,9 @@
     $(function(){
         
         function chat() {
-            $('#result-chat').load("{{ path('chat-display') }}");
+            if($('body #chat').hasClass('show')){
+                $('#result-chat').load("{{ path('chat-display') }}");
+            }
         }
 
         chat();
