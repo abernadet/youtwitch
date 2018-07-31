@@ -13,12 +13,12 @@
 {% block content %}
 
     <section class="d-flex justify-content-center">
-        <h3 class="titleFont">Titre de la vidéo</h3><br>
+        <h3 class="titleFont">{% block titleLive %}{% endblock %}</h3><br>
     </section>
 
     <section class="d-flex justify-content-center">
-        <p class="font-italic font-weight-bold"><a href="#" class="mr-5 lien">Chaîne</a></p>
-        <p><b>Vues :</b> 1 000 000</p>
+        <p class="font-italic font-weight-bold"><a href="#" class="mr-5 lien">{% block chanelName %}{% endblock %}</a></p>
+        <p><b>Vues :</b> {% block view %}{% endblock %}</p>
     </section>
 
     <hr class="bg-orange">
