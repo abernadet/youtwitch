@@ -122,9 +122,6 @@ main{
 
 .burger{display: none;}
 
-nav {
-
-}
 .nav-burger{
     display: none;
     z-index: 1;
@@ -355,8 +352,13 @@ input:focus{
 :-moz-placeholder { /* Firefox 18- */
     color: #d4d4d4;
 }
+
+#toggle-chat{
+    border-radius: .25rem .25rem 0 0;
+    overflow: hidden;
+}
 /*Fin Chat*/
->>>>>>> 44ca7821e3ede4d83e60576e94a7c2619322ee68
+
 
 @media (max-width: 576px){
     /*On cache le menu et on fait apparaitre l'icone burger */

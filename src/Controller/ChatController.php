@@ -35,23 +35,26 @@ class ChatController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($chat);
             $entityManager->flush();
-            //return $this->redirectToRoute('chat-add');
 
 
         $user = $this->getUser();
         $repository = $this->getDoctrine()->getRepository(Chat::class);
-        $chats = $repository->findAll();
-        dump($chats);
+        $chats = $repository->findBy([], ['date_envoie' => 'DESC'], 20);
+        $chats = array_reverse($chats);
 
         return $this->render('chat/resultchat.html.twig', array('chats'=> $chats));
     }
+
     /**
-     * @Route("/chat/", name="chat")
+     * @Route("/chat/display", name="chat-display")
      */
-    /*public function retourneMessage(){
-        $user = $this->getUser();
+    public function displayChat(){
+
         $repository = $this->getDoctrine()->getRepository(Chat::class);
-        $chats = $repository->find($user->getUsername());
+        $chats = $repository->findBy([], ['date_envoie' => 'DESC'], 20);
+        $chats = array_reverse($chats);
+
         return $this->render('chat/resultchat.html.twig', array('chats'=> $chats));
-    }*/
+
+    }
 }

@@ -1,3 +1,5 @@
 {% for chat in chats %}
-    <li>{{ chat.message }} <span class="font-weight-light font-italic">({{ chat.user.username }} le {{ chat.dateenvoie|date('d/m/Y') }} à {{ chat.dateenvoie|date('H:i:s') }})</span></li>
+
+    <li class="my-1"><strong>{{ chat.user.username }} :</strong><span> {{ chat.message }} </span><span class="font-weight-light font-italic">{{ chat.dateenvoie|date('H:i:s') }}</span></li>
+
 {% endfor %}

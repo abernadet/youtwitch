@@ -1,16 +1,20 @@
 <div class="chat">
-    <a class="btn btn-orange" data-toggle="collapse" href="#chat" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <a id="toggle-chat" class="btn btn-orange" data-toggle="collapse" href="#chat" role="button" aria-expanded="false" aria-controls="collapseExample">
         Discussion instantanée
     </a>
-    <div class="col-4 col-sm-3 col-sm-offset-4 frame" id="chat">
-        <ul class="ul-chat" id="result-chat"></ul>
+    <div class="col-4 col-sm-3 col-sm-offset-4 frame collapse" id="chat">
+
+        <ul class="ul-chat" id="result-chat">
+
+        </ul>
+
         <div>
-            <div class="msj-rta macro">
+            <form class="msj-rta macro">
                 <div class="text text-r d-flex flex-nowrap" style="background:whitesmoke !important">
                     <input class="mytext" name="message" placeholder="Type a message" id="message"/>
                 </div>
                 <button type="submit" id="action" class="btn btn-outline-orange">Envoyer</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
