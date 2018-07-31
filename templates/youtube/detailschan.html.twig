@@ -6,15 +6,40 @@
 
     {% for detail in details %}
 
-        <a href="https://www.youtube.com/channel/{{ channelId }}" target="_blank"><img src="{{ detail.snippet.thumbnails.default.url }}" style="padding-top: 5px"></a>
-        <a href="https://www.youtube.com/channel/{{ channelId }}" target="_blank"><h3>{{ detail.snippet.title }}</h3></a><br>
-        Membres depuis le : {{ detail.snippet.publishedAt|date('d M Y') }}
-        <hr>
+        <section class="d-flex justify-content-center">
+            <a href="https://www.youtube.com/channel/{{ channelId }}" target="_blank" class="mr-5"><img src="{{ detail.snippet.thumbnails.default.url }}" style="padding-top: 5px"></a>
+            <a href="https://www.youtube.com/channel/{{ channelId }}" target="_blank" class="align-self-center titleOrange"><h3>{{ detail.snippet.title }}</h3></a><br>
+        </section>
+        <br>
+        <section class="d-flex justify-content-center">
+            <p class="mr-3"><b>Membres depuis le :</b> {{ detail.snippet.publishedAt|date('d M Y') }}</p>
+            <p class="mr-3"><b>Vues totales :</b> {{ detail.statistics.viewCount|number_format(0, '', ' ') }}</p>
+            <p class="mr-3"><b>Nombre d'abonnés :</b> {{ detail.statistics.subscriberCount|number_format(0, '', ' ') }}</p>
+            <p class="mr-3"><b>Nombre totale de vidéos :</b> {{ detail.statistics.videoCount }}</p>
+        </section><hr class="bg-orange">
 
-        <b>Vues totales: {{ detail.statistics.viewCount|number_format(0, '', ' ') }}</b> || <b>Nombre d'abonnés : {{ detail.statistics.subscriberCount|number_format(0, '', ' ') }}</b> || Nombre totale de vidéos : {{ detail.statistics.videoCount }}<hr>
     {% endfor %}
-    <h6>Les dernieres vidéos :</h6>
-    {% for detail2 in details2 %}
-        <a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}"><img src="{{ detail2.snippet.thumbnails.medium.url }}" style="padding-bottom: 5px"></a>&nbsp
-    {% endfor %}
+
+    <h6 class="text-center mb-4 font-italic titleFont">Les dernieres vidéos :</h6>
+    <section class="d-flex justify-content-around flex-wrap">
+        {% for detail2 in details2 %}
+
+            <div class="grid">
+                <figure class="effect-duke">
+                    <img src="{{ detail2.snippet.thumbnails.medium.url }}" class="zoom" style="padding-bottom: 5px">
+                    <figcaption>
+                        <p>{{ detail2.snippet.title|slice(0, 35) }}<br>{% for detail3 in details3 %}{{ detail3.statistics.viewCount|number_format(0, '', ' ') }} vues{% endfor %}</p>
+                        <a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
+
+            {#<a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}" class="lien">
+                <div class="mb-3">
+                    <img src="{{ detail2.snippet.thumbnails.medium.url }}" class="zoom" style="padding-bottom: 5px">
+                    <h6>{{ detail2.snippet.title|slice(0, 35) }}...</h6>
+                </div>
+            </a>#}
+        {% endfor %}
+    </section>
 {% endblock %}

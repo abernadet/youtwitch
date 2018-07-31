@@ -18,7 +18,36 @@
             </a>
         {% endif %}
 
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <div class="container">
+            <div class="d-flex justify-content-around">
+                <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search" id="check2">
+                <i class="fas fa-search isize ml-3"></i>
+            </div>
+        </div>
+        {% block js %}
+            <script>
+                $('body').on('keyup','#check2',function(e){
+                    e.preventDefault();
+                    var url2 = "{{  path('Ysearch',{terme:'exemple'}) }}";
+                    console.log(url2);
+                    url2 = url2.replace('exemple',$('#check2').val());
+                    console.log(url2);
+
+                    $.ajax({
+                        type:'get',
+                        url:url2,
+                        timeout:'3000',
+                        dataType:'html',
+                        success: function(data){
+                            $('#resultYoutube').html(data);
+                        },
+                        error: function (error){
+                            console.log(error.responseText);
+                        }
+                    })
+                })
+            </script>
+        {% endblock %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a class="btn btn-orange my-2 my-sm-0 mr-3 ml-3" href="{{ path('logout') }}">Déconnexion</a>
@@ -60,9 +89,10 @@
 
     <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted"><i style="color:green" class="mr-1 fas fa-circle"></i>Maintenant en live sur Twitch !</h6>
 
-    <ul class="nav flex-column mb-2">
 
-        {#{% for follow in follows %}
+    {#<ul id="twitch-scrollbar" class="nav flex-column flex-nowrap mb-2 scrollbar">
+
+        {% for follow in follows %}
 
             {% if follow.id in streams_user_id %}
                 <a class="twitch-sidebar-link" href="{{ path('twitch-stream', {'login': follow.login, 'display_name': follow.display_name}) }}">
@@ -73,9 +103,18 @@
                 </a>
             {% endif %}
 
-        {% endfor %}#}
+        {% endfor %}
 
-    </ul>
+    </ul>#}
+
+
+    {# Chaines suivies hors ligne #}
+    <a id="offline-users-dropdown" href="#">
+        <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted-bis">
+            Hors ligne
+            <i class="fas fa-angle-down mr-2 dropdown-icon"></i>
+        </h6>
+    </a>
     <div class="mt-5"  style="font-family: 'Rock Salt', cursive;">
         <ul class="nav flex-column mt-3">
             <li class="nav-item">
