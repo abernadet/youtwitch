@@ -122,6 +122,9 @@ main{
 
 .burger{display: none;}
 
+nav {
+
+}
 .nav-burger{
     display: none;
     z-index: 1;
@@ -132,6 +135,21 @@ main{
     background-color: #DF691A;
     border-color: #c6c8ca;
     opacity: 0.8;
+}
+
+.searchDiv{
+    z-index: 1;
+    width: 60%;
+    top : 60px;
+    position: absolute;
+    text-align: left;
+    right: 300px;
+    color: #DF691A;
+}
+
+.isize{
+    font-size: 2rem!important;
+    color: #DF691A;
 }
 
 .link-no-style{
@@ -338,6 +356,7 @@ input:focus{
     color: #d4d4d4;
 }
 /*Fin Chat*/
+>>>>>>> 44ca7821e3ede4d83e60576e94a7c2619322ee68
 
 @media (max-width: 576px){
     /*On cache le menu et on fait apparaitre l'icone burger */
