@@ -4,56 +4,34 @@
 
 {% block content %}
 
-    <section id="result">
-        
-    </section>
+    <section id="result"></section>
 
 {% endblock %}
 
 {% block js %}
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-<script>
-    $(function(){
+    <script>
+        $(function(){
 
-        $.ajax({
-            type: 'post',
-            url: "{{ path('twitch') }}",
-            dataType: 'html',
-            timeout: 10000,
-            success: function (data) {
-                $('#result').html(data);
-            },
-            error: function (error) {
-                console.log(error.responseText)
-            }
-        })
-        
-        $('body').on('click', '#twitch', function(e) {
-            e.preventDefault();
-            var url = "{{ path('twitch') }}"; // On génère la route que l'on stocke dans une variable js
-
-            $.ajax({
-                type: 'post',
-                url: url,
-                dataType: 'html',
-                timeout: 10000,
-                success: function (data) {
-                    $('#result').html(data);
-                },
-                error: function (error) {
-                    console.log(error.responseText)
-                }
-            })
-        })
-
-        $('body').on('click', '#youtube', function(e) {
-            e.preventDefault();
+            /**** On charge sur la page youtube Ajax directment *****/
             var url = "{{ path('youtube') }}"; // On génère la route que l'on stocke dans une variable js
-
             $.ajax({
                 type: 'post',
                 url: url,
+                success: function (data) {
+                    $('#result').html(data);
+                },
+                error: function (error) {
+                    console.log(error.responseText)
+                }
+            })
+
+            /**** Laisser en commentaire, pour eviter un double chargement de page sur l'jax twitch****/
+           /* $.ajax({
+                type: 'post',
+                url: "{#{{ path('twitch') }}", --ATTTENTION COMMENTAIRE TWIG-- #}
+
                 dataType: 'html',
                 timeout: 10000,
                 success: function (data) {
@@ -62,9 +40,44 @@
                 error: function (error) {
                     console.log(error.responseText)
                 }
+            })*/
+
+            $('body').on('click', '#twitch', function(e) {
+                e.preventDefault();
+                var url = "{{ path('twitch') }}"; // On génère la route que l'on stocke dans une variable js
+
+                $.ajax({
+                    type: 'post',
+                    url: url,
+                    dataType: 'html',
+                    timeout: 10000,
+                    success: function (data) {
+                        $('#result').html(data);
+                    },
+                    error: function (error) {
+                        console.log(error.responseText)
+                    }
+                })
+            })
+
+            $('body').on('click', '#youtube', function(e) {
+                e.preventDefault();
+                var url = "{{ path('youtube') }}"; // On génère la route que l'on stocke dans une variable js
+
+                $.ajax({
+                    type: 'post',
+                    url: url,
+                    dataType: 'html',
+                    timeout: 10000,
+                    success: function (data) {
+                        $('#result').html(data);
+                    },
+                    error: function (error) {
+                        console.log(error.responseText)
+                    }
+                })
             })
         })
-    })
-</script>
+    </script>
 {% endblock %}
 

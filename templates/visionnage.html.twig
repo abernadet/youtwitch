@@ -4,70 +4,80 @@
 
 {% block titlepage %}
 
-{% if app.request.get('player') == "twitch" %}
-    {{ app.request.get('display_name') }}
-{% endif %}
+    {% if app.request.get('player') == "twitch" %}
+        {{ app.request.get('display_name') }}
+    {% endif %}
 
 {% endblock %}
 
 {% block content %}
 
+    <section class="d-flex justify-content-center">
+        <h3 class="titleFont">{% block titleLive %}{% endblock %}</h3><br>
+    </section>
+
+    <section class="d-flex justify-content-center">
+        <p class="font-italic font-weight-bold"><a href="#" class="mr-5 lien">{% block chanelName %}{% endblock %}</a></p>
+        <p><b>Vues :</b> {% block view %}{% endblock %}</p>
+    </section>
+
+    <hr class="bg-orange">
     {% block video %}
 
     {% endblock %}
+    <hr class="bg-orange">
 
     {% if clips.clips is empty %}
-
-        <h5 class="text-muted h-150 m-5 p-5">Aucun clip récent</h5>
-    
+        <h5 class="text-muted h-150 m-5 p-5 ss-titre">Aucun clip récent</h5>
     {% else %}
+        <h5 class="ml-4 mt-5 mb-2 ss-titre">Clips de la semaine : </h5>
+        <div class="d-flex justify-content-between mb-3 flex-wrap">
+            {% for clip in clips.clips %}
 
-    <h5 class="ml-4 mb-3">Clips de la semaine : </h5>
-    <div class="d-flex justify-content-between mb-3">
+                <div class="grid">
+                    <figure class="effect-duke">
+                        <img src="{{ clip.thumbnails.small }}" alt="miniature du clip">
+                        <figcaption>
+                            <p>{{ clip.game|slice(0, 35) }} <br> le {{ clip.created_at|date('d M') }}</p>
+                            <a href="{{ path('twitch-clip', {'login': login, 'slug': clip.slug}) }}">View more</a>
+                        </figcaption>
+                    </figure>
+                </div>
 
-
-    
-        {% for clip in clips.clips %}
-
-        <div class="d-flex flex-column">
-            <a href="{{ path('twitch-clip', {'login': login, 'slug': clip.slug}) }}">
-                <img src="{{ clip.thumbnails.small }}" alt="miniature du clip">
-            </a>
-            <h6 class="text-muted w-260">{{ clip.game }} <br> le {{ clip.created_at|date('d M') }}</h6>
-        </div>   
-
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
     {% endif %}
-    
 
-    <hr>
+
+    <hr class="bg-orange">
 
     {% if replays is empty %}
 
-        <h5 class="text-muted h-150 m-5 p-5">Aucun replay récent</h5>
+        <h5 class="text-muted h-150 m-5 p-5 ss-titre">Aucun replay récent</h5>
 
     {% else %}
 
-    <h5 class="ml-4
-    mb-3">Replays récents : </h5>
-    <div class="d-flex justify-content-between mb-3">
+        <h5 class="ml-4 mt-5 mb-2 ss-titre">Replays récents : </h5>
+        <div class="d-flex justify-content-between mb-3 flex-wrap miniature">
 
-        {% for replay in replays %}
+            {% for replay in replays %}
 
-        <div class="d-flex flex-column">
-            <a href="{{ path('twitch-video', {'vid_id': replay.id, 'login': login}) }}">
-                <img src="{{ replay.thumbnail_url }}" alt="miniature du clip">
-            </a>
-            <h6 class="text-muted w-260">Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</h6>
-        </div>   
+                <div class="grid">
+                    <figure class="effect-duke">
+                        <img src="{{ replay.thumbnail_url }}" alt="miniature du clip">
+                        <figcaption>
+                            <p>Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</p>
+                            <a href="{{ path('twitch-video', {'vid_id': replay.id, 'login': login}) }}">View more</a>
+                        </figcaption>
+                    </figure>
+                </div>
 
-        {% endfor %}
+            {% endfor %}
 
-    </div>
+        </div>
     {% endif %}
 {% endblock %}
 
 {% block js %}
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 {% endblock %}
