@@ -73,6 +73,11 @@
     font-family: 'Permanent Marker', cursive;
 }
 
+.titleForm{
+    color: #DF691A;
+    font-family: 'Permanent Marker', cursive;
+}
+
 .titleOrange:hover{
     color: #343a40;
     text-decoration: none;
