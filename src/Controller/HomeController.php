@@ -61,8 +61,10 @@ class HomeController extends Controller
         }else{
             $clips = [];
         }
-
-        $user_id = $twitch_api->getUserIdFromLogin($login);
+        
+        $user_data =$twitch_api->getUserFromLogin($login);
+        $user_id = $user_data->data[0]->id;
+        $user_display_name = $user_data->data[0]->display_name;
 
         $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
 
@@ -80,6 +82,7 @@ class HomeController extends Controller
         return $this->render('video_player/twitch_stream.html.twig', [
             'clips' => $clips,
             'login' => $login,
+            'display_name' => $user_display_name,
             'replays' => $replay_tab,
             'stream_data' => $stream_data->data[0]
         ]);
