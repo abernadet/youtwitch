@@ -1,5 +1,9 @@
 {% extends 'visionnage.html.twig' %}
 
+{% block chanelName %}{{ display_name }}{% endblock %}
+{% block titleLive %}{{ video_data.title }}{% endblock %}
+{% block view %}{{ video_data.view_count }}{% endblock %}
+
 {% block video %}
 {% if vid_id %}
 

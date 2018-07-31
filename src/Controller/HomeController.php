@@ -129,7 +129,8 @@ class HomeController extends Controller
             'login' => $login,
             'clips' => $clips,
             'replays' => $replay_tab,
-            'display_name' => $user_display_name
+            'display_name' => $user_display_name,
+            'clip_data' => $clip_data
         ]);
     }
 
