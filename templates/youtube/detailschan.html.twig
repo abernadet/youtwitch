@@ -3,7 +3,6 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-
     {% for detail in details %}
 
         <a href="https://www.youtube.com/channel/{{ channelId }}" target="_blank"><img src="{{ detail.snippet.thumbnails.default.url }}" style="padding-top: 5px"></a>
@@ -14,7 +13,11 @@
         <b>Vues totales: {{ detail.statistics.viewCount|number_format(0, '', ' ') }}</b> || <b>Nombre d'abonnés : {{ detail.statistics.subscriberCount|number_format(0, '', ' ') }}</b> || Nombre totale de vidéos : {{ detail.statistics.videoCount }}<hr>
     {% endfor %}
     <h6>Les dernieres vidéos :</h6>
-    {% for detail2 in details2 %}
-        <a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}"><img src="{{ detail2.snippet.thumbnails.medium.url }}" style="padding-bottom: 5px"></a>&nbsp
-    {% endfor %}
+    {% for key, detail2 in details2 %}
+        <a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}">
+            <img src="{{ detail2.snippet.thumbnails.medium.url }}" style="padding-bottom: 5px">
+        </a>&nbsp
+        {% set viewCount = details3[key].0.statistics.viewCount %}
+        {{ viewCount }}
+    {%  endfor %}
 {% endblock %}

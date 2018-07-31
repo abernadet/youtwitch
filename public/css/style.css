@@ -137,20 +137,27 @@ nav {
     opacity: 0.8;
 }
 
+
+/**** Style de la div de recherche ***/
 .searchDiv{
     z-index: 1;
-    width: 60%;
-    top : 60px;
+    width: 67%;
+    top: 60px;
     position: absolute;
     text-align: left;
-    right: 300px;
+    right: 270px;
     color: #DF691A;
 }
-
+.w-66{
+    width: 66%!important;
+}
 .isize{
     font-size: 2rem!important;
     color: #DF691A;
+    right:5.3rem;
+    position: relative;
 }
+/**** Fin de la div de recherche ***/
 
 .link-no-style{
     color: black;
@@ -349,7 +356,6 @@ input:focus{
     color: #d4d4d4;
 }
 /*Fin Chat*/
->>>>>>> 44ca7821e3ede4d83e60576e94a7c2619322ee68
 
 @media (max-width: 576px){
     /*On cache le menu et on fait apparaitre l'icone burger */

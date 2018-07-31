@@ -10,19 +10,18 @@
                 <img src="{{ asset('img/logo.png') }}" alt="Logo" title="Logo" class="w-50">
             </a>
         {% endif %}
-        <div class="container">
-            <div class="d-flex justify-content-around">
-                <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" id="check2"><i class="fas fa-search isize"></i>
 
-            </div>
-        </div>
+                <input class="form-control form-control-dark w-66" type="text" placeholder="Search" aria-label="Search" id="check2">
+                <a href="{{  path('Ysearch',{terme:'exemple1'}) }}"><i class="fas fa-search isize"></i></a>
+
         {% block js %}
             <script>
                 $('body').on('keyup','#check2',function(e){
                     e.preventDefault();
-                    var url2 = "{{  path('Ysearch',{terme:'exemple'}) }}";
+                    var url2 = "{{  path('YsearchBar',{terme:'exemple'}) }}";
                     console.log(url2);
                     url2 = url2.replace('exemple',$('#check2').val());
+                    url2 = url2.replace(/ /g, '+');
                     console.log(url2);
 
                     $.ajax({
@@ -37,6 +36,19 @@
                             console.log(error.responseText);
                         }
                     })
+                        /*var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                            sURLVariables = sPageURL.split('&'),
+                            sParameterName,
+                            i;
+
+                        for (i = 0; i < sURLVariables.length; i++) {
+                            sParameterName = sURLVariables[i].split('=');
+
+                            if (sParameterName[0] === 'terme') {
+                                str.replace('exemple1',$('#check2').val())
+                                return sParameterName[1] === undefined ? true : sParameterName[1];
+                            }
+                        }*/
                 })
             </script>
         {% endblock %}

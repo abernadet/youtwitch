@@ -48,12 +48,38 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
 
 
     /**
+     * @Route("/youtube/searchBar/{terme}", name="YsearchBar")
+     */
+    public function searchBar($terme)
+    {
+
+        $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=$terme&type=channel&key=$this->Gkey";
+
+        try {
+            $json = file_get_contents($url);
+            $obj = json_decode($json);
+            $results = $obj->items;
+        } catch (\Exception $e) {
+            $results = [];
+
+        }
+        if (empty($results)){
+            $text='c\'est vide';
+        }else{
+            $text = 'ya un truc';
+        }
+        return $this->render('youtube/searchresult.html.twig', [
+            'results' => $results, 'url' => $url,'text'=>$text
+        ]);
+    }
+
+    /**
      * @Route("/youtube/search/{terme}", name="Ysearch")
      */
     public function search($terme)
     {
 
-        $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=$terme&type=channel&key=$this->Gkey";
+        $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=$terme&type=channel&key=$this->Gkey";
 
         try {
             $json = file_get_contents($url);
@@ -96,19 +122,44 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
             $obj2 = json_decode($json2);
 
             $details2 = $obj2->items;
+            foreach($details2 as $detail2){
+                $idVideos[] = $detail2->snippet->resourceId->videoId;
+            }
+            //dump($idVideos);
+            //$idVideos = $obj2->items[0]->snippet->resourceId->videoId;
 
-
+            //dump($idVideos);
         } catch (\Exception $e) {
             $details2 = [];
+            $idVideos[] = [];
 
         }
-        if (empty($details)){
+            foreach ($idVideos as $idVideo) {
+                $urls3[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideo&key=$this->Gkey";
+            }
+
+        try {
+            foreach ($urls3 as $url3) {
+                $json3 = file_get_contents($url3);
+                $obj3 = json_decode($json3);
+
+                $details3[] = $obj3->items;
+               // dump($details3);
+            }
+
+        } catch (\Exception $e) {
+            $details3 = [];
+
+        }
+
+
+        if (empty($details3)){
             $text='c\'est vide';
         }else{
             $text = 'ya un truc';
         }
         return $this->render('youtube/detailschan.html.twig', [
-            'details' => $details, 'url' => $url,'text'=>$text, 'details2'=>$details2,'channelId'=>$channelId
+            'details' => $details, 'url' => $url,'text'=>$text, 'details2'=>$details2,'channelId'=>$channelId,'details3'=>$details3
         ]);
     }
 
@@ -134,7 +185,7 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
             $text = 'ya un truc';
         }
         return $this->render('video_player/youtube_video.html.twig', [
-            'infoVideos' => $infoVideos, 'url' => $url,'text'=>$text
+            'infoVideos' => $infoVideos, 'url3' => $url,'text'=>$text
         ]);
     }
 

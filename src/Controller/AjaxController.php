@@ -10,11 +10,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class AjaxController extends Controller
 {
+    private $Ykey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
     /**
      * @Route("/user/ajax/twitch", name="twitch")
      */
     public function twitch(UserInterface $user, TwitchApiService $twitch_api, TextFormatService $text_format){
-        
+
         $displayed_follows = 3;
 
         $login = $user->getTwitchLogin();
@@ -39,16 +40,16 @@ class AjaxController extends Controller
 
             foreach($followed_users as $followed_user)
             {
-                
+
                 $clips_full = $twitch_api->getClipsFromChannel($followed_user->login, 'month', 4);
                 $clips[$followed_user->login] = $clips_full->clips;
                 $replays[$followed_user->login] = $twitch_api->getVideosFromChannel($followed_user->id, 'month', 4, 'time');
-                
+
                 $data[$followed_user->login] = [
-                    'clip_data' => $clips[$followed_user->login], 
-                    'replay_data' => $replays[$followed_user->login]->data, 
-                    'display_name' => $followed_user->display_name, 
-                    'user_id' => $followed_user->id, 
+                    'clip_data' => $clips[$followed_user->login],
+                    'replay_data' => $replays[$followed_user->login]->data,
+                    'display_name' => $followed_user->display_name,
+                    'user_id' => $followed_user->id,
                     'login' => $followed_user->login,
                 ];
 
@@ -57,8 +58,8 @@ class AjaxController extends Controller
                     $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
                 }
             }
-            
-            
+
+
         }
         else
         {
@@ -66,7 +67,7 @@ class AjaxController extends Controller
             $live_streams_user_id = null;
             $followed_users = null;
         }
-        
+
         return $this->render('ajax/twitch.html.twig', [
             'data' => $data,
             'streams_user_id' => $live_streams_user_id,
@@ -78,6 +79,30 @@ class AjaxController extends Controller
      * @Route("/user/ajax/youtube", name="youtube")
      */
     public function youtube(){
-        return $this->render('ajax/youtube.html.twig');
+        $dateJour = new \DateTime(date('Y-m-d'));
+        $dateJour = $dateJour->format('Y-m-d');
+        $dateHier = new \DateTime(date('Y-m-d'));
+        $dateHier=$dateHier->modify('-1 day');
+        $dateHier=$dateHier->format('Y-m-d');
+
+        $urlLasteDay = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&order=viewCount&publishedAfter=".$dateHier."T00%3A00%3A00Z&publishedBefore=".$dateJour."T00%3A00%3A00Z&key=$this->Ykey";
+        $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&order=viewCount&publishedAfter=1900-01-01T00%3A00%3A00Z&key=$this->Ykey";
+        try {
+                $json = file_get_contents($urlLasteDay);
+                $obj = json_decode($json);
+                $BestYVids = $obj->items;
+            } catch (\Exception $e) {
+                $BestYVids = [];
+
+            }
+            if (empty($BestYVids)){
+                $text='c\'est vide';
+            }else{
+                $text = 'ya un truc';
+            }
+        return $this->render('ajax/youtube.html.twig',[
+            'BestYvids'=>$BestYVids,
+            'urlLasteDay'=>$urlLasteDay
+        ]);
     }
 }
