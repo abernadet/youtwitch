@@ -18,22 +18,27 @@
         {% for follow_data in data %}
 
         <section class="followed-user d-flex mt-5">
-            <div class="col-md-2">
-                <a class="link-no-style" href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">
-                    <h4>
-                        {% if follow_data.user_id in streams_user_id %}
-                            <i style="color:green" class="mr-1 fas fa-circle"></i>
-                        {% endif %}
-                        {{ follow_data.display_name }}
-                    </h4>
 
-                    {% for user in followed_users %}
-                        {% if user.login is same as(follow_data.login) %}
-                            <img  width="150" height="150" src="{{ user.profile_image_url }}" alt="Image de profil de {{ user.display_name }}">
-                        {% endif %}
-                    {% endfor %}
-                </a>
+            <div class="col-md-2 d-flex flex-column justify-content-center">
+                <div class="center-on-img">
+                    <a class="link-no-style" href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">
+                        <h4>
+                            {% if follow_data.user_id in streams_user_id %}
+                                <i style="color:green" class="mr-1 fas fa-circle"></i>
+                            {% endif %}
+                            {{ follow_data.display_name }}
+                        </h4>
+
+                        {% for user in followed_users %}
+                            {% if user.login is same as(follow_data.login) %}
+                                <img  width="150" height="150" src="{{ user.profile_image_url }}" alt="Image de profil de {{ user.display_name }}">
+                            {% endif %}
+                        {% endfor %}
+                    </a>
+                </div>
             </div>
+
+
             <div class="col-md-10 d-flex flex-column">
                 <div>
                     

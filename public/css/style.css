@@ -147,6 +147,12 @@ main{
     height: 150px;
 }
 
+/* Page ajax twitch */
+.center-on-img{
+    position: relative;
+    top: -28px;
+}
+
 /* NAV BAR */
 /* Scrollbar des abonnements Twitch */
 .scrollbar {
@@ -191,6 +197,7 @@ h6.d-inline.sidebar-heading.d-flex.justify-content-start.align-items-center.px-3
     left: 10px;
     top: 2px;
 }
+
 /*Chat*/
 body{
     position: relative;
