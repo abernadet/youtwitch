@@ -17,88 +17,98 @@
 
         {% for follow_data in data %}
 
-        <section class="followed-user d-flex mt-5">
-            <div class="col-md-2">
-                <a class="link-no-style" href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">
-                    <h4>
-                        {% if follow_data.user_id in streams_user_id %}
-                            <i style="color:green" class="mr-1 fas fa-circle"></i>
-                        {% endif %}
-                        {{ follow_data.display_name }}
-                    </h4>
+            <section class="followed-user d-flex mt-5">
 
-                    {% for user in followed_users %}
-                        {% if user.login is same as(follow_data.login) %}
-                            <img  width="150" height="150" src="{{ user.profile_image_url }}" alt="Image de profil de {{ user.display_name }}">
-                        {% endif %}
-                    {% endfor %}
-                </a>
-            </div>
-            <div class="col-md-10 d-flex flex-column">
-                <div>
-                    
-                    {# Clips récents pour chaque streamer #}
-                    {% if follow_data.clip_data is empty %}
+                <div class="col-md-2 d-flex flex-column align-self-start">
+                    <a class="titleOrange" href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">
+                        <h4>
+                            {% if follow_data.user_id in streams_user_id %}
+                                <i style="color:green" class="mr-1 fas fa-circle"></i>
+                            {% endif %}
+                            {{ follow_data.display_name }}
+                        </h4>
 
-                        <h5 class="text-muted mb-5 h-150">Aucun clip récent</h5>
+                        {% for user in followed_users %}
+                            {% if user.login is same as(follow_data.login) %}
+                                <img  width="150" height="150" src="{{ user.profile_image_url }}" alt="Image de profil de {{ user.display_name }}">
+                            {% endif %}
+                        {% endfor %}
+                    </a>
+                </div>
 
-                    {% else %}
 
-                        <h5 class="mb-3">Clips récents : </h5>
-                        <div class="d-flex justify-content-around flex-wrap mb-3">
+                <div class="col-md-10 d-flex flex-column">
+                    <div>
 
-                            
+                        {# Clips récents pour chaque streamer #}
+                        {% if follow_data.clip_data is empty %}
 
-                            {% for clip in follow_data.clip_data %}
-                                
-                                <div class="d-flex flex-column">
-                                    <a href="{{ path('twitch-clip', {'login': follow_data.login, 'slug': clip.slug}) }}">
-                                        <img src="{{ clip.thumbnails.small }}" alt="Miniature du clip">
-                                    </a>
-                                    <h6 class="text-muted w-260">{{ clip.game }} <br> le {{ clip.created_at|date('d M') }}</h6>
-                                </div>
+                            <h5 class="text-muted mb-5 h-150">Aucun clip récent</h5>
 
-                            {% endfor %}
+                        {% else %}
 
-                        </div>
+                            <h5 class="mb-3">Clips récents : </h5>
+                            <div class="d-flex justify-content-around flex-wrap mb-3">
 
-                    {% endif %}
 
-                    {# Replays récents pour chaque streamer #}
 
-                    {% if follow_data.replay_data is empty %}
+                                {% for clip in follow_data.clip_data %}
 
-                        <h5 class="text-muted mb-5 h-150">Aucun replay récent</h5>
+                                    <div class="grid">
+                                        <figure class="effect-duke">
+                                            <img src="{{ clip.thumbnails.small }}" alt="Miniature du clip">
+                                            <figcaption>
+                                                <p>{{ clip.game|slice(0, 35) }} <br> le {{ clip.created_at|date('d M') }}</p>
+                                                <a href="{{ path('twitch-clip', {'login': follow_data.login, 'slug': clip.slug}) }}">View more</a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
 
-                    {% else %}
+                                {% endfor %}
 
-                        <h5 class="mb-3">Replays récents :</h5>
-                        <div class="d-flex justify-content-around flex-wrap mb-3">
-
-                            {% for replay in follow_data.replay_data %}
-
-                            <div class="d-flex flex-column">
-                                <a href="{{ path('twitch-video', {'login': follow_data.login, 'vid_id': replay.id}) }}">
-
-                                    {% if replay.thumbnail_url is empty %}
-                                    <div style="background-color:black;width:260px;height:147px"></div>
-                                    {% else %}
-                                    <img src="{{ replay.thumbnail_url }}" alt="Miniature du replay">
-                                    {% endif %}
-                                </a>
-                                <h6 class="text-muted w-260">Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</h6>
                             </div>
 
-                            {% endfor %}
+                        {% endif %}
 
-                        </div>
+                        {# Replays récents pour chaque streamer #}
 
-                    {% endif %}
+                        {% if follow_data.replay_data is empty %}
 
+                            <h5 class="text-muted mb-5 h-150">Aucun replay récent</h5>
+
+                        {% else %}
+
+                            <h5 class="mb-3">Replays récents :</h5>
+                            <div class="d-flex justify-content-around flex-wrap mb-3">
+
+                                {% for replay in follow_data.replay_data %}
+
+                                    <div class="grid">
+                                        <figure class="effect-duke">
+                                            {% if replay.thumbnail_url is empty %}
+                                                <div style="background-color:black;width:260px;height:147px"></div>
+                                            {% else %}
+                                                <img src="{{ replay.thumbnail_url }}" alt="Miniature du replay">
+                                            {% endif %}
+                                            <figcaption>
+                                                <p>Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</p>
+                                                <a href="{{ path('twitch-video', {'login': follow_data.login, 'vid_id': replay.id}) }}">View more</a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+
+                                {% endfor %}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
                 </div>
-            </div>
-        </section>
-    <hr>
+            </section>
+
+            <hr class="bg-orange">
+
         {% endfor %}
     </section>
 {% else %}

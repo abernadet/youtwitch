@@ -19,6 +19,16 @@ class ChatRepository extends ServiceEntityRepository
         parent::__construct($registry, Chat::class);
     }
 
+    public function searchUser()
+    {
+        $querybuilder = $this->createQueryBuilder('c')
+                             ->innerJoin('c.user', 'u')
+                             ->addSelect('u')
+                             ->orderBy('c.date_envoie', 'DESC')
+                             ->getQuery();
+        return $querybuilder->execute();
+    }
+
 //    /**
 //     * @return Chat[] Returns an array of Chat objects
 //     */

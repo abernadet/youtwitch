@@ -5,7 +5,11 @@
 {% block content %}
 
     <section id="result">
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 827b319a6e7e1952c34552545b2f9fd6d2446356
     </section>
 
 {% endblock %}
@@ -15,10 +19,17 @@
 
 <script>
     $(function(){
+<<<<<<< HEAD
         var url = "{{ path('youtube') }}"; // On génère la route que l'on stocke dans une variable js
         $.ajax({
             type: 'post',
             url: url,
+=======
+
+        $.ajax({
+            type: 'post',
+            url: "{{ path('twitch') }}",
+>>>>>>> 827b319a6e7e1952c34552545b2f9fd6d2446356
             dataType: 'html',
             timeout: 10000,
             success: function (data) {
@@ -28,7 +39,11 @@
                 console.log(error.responseText)
             }
         })
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 827b319a6e7e1952c34552545b2f9fd6d2446356
         $('body').on('click', '#twitch', function(e) {
             e.preventDefault();
             var url = "{{ path('twitch') }}"; // On génère la route que l'on stocke dans une variable js

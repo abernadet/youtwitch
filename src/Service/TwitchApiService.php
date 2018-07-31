@@ -20,7 +20,23 @@ class TwitchApiService
         $json_result = file_get_contents($url, false, $context);
         $result = json_decode($json_result);
 
-        dump($result);
+        return $result;
+    }
+
+    public function getLiveStreamFromLogin($login)
+    {
+        $url = 'https://api.twitch.tv/helix/streams?user_login='.$login;
+
+        //Option de requête
+        $opts = [
+            "http" => [
+                "method" => "GET",
+                "header" => "Client-ID: ".$this->client_id
+            ]
+        ];
+        $context = stream_context_create($opts);
+        $json_result = file_get_contents($url, false, $context);
+        $result = json_decode($json_result);
 
         return $result;
     }

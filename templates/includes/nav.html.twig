@@ -17,11 +17,6 @@
                     <i class="fas fa-user-tie"></i> Mon profil
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('chat') }}">
-                    <i class="fas fa-user-tie"></i> Chat
-                </a>
-            </li>
             {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{ path('admin')}}">
@@ -41,10 +36,15 @@
         </h5>
             
             {# Chaines suivies en ligne #}
-        <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted"><i style="color:green" class="mr-1 fas fa-circle"></i>Maintenant en live sur Twitch !</h6>
-        
+        <a id="online-users-dropdown" href="#">
+            <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted-bis">
+                <i style="color:green" class="mr-1 fas fa-circle"></i>
+                    En live sur Twitch !
+                <i class="fas fa-angle-down mr-2 dropdown-icon"></i>
+            </h6>
+        </a>
 
-        <ul id="twitch-scrollbar" class="nav flex-column flex-nowrap mb-2 scrollbar">
+        <ul id="twitch-scrollbar" class="online-users nav flex-column flex-nowrap mb-2 scrollbar">
             
         {% for follow in follows %}
 
@@ -104,6 +104,7 @@
 </nav>
 <script>
 $(function(){
+
     $('#offline-users-dropdown').on('click', function(e){
         e.preventDefault();
         if ($('#offline-users').css('display') === "none") {
@@ -112,6 +113,16 @@ $(function(){
             $('#offline-users').css('display', 'none');
         }
     })
+
+    $('#online-users-dropdown').on('click', function(e){
+        e.preventDefault();
+        if ($('.online-users').css('display') === "none") {
+            $('.online-users').css('display', 'block');
+        } else {
+            $('.online-users').css('display', 'none');
+        }
+    })
+
 })
 </script>
 {# Fin Nav #}

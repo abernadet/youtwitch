@@ -128,6 +128,7 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
             //dump($idVideos);
             //$idVideos = $obj2->items[0]->snippet->resourceId->videoId;
 
+<<<<<<< HEAD
             //dump($idVideos);
         } catch (\Exception $e) {
             $details2 = [];
@@ -146,14 +147,35 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
                 $details3[] = $obj3->items;
                // dump($details3);
             }
+=======
+            $idVideo = $obj2->items[0]->snippet->resourceId->videoId;
+
+        } catch (\Exception $e) {
+            $details2 = [];
+            $idVideo = [];
+
+        }
+
+        $url3 = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideo&key=$this->Gkey";
+        try {
+            $json3 = file_get_contents($url3);
+            $obj3 = json_decode($json3);
+
+            $details3 = $obj3->items;
+
+>>>>>>> 827b319a6e7e1952c34552545b2f9fd6d2446356
 
         } catch (\Exception $e) {
             $details3 = [];
 
         }
 
+<<<<<<< HEAD
 
         if (empty($details3)){
+=======
+        if (empty($details)){
+>>>>>>> 827b319a6e7e1952c34552545b2f9fd6d2446356
             $text='c\'est vide';
         }else{
             $text = 'ya un truc';

@@ -10,10 +10,19 @@
                 <img src="{{ asset('img/logo.png') }}" alt="Logo" title="Logo" class="w-50">
             </a>
         {% endif %}
+<<<<<<< HEAD
 
                 <input class="form-control form-control-dark w-66" type="text" placeholder="Search" aria-label="Search" id="check2">
                 <a href="{{  path('Ysearch',{terme:'exemple1'}) }}"><i class="fas fa-search isize"></i></a>
 
+=======
+        <div class="container">
+            <div class="d-flex justify-content-around">
+                <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search" id="check2">
+                <i class="fas fa-search isize ml-3"></i>
+            </div>
+        </div>
+>>>>>>> 827b319a6e7e1952c34552545b2f9fd6d2446356
         {% block js %}
             <script>
                 $('body').on('keyup','#check2',function(e){

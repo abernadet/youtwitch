@@ -47,16 +47,6 @@ class HomeController extends Controller
         ]);
     }
 
-    /*
-     * @Route("/twitch", name="twitch")
-     */
-    /*public function twitch()
-    {
-        return $this->render('twitch.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }*/
-
     /**
      * @Route("/user/twitch_stream", name="twitch-stream")
      */
@@ -71,26 +61,30 @@ class HomeController extends Controller
         }else{
             $clips = [];
         }
-
-        $user_id = $twitch_api->getUserIdFromLogin($login);
+        
+        $user_data =$twitch_api->getUserFromLogin($login);
+        $user_id = $user_data->data[0]->id;
+        $user_display_name = $user_data->data[0]->display_name;
 
         $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
 
         $replay_tab = $replays->data;
-
-
 
         foreach($replay_tab as $replay)
         {
             $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
         }
 
-        dump($replays); 
+        $stream_data = $twitch_api->getLiveStreamFromLogin($login);
+
+        dump($stream_data->data[0]); 
 
         return $this->render('video_player/twitch_stream.html.twig', [
             'clips' => $clips,
             'login' => $login,
-            'replays' => $replay_tab
+            'display_name' => $user_display_name,
+            'replays' => $replay_tab,
+            'stream_data' => $stream_data->data[0]
         ]);
     }
 
