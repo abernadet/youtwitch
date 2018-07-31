@@ -16,42 +16,22 @@
             <p class="mr-3"><b>Nombre d'abonnés :</b> {{ detail.statistics.subscriberCount|number_format(0, '', ' ') }}</p>
             <p class="mr-3"><b>Nombre totale de vidéos :</b> {{ detail.statistics.videoCount }}</p>
         </section><hr class="bg-orange">
-
-<<<<<<< HEAD
-        <b>Vues totales: {{ detail.statistics.viewCount|number_format(0, '', ' ') }}</b> || <b>Nombre d'abonnés : {{ detail.statistics.subscriberCount|number_format(0, '', ' ') }}</b> || Nombre totale de vidéos : {{ detail.statistics.videoCount }}<hr>
-    {% endfor %}
-    <h6>Les dernieres vidéos :</h6>
-    {% for key, detail2 in details2 %}
-        <a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}">
-            <img src="{{ detail2.snippet.thumbnails.medium.url }}" style="padding-bottom: 5px">
-        </a>&nbsp
-        {% set viewCount = details3[key].0.statistics.viewCount %}
-        {{ viewCount }}
-    {%  endfor %}
-=======
-    {% endfor %}
+{% endfor %}
 
     <h6 class="text-center mb-4 font-italic titleFont">Les dernieres vidéos :</h6>
     <section class="d-flex justify-content-around flex-wrap">
-        {% for detail2 in details2 %}
+        {% for key, detail2 in details2 %}
 
             <div class="grid">
                 <figure class="effect-duke">
                     <img src="{{ detail2.snippet.thumbnails.medium.url }}" class="zoom" style="padding-bottom: 5px">
                     <figcaption>
-                        <p>{{ detail2.snippet.title|slice(0, 35) }}<br>{% for detail3 in details3 %}{{ detail3.statistics.viewCount|number_format(0, '', ' ') }} vues{% endfor %}</p>
+                        <p>{{ detail2.snippet.title|slice(0, 35) }}<br>{% set viewCount = details3[key].0.statistics.viewCount %}
+                            {{ viewCount }} vues</p>
                         <a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}">View more</a>
                     </figcaption>
                 </figure>
             </div>
-
-            {#<a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}" class="lien">
-                <div class="mb-3">
-                    <img src="{{ detail2.snippet.thumbnails.medium.url }}" class="zoom" style="padding-bottom: 5px">
-                    <h6>{{ detail2.snippet.title|slice(0, 35) }}...</h6>
-                </div>
-            </a>#}
-        {% endfor %}
+        {%  endfor %}
     </section>
->>>>>>> 827b319a6e7e1952c34552545b2f9fd6d2446356
 {% endblock %}
