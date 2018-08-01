@@ -44,6 +44,11 @@ class Message
      */
     private $lu;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $sujet;
+
 
 
     public function getId()
@@ -108,6 +113,18 @@ class Message
     public function setLu(bool $lu): self
     {
         $this->lu = $lu;
+
+        return $this;
+    }
+
+    public function getSujet(): ?string
+    {
+        return $this->sujet;
+    }
+
+    public function setSujet(string $sujet): self
+    {
+        $this->sujet = $sujet;
 
         return $this;
     }

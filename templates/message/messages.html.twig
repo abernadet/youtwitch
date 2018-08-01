@@ -1,26 +1,49 @@
 {% extends 'layout.html.twig' %}
-{% block title %}Messages{% endblock %}
+{% block title %}Messagerie Interne - YouTwitch{% endblock %}
+{% block titlepage %}Bienvenu sur votre messagerie interne{% endblock %}
 {% block content %}
 
-    {# equivalent twig de la boucle foreach #}
+    <h6>Vous pouvez envoyer un mail à vos contacts</h6>
 
+    <a href="{{ path('message-add') }}" class="btn btn-outline-secondary">Envoyer un message</a>
+    <a href="#" class="btn btn-outline-secondary">Messages envoyés</a>
 
-    {# à chaque tour de boucle, on récupère article qui ici est un objet
-    Pour accéder le titre, article.title #}
+    <hr class="bg-orange">
+
     <ul class="list-group">
+        {{ dump(app.user) }}
+        {{ dump(messages) }}
         {% for message in messages %}
-            <li class="list-group-item">
-                <strong>Expediteur : </strong> {{ message.sender}}  | <strong>Destinataire : </strong>{{ message.recipient }} | {{ message.dateenvoi | date('d-m-Y') }}
+            {% if app.user.username == message.sender or app.user.username == message.recipient %}
+            <div class="card">
+                <li class="card-body d-flex justify-content-around" style="list-style: none">
+                    <div>
+                        <strong>Expediteur : </strong> {{ message.sender}}
+                        <br><strong>Destinataire : </strong>{{ message.recipient }}
+                        <br><strong>Sujet : </strong>{{ message.sujet }}
+                    </div>
+                    <div>
+                        <strong>Date d'envoi : </strong>{{ message.dateenvoi | date('d-m-Y') }}
+                        {% if not message.lu and message.recipient.id == app.user.id  %}
+                            <p style="color: #DF691A;">Message Non Lu</p>
+                        {% endif %}
 
-                {% if message.lu %}
-                    <p>Message Lu</p>
-                {% else %}
-                    <p>Message Non Lu</p>
-                {% endif %}
+                        {% if message.lu and message.sender.id == app.user.id  %}
+                            <p style="color: #DF691A;">Accusé de réception : <i class="fas fa-check"></i></p>
+                        {% endif %}
 
+                        {% if not message.lu and message.sender.id == app.user.id  %}
+                            <p style="color: #DF691A;">Accusé de réception : <i class="fas fa-times"></i></p>
+                        {% endif %}
 
-                <a href="{{ path('message', {id : message.id}) }}"> Voir</a>
-            </li>
+                    </div>
+                    <a href="{{ path('message', {id : message.id}) }}" class="lien">Lire</a>
+                </li>
+            </div><br>
+            {% else %}
+                <h6>Vous n'avez pas de message</h6>
+            {% endif %}
         {%  endfor %}
     </ul>
+
 {% endblock %}

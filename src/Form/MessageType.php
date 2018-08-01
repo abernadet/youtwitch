@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Message;
 use App\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -27,10 +28,11 @@ class MessageType extends AbstractType
                     return $repo->createQueryBuilder('u')
                         ->andWhere('u.id != :user')
                         ->setParameter('user', $id);
-                }
+                }, 'label' => 'Destinataire'
                     ))
+            ->add('sujet', TextType::class)
             ->add('contenu', TextareaType::class)
-            ->add('ajouter', SubmitType::class,array
+            ->add('envoyer', SubmitType::class,array
                     ('label' => 'Envoyer', 'attr' => ['class' =>'btn btn-orange']))
         ;
     }

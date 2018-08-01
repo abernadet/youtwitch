@@ -67,6 +67,8 @@ class MessageController extends Controller
         return $this->render('message/add.html.twig',
             array('form' => $form->createView()));
     }
+    //un nouveau Addmessage changer $this->render
+    //faire de l'ajax pour afficher un message envoyé
 
     /**
      * @Route ("/countmail", name="count-mail")
@@ -79,6 +81,12 @@ class MessageController extends Controller
         return $this->render('message/countmail.html.twig',[
             'count' => $count
         ]);
+
+    }
+    /**
+     * @Route ("/notifications", name="notifications")
+     */
+    public function notifications(){
 
     }
 

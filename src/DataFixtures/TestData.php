@@ -49,6 +49,23 @@ class TestData extends Fixture
             
             $manager->persist($user);
         }
+
+        $user = new User();
+        $user->setUsername('WF3');
+        $user->setEmail('wf3project2018@gmail.com');
+
+        $plainPassword = 'poisson';
+        $mdpEncoded = $this->encoder->encodePassword($user, $plainPassword);
+
+        $timestamp = mt_rand(1, time());
+        $randomDate = date("Y-m-d", $timestamp);
+        $user->setBirthdate(new \DateTime($randomDate));
+        $user->setPassword($mdpEncoded);
+        $user->setRoles(array('ROLE_USER', 'ROLE_ADMIN'));
+        $user->setTwitchLogin('wf3_project_2018');
+
+        $manager->persist($user);
+
         $manager->flush();
     }
 
