@@ -177,6 +177,12 @@ main{
     right:5.3rem;
     position: relative;
 }
+
+.list-group-item{
+    background: #494e53;
+    color: white;
+    border-color: #DF691A;
+}
 /**** Fin de la div de recherche ***/
 
 .link-no-style{

@@ -72,7 +72,7 @@ class AjaxController extends Controller
             'data' => $data,
             'streams_user_id' => $live_streams_user_id,
             'followed_users' => $followed_users
-            ]);
+        ]);
     }
 
     /**
@@ -86,23 +86,57 @@ class AjaxController extends Controller
         $dateHier=$dateHier->format('Y-m-d');
 
         $urlLasteDay = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&order=viewCount&publishedAfter=".$dateHier."T00%3A00%3A00Z&publishedBefore=".$dateJour."T00%3A00%3A00Z&key=$this->Ykey";
-        $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&order=viewCount&publishedAfter=1900-01-01T00%3A00%3A00Z&key=$this->Ykey";
-        try {
-                $json = file_get_contents($urlLasteDay);
-                $obj = json_decode($json);
-                $BestYVids = $obj->items;
-            } catch (\Exception $e) {
-                $BestYVids = [];
+        $urlBestAllTime = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&order=viewCount&publishedAfter=1900-01-01T00%3A00%3A00Z&type=video&key=$this->Ykey";
 
+        try {
+            $json = file_get_contents($urlLasteDay);
+            $obj = json_decode($json);
+            $BestYVids = $obj->items;
+            foreach($BestYVids as $BestYVid){
+                $idVideos[] = $BestYVid->id->videoId;
             }
-            if (empty($BestYVids)){
-                $text='c\'est vide';
-            }else{
-                $text = 'ya un truc';
+        } catch (\Exception $e) {
+            $BestYVids = [];
+            $idVideos = [];
+
+        }
+        foreach ($idVideos as $idVideo) {
+            $urls3[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideo&key=$this->Ykey";
+        }
+        try {
+            foreach ($urls3 as $url3) {
+                $json3 = file_get_contents($url3);
+                $obj3 = json_decode($json3);
+                $details3[] = $obj3->items;
+                // dump($details3);
             }
+        } catch (\Exception $e) {
+            $details3 = [];
+        }
+        if (empty($BestYVids)){
+            $text='c\'est vide';
+        }else{
+            $text = 'ya un truc';
+        }
+
+        try {
+            $json2 = file_get_contents($urlBestAllTime);
+            $obj2 = json_decode($json2);
+            $BestYVidsAllTime = $obj2->items;
+        } catch (\Exception $e) {
+            $BestYVidsAllTime = [];
+
+        }
+        if (empty($BestYVidsAllTime)){
+            $text='c\'est vide';
+        }else{
+            $text = 'ya un truc';
+        }
         return $this->render('ajax/youtube.html.twig',[
-            'BestYvids'=>$BestYVids,
-            'urlLasteDay'=>$urlLasteDay
+            'BestYVids'=>$BestYVids,
+            'BestYVidsAllTime'=>$BestYVidsAllTime,
+            'urlLasteDay'=>$urlLasteDay,
+            'details3'=>$details3
         ]);
     }
 }
