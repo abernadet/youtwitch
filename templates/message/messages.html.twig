@@ -3,22 +3,26 @@
 {% block content %}
 
     {# equivalent twig de la boucle foreach #}
+    <h6>Bienvenu sur votre messagerie interne</h6>
+    <p>Vous pouvez envoyer un mail à vos contacts</p>
 
-
+    <a href="{{ path('message-add') }}"><button type="button" class="btn btn-outline-secondary">Envoyer un message</button></a>
+    <a href="{{ path('message-add') }}"><button type="button" class="btn btn-outline-secondary">Messages envoyés</button></a>
     {# à chaque tour de boucle, on récupère article qui ici est un objet
     Pour accéder le titre, article.title #}
+    <hr>
     <ul class="list-group">
         {% for message in messages %}
             <li class="list-group-item">
-                <strong>Expediteur : </strong> {{ message.sender}}  | <strong>Destinataire : </strong>{{ message.recipient }} | {{ message.dateenvoi | date('d-m-Y') }}
-
+                <strong>Expediteur : </strong> {{ message.sender}}
+                <br><strong>Destinataire : </strong>{{ message.recipient }}
+                <br><strong>Sujet : </strong>{{ message.sujet }}
+                <br><strong>Date d'envoi : </strong>{{ message.dateenvoi | date('d-m-Y') }}
                 {% if message.lu %}
-                    <p>Message Lu</p>
+                    <p style="color: #FFA500;">Message Lu</p>
                 {% else %}
-                    <p>Message Non Lu</p>
+                    <p style="color: #FFA500;">Message Non Lu</p>
                 {% endif %}
-
-
                 <a href="{{ path('message', {id : message.id}) }}"> Voir</a>
             </li>
         {%  endfor %}
