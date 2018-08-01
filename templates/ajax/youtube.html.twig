@@ -26,8 +26,8 @@
                 <figure class="effect-duke">
                     <img src="{{ BestYvid.snippet.thumbnails.medium.url }}" alt="Miniature" title="Miniature">
                     <figcaption>
-                        <p>{{ BestYvid.snippet.title|slice(0, 35) }}</p>
-                        <a href="{{ path('YVod', {idVideo: BestYvid.id.videoId}) }}">View more</a>
+                        <p>{{ BestYvid.snippet.title|slice(0, 30) }}...</p>
+                        <a data-fancybox href="https://www.youtube.com/watch?v={{ BestYvid.id.videoId }}">View more</a>
                     </figcaption>
                 </figure>
             </div>
