@@ -1,9 +1,33 @@
 {% extends'layout.html.twig' %}
+{% block title %}Envoyer un message - YouTwitch{% endblock %}
+
 {% block content %}
+    <section class="d-flex justify-content-center">
+        <div class="card col-8 bg-dark mt-5">
+            <div class="card-body">
 
-{{ form_start(form) }}
-{{ form_label(form.contenu) }}
+                <h3 class="card-title titleForm" style="text-align: center;font-weight: bold;">Envoyer un message</h3>
+                <br>
 
-{{ form_label(form.recipient) }}
-{{ form_end(form) }}
+                {{ form_start(form, {'attr' : {'class' : 'text-light'}}) }}
+                    {{ form_label(form.recipient) }}
+                    {{ form_errors(form.recipient) }}
+                    {{ form_widget(form.recipient, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+
+                    {{ form_label(form.sujet) }}
+                    {{ form_errors(form.sujet) }}
+                    {{ form_widget(form.sujet, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+
+                    {{ form_label(form.contenu) }}
+                    {{ form_errors(form.contenu) }}
+                    {{ form_widget(form.contenu, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+
+                    <div class="text-center">
+                        {{ form_row(form.envoyer) }}
+                        {# Va générer le label, les erreurs et le champ Content en une instruction #}
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
 {% endblock %}
