@@ -149,7 +149,13 @@
         });
 
         function updateSidebarHeight(){
-            $('#menu-principal').css('height', $(window).height() - 48);
+            if($('#menu-principal').css('position') == 'fixed'){
+                console.log('window height');
+                $('#menu-principal').css('height', $(window).height() - 48);
+            }else{
+                console.log('auto');
+                $('#menu-principal').css('height', 'auto');
+            }
         }
         
         setInterval(updateSidebarHeight, 500)

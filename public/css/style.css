@@ -50,6 +50,11 @@
     font-size: 1.2rem;
 }
 
+/* WIDTH */
+.w-100{
+    width: 100%;
+}
+
 .orange {
     color: #DF691A;
 }
@@ -84,7 +89,8 @@
 }
 
 .thumbnail-title{
-    font-size: 90%;
+    font-size: 95%;
+    width: 260px;
 }
 
 .ss-titre{
@@ -124,7 +130,7 @@
     padding: 5px;
     position: fixed;
     text-align: center;
-    z-index: 999;
+    z-index: 1600;
     line-height: 1.5rem;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
@@ -267,6 +273,8 @@ body{
 
 #menu-principal{
     position: fixed;
+    min-width: 290px;
+    z-index: 1029;
 }
 
 
@@ -482,6 +490,9 @@ figure.effect-duke:hover h2,figure.effect-duke:hover p{opacity:1;-webkit-transfo
     /*On cache le menu et on fait apparaitre l'icone burger */
     #menu-principal{
         display: none;
+        position: relative;
+        min-height: 200px;
+        overflow: hidden;
     }
     header{
         display: none;
