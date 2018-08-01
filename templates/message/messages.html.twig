@@ -11,8 +11,6 @@
     <hr class="bg-orange">
 
     <ul class="list-group">
-        {{ dump(app.user) }}
-        {{ dump(messages) }}
         {% for message in messages %}
             {% if app.user.username == message.sender or app.user.username == message.recipient %}
             <div class="card">
