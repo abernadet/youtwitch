@@ -24,7 +24,7 @@
 <hr class="bg-orange">
 
 <section class="mt-3">
-    <h3 class="ss-titre">Vidéos les plus populaires d'hier</h3>
+    <h3 class="ss-titre">Vidéos populaires – HIER</h3>
     <div class="d-flex justify-content-around flex-wrap mt-3">
         {% for key, BestYvid in BestYVids %}
             <div class="grid">
@@ -42,46 +42,44 @@
     </div>
 </section>
 
-<section class="mt-5">
-    <h3>Surf</h3>
+<hr class="bg-orange">
+
+<section class="mt-3">
+    <h3 class="ss-titre">Vidéos populaires – SPORT</h3>
     <div class="d-flex justify-content-around flex-wrap mt-3">
-        <a href="" class="text-dark col-3">
-            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="" class="text-dark col-3">
-            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="" class="text-dark col-3">
-            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="" class="text-dark col-3">
-            <img src="{{ asset('img/mini2.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
+        {% for key, BestSVid in BestSVids %}
+            <div class="grid">
+                <figure class="effect-duke">
+                    <img src="{{ BestSVid.snippet.thumbnails.medium.url }}" alt="Miniature" title="Miniature">
+                    <figcaption>
+                        <p>{{ BestSVid.snippet.title|truncate(20,true) }}<br>
+                            {% set viewCount = detailsSport[key].0.statistics.viewCount %}
+                            {{ viewCount|number_format(0, '', ' ') }} vues</p>
+                        <a data-fancybox href="https://www.youtube.com/watch?v={{ BestSVid.snippet.resourceId.videoId }}">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
+        {% endfor %}
     </div>
 </section>
 
-<section class="mt-5">
-    <h3>League Of Legends</h3>
+<hr class="bg-orange">
+
+<section class="mt-3">
+    <h3 class="ss-titre">Dernières vidéos – GAMING</h3>
     <div class="d-flex justify-content-around flex-wrap mt-3">
-        <a href="" class="text-dark col-3">
-            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="" class="text-dark col-3">
-            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="" class="text-dark col-3">
-            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
-        <a href="" class="text-dark col-3">
-            <img src="{{ asset('img/mini3.jpg') }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">Laosaurus Scaphonyx Bienosaurus.</p>
-        </a>
+        {% for key, GamingVid in GamingVids %}
+            <div class="grid">
+                <figure class="effect-duke">
+                    <img src="{{ GamingVid.snippet.thumbnails.medium.url }}" alt="Miniature" title="Miniature">
+                    <figcaption>
+                        <p>{{ GamingVid.snippet.title|truncate(20,true) }}<br>
+                            {% set viewCount = detailsGaming[key].0.statistics.viewCount %}
+                            {{ viewCount|number_format(0, '', ' ') }} vues</p>
+                        <a data-fancybox href="https://www.youtube.com/watch?v={{ GamingVid.snippet.resourceId.videoId }}">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
+        {% endfor %}
     </div>
 </section>

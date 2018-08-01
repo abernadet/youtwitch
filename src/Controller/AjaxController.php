@@ -87,12 +87,15 @@ class AjaxController extends Controller
 
         $urlLasteDay = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&order=viewCount&publishedAfter=".$dateHier."T00%3A00%3A00Z&publishedBefore=".$dateJour."T00%3A00%3A00Z&key=$this->Ykey";
         $urlBestAllTime = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&order=viewCount&publishedAfter=1900-01-01T00%3A00%3A00Z&type=video&key=$this->Ykey";
+        $urlBestVSport = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=4&playlistId=PL8fVUTBmJhHJrW5cGIlxHUsmhDmkZbMmp&key=$this->Ykey";
+        $urlGaming = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=4&playlistId=PLiCvVJzBupKl5hVmeyeM3RxQUHP-0I4CZ&key=$this->Ykey";
 
+        // affichage des vidéos les plus vues postée la veille
         try {
             $json = file_get_contents($urlLasteDay);
             $obj = json_decode($json);
             $BestYVids = $obj->items;
-            foreach($BestYVids as $BestYVid){
+            foreach($BestYVids as $BestYVid){ // On récupère l'id de la vidéo pour aller chercher le nombre de vues derrière
                 $idVideos[] = $BestYVid->id->videoId;
             }
         } catch (\Exception $e) {
@@ -100,6 +103,7 @@ class AjaxController extends Controller
             $idVideos = [];
 
         }
+        // On boucle sur la nouvelle requete pour avoir le nombre de vues
         foreach ($idVideos as $idVideo) {
             $urls3[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideo&key=$this->Ykey";
         }
@@ -119,6 +123,7 @@ class AjaxController extends Controller
             $text = 'ya un truc';
         }
 
+        // Affichage des deux vidéos les plus vues de tout les temps
         try {
             $json2 = file_get_contents($urlBestAllTime);
             $obj2 = json_decode($json2);
@@ -132,11 +137,74 @@ class AjaxController extends Controller
         }else{
             $text = 'ya un truc';
         }
+
+        // On affiche les vidéos du moment en sport
+        try {
+            $json = file_get_contents($urlBestVSport);
+            $obj = json_decode($json);
+            $BestSVids = $obj->items;
+
+            foreach($BestSVids as $BestSVid){ // On récupère l'id de la vidéo pour aller chercher le nombre de vues derrière
+                $idVideosSport[] = $BestSVid->snippet->resourceId->videoId;;
+            }
+        } catch (\Exception $e) {
+            $BestSVids = [];
+            $idVideosSport = [];
+        }
+        // On boucle sur la nouvelle requete pour avoir le nombre de vues
+        foreach ($idVideosSport as $idVideoSport) {
+            $urlsSport[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideoSport&key=$this->Ykey";
+        }
+        try {
+            foreach ($urlsSport as $urlSport) {
+                $jsonSport = file_get_contents($urlSport);
+                $objSport = json_decode($jsonSport);
+                $detailsSport[] = $objSport->items;
+                // dump($details3);
+            }
+        } catch (\Exception $e) {
+            $detailsSport = [];
+        }
+
+        // On affiche les dernieres vidéos gaming
+        try {
+            $json = file_get_contents($urlGaming);
+            $obj = json_decode($json);
+            $GamingVids = $obj->items;
+
+            foreach($GamingVids as $GamingVid){ // On récupère l'id de la vidéo pour aller chercher le nombre de vues derrière
+                $idVideosGaming[] = $GamingVid->snippet->resourceId->videoId;;
+            }
+        } catch (\Exception $e) {
+            $GamingVids = [];
+            $idVideosGaming = [];
+        }
+        // On boucle sur la nouvelle requete pour avoir le nombre de vues
+        foreach ($idVideosGaming as $idVideoGaming) {
+            $urlsGaming[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideoGaming&key=$this->Ykey";
+        }
+        try {
+            foreach ($urlsGaming as $urlGaming) {
+                $jsonGaming = file_get_contents($urlGaming);
+                $objGaming = json_decode($jsonGaming);
+                $detailsGaming[] = $objGaming->items;
+                // dump($details3);
+            }
+        } catch (\Exception $e) {
+            $detailsGaming = [];
+        }
+
+
+        // On retourne toutes les données dans la vue
         return $this->render('ajax/youtube.html.twig',[
             'BestYVids'=>$BestYVids,
             'BestYVidsAllTime'=>$BestYVidsAllTime,
             'urlLasteDay'=>$urlLasteDay,
-            'details3'=>$details3
+            'details3'=>$details3,
+            'detailsSport'=>$detailsSport,
+            'BestSVids'=>$BestSVids,
+            'GamingVids'=>$GamingVids,
+            'detailsGaming'=>$detailsGaming
         ]);
     }
 }
