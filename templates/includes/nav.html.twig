@@ -7,7 +7,34 @@
         </div>
     </div>
 </div>
-<nav id="menu-principal" class="col-md-2 bg-light sidebar mt-5">
+<nav id="menu-principal" class="col-md-2 bg-light sidebar mt-5 margin-burger">
+
+    <form class="form-inline bg-dark large-screen-hide">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('video') }}">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" title="Logo" class="w-50">
+            </a>
+        {% else %}
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ path('home') }}">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" title="Logo" class="w-50">
+            </a>
+        {% endif %}
+
+        <div class="container">
+            <div class="d-flex justify-content-around">
+                <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search" id="check2">
+                <i class="fas fa-search isize ml-3"></i>
+            </div>
+        </div>
+
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a class="btn btn-orange my-2 my-sm-0 mr-3 ml-3" href="{{ path('logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('login') }}" class="btn btn-outline-orange my-2 my-sm-0 mr-3 ml-3">Connexion</a>
+        {% endif %}
+    </form>
+
     <div class="sidebar-sticky">
         <ul class="nav flex-column mt-3">
             <li class="nav-item">

@@ -484,6 +484,10 @@ figure.effect-duke:hover h2,figure.effect-duke:hover p{opacity:1;-webkit-transfo
     #menu-principal{
         display: block !important;
     }
+
+    .large-screen-hide{
+        display: none;
+    }
 }
 
 @media (max-width: 576px){
@@ -521,6 +525,10 @@ figure.effect-duke:hover h2,figure.effect-duke:hover p{opacity:1;-webkit-transfo
         font-size: 1.2rem;
     }
 
+    .margin-burger{
+        margin-top: 0px !important;
+    }
+ 
     .chat{
         display: none;
     }
