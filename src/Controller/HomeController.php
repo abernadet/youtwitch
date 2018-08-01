@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Entity\Message as Message;
+use App\Form\MessageType;
 use App\Service\TwitchApiService;
 use App\Service\TextFormatService;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class HomeController extends Controller
 {
@@ -50,6 +53,8 @@ class HomeController extends Controller
     /**
      * @Route("/user/twitch_stream", name="twitch-stream")
      */
+
+
     public function playTwitchStream(TwitchApiService $twitch_api, TextFormatService $text_format, Request $request)
     {
         $params = $request->query->all();
@@ -64,7 +69,7 @@ class HomeController extends Controller
         
         $user_data =$twitch_api->getUserFromLogin($login);
         $user_id = ($user_data->data)[0]->id;
-        $user_display_name = ($user_data->data)[0]->display_name;
+        $user_display_name = ($user_data->data[0])->display_name;
 
         $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
 
@@ -77,7 +82,7 @@ class HomeController extends Controller
 
         $stream_data = $twitch_api->getLiveStreamFromLogin($login);
 
-        dump($stream_data->data);
+        dump(($stream_data->data)[0]); 
 
         return $this->render('video_player/twitch_stream.html.twig', [
             'clips' => $clips,
@@ -105,26 +110,32 @@ class HomeController extends Controller
             $clips = [];
         }
         
-        $user_id = $twitch_api->getUserIdFromLogin($login);
+        $user_data =$twitch_api->getUserFromLogin($login);
+        $user_id = ($user_data->data)[0]->id;
+        $user_display_name = ($user_data->data[0])->display_name;
 
         $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
-
         $replay_tab = $replays->data;
 
+        dump($params);
 
+        $slug = $params['slug'];
+        $clip_data = $twitch_api->getClipData($slug);
 
         foreach($replay_tab as $replay)
         {
             $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
         }
         
-        dump($replay_tab);     
+        dump($clip_data);     
 
         return $this->render('video_player/twitch_clip.html.twig', [
             'params' => $params,
             'login' => $login,
             'clips' => $clips,
-            'replays' => $replay_tab
+            'replays' => $replay_tab,
+            'display_name' => $user_display_name,
+            'clip_data' => $clip_data
         ]);
     }
 
@@ -152,29 +163,34 @@ class HomeController extends Controller
             $vid_id = false;
         }
         
-        $user_id = $twitch_api->getUserIdFromLogin($login);
+        $user_data =$twitch_api->getUserFromLogin($login);
+        $user_id = ($user_data->data)[0]->id;
+        $user_display_name = ($user_data->data[0])->display_name;
+
+        $video_data = $twitch_api->getVideoData($vid_id);
 
         $replays = $twitch_api->getVideosFromChannel($user_id, 'week', 4);
 
         $replay_tab = $replays->data;
 
-
-
         foreach($replay_tab as $replay)
         {
             $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
         }
-
-        dump($replay_tab); 
+        dump(($video_data->data)[0]);
 
         return $this->render('video_player/twitch_video.html.twig', [
             'params' => $params,
             'clips' => $clips,
             'replays' => $replay_tab,
             'vid_id' => $vid_id,
-            'login' => $login
+            'login' => $login,
+            'display_name' => $user_display_name,
+            'video_data' => ($video_data->data)[0]
         ]);
+
     }
+
 
     /**
      * @Route("/user/propos", name="propos")

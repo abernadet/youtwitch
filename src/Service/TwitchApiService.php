@@ -234,6 +234,26 @@ class TwitchApiService
         return $result;
     }
 
+    public function getClipData($slug)
+    {
+        $url = 'https://api.twitch.tv/kraken/clips/'.$slug;
+
+        $opts = [
+            "http" => [
+                "method" => "GET",
+                "header" => "Client-ID: ".$this->client_id . "\r\n" .
+                            "Accept: application/vnd.twitchtv.v5+json\r\n"
+            ]
+        ];
+
+        $context = stream_context_create($opts);
+        $json_result = file_get_contents($url, false, $context);
+        $result = json_decode($json_result);
+
+        dump($result);
+        return $result;
+    }
+
     public function getVideosFromChannel($user_id, $period = 'week', $max = '5', $sort = 'time')
     {
         $url = 'https://api.twitch.tv/helix/videos?user_id='.$user_id.'&period='.$period.'&first='.$max.'&sort='.$sort;
@@ -251,6 +271,24 @@ class TwitchApiService
 
         return $result;
 
+    }
+
+    public function getVideoData($vid_id)
+    {
+        $url = 'https://api.twitch.tv/helix/videos?id='.$vid_id;
+
+        $opts = [
+            "http" => [
+                "method" => "GET",
+                "header" => "Client-ID: ".$this->client_id
+            ]
+        ];
+
+        $context = stream_context_create($opts);
+        $json_result = file_get_contents($url, false, $context);
+        $result = json_decode($json_result);
+
+        return $result;
     }
 
     public function getRandomUserFollowsId($user_id, $max)

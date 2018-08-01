@@ -28,7 +28,7 @@
                     <figcaption>
                         <p>{{ detail2.snippet.title|slice(0, 35) }}<br>{% set viewCount = details3[key].0.statistics.viewCount %}
                             {{ viewCount }} vues</p>
-                        <a href="{{ path('YVod', {idVideo: detail2.snippet.resourceId.videoId}) }}">View more</a>
+                        <a data-fancybox href="https://www.youtube.com/watch?v={{ detail2.snippet.resourceId.videoId }}">View more</a>
                     </figcaption>
                 </figure>
             </div>

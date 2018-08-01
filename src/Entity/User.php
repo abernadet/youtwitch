@@ -8,6 +8,16 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Message;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="user")
+ * @UniqueEntity(fields="email", message="Email déjà pris")
+ * @UniqueEntity(fields="username", message="Username déjà pris")
+ */
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -32,7 +42,7 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=191)
+     * @ORM\Column(type="string", length=191, unique = true)
      * @Assert\NotBlank()
      */
     private $email;
@@ -63,6 +73,12 @@ class User implements UserInterface, \Serializable
      * @Assert\Image(maxSize="1000k")
      */
     private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
+     */
+    private $message;
+
 
     /**
      * @ORM\Column(type="string", length=255, name="twitchLogin", nullable = true)
@@ -99,12 +115,23 @@ class User implements UserInterface, \Serializable
      */
     private $birthdate;
 
+
+        /**
+         * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="sender")
+         */
+
+    private $messagesSent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="recipient")
+     */
+    private $MessagesReceived;
+
     public function __construct()
     {
         $this->isActive = true; //par défaut, un user est actif
         $this->Tabo = new ArrayCollection();
         $this->Yabo = new ArrayCollection();
-
     }
 
     public function getId()
@@ -236,6 +263,7 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
+
     /**
      * @return Collection|Tabo[]
      */
@@ -258,9 +286,44 @@ class User implements UserInterface, \Serializable
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+    }
+
+    public function getMessage() : Collection{
+        return $this->message;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessagesSent(): Collection
+    {
+        return $this->messagesSent;
+    }
+
+    public function addMessagesSent(Message $messagesSent): self
+    {
+        if (!$this->messagesSent->contains($messagesSent)) {
+            $this->messagesSent[] = $messagesSent;
+            $messagesSent->setSender($this);
+        }
 
         return $this;
     }
+
+    public function removeMessagesSent(Message $messagesSent): self
+    {
+        if ($this->messagesSent->contains($messagesSent)) {
+            $this->messagesSent->removeElement($messagesSent);
+            // set the owning side to null (unless already changed)
+            if ($messagesSent->getSender() === $this) {
+                $messagesSent->setSender(null);
+            }
+        }
+
+
+        return $this;
+    }
+
 
     public function getAddress(): ?string
     {
@@ -270,6 +333,23 @@ class User implements UserInterface, \Serializable
     public function setAddress(?string $address): self
     {
         $this->address = $address;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessagesReceived(): Collection
+    {
+        return $this->MessagesReceived;
+    }
+
+    public function addMessagesReceived(Message $messagesReceived): self
+    {
+        if (!$this->MessagesReceived->contains($messagesReceived)) {
+            $this->MessagesReceived[] = $messagesReceived;
+            $messagesReceived->setRecipient($this);
+        }
+
 
         return $this;
     }
@@ -285,4 +365,28 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+
+    public function removeMessagesReceived(Message $messagesReceived): self
+    {
+        if ($this->MessagesReceived->contains($messagesReceived)) {
+            $this->MessagesReceived->removeElement($messagesReceived);
+            // set the owning side to null (unless already changed)
+            if ($messagesReceived->getRecipient() === $this) {
+                $messagesReceived->setRecipient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /*
+     * Méthode qui permet d'éviter le bug object to string conversion:
+     * si on essaie d'afficher l'objet c'est le username qui sera affiché
+     */
+    public function __toString():string
+    {
+        return $this->username;
+
+    }
 }
+

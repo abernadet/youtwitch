@@ -7,25 +7,31 @@
     <div class="card col-8 bg-dark mt-5">
         <div class="card-body">
 
-            <h3 class="card-title titleOrange titleFontForm" style="text-align: center;font-weight: bold;">Modification de l'utilisateur</h3>
+            <h3 class="card-title titleForm" style="text-align: center;font-weight: bold;">Modification de l'utilisateur</h3>
             <br>
+
+<<<<<<< HEAD
+
 
             {{ form_start(form, {'attr' : {'class' : 'text-light'}}) }} {# Permet de créer la balise <form> #}
 
-                {{ form_label(form.username) }}
-                {{ form_errors(form.username) }}
-                {{ form_widget(form.username, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+            {{ form_label(form.username) }}
+            {{ form_errors(form.username) }}
+            {{ form_widget(form.username, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
 
-                <label for="roles">Choisir un rôle</label>
-                <select name="roles[]" multiple id="roles" class="form-control mb-3">
-                    <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-                    <option value="ROLE_USER">ROLE_USER</option>
-                    <option value="ROLE_AUTEUR">ROLE_AUTEUR</option>
-                </select>
 
-                {{ form_label(form.image) }}
-                {{ form_errors(form.image) }}
-                {{ form_widget(form.image) }} {# Permet de créer les champs #}
+    <label for="roles">Choisir un rôle</label>
+    {{ dump(user) }}
+    <select name="roles[]" multiple id="roles" class="form-control mb-3">
+        <option value="ROLE_ADMIN" {% if user.roles == 'ROLE_ADMIN' %} selected{% endif %}>ROLE_ADMIN</option>
+        <option value="ROLE_USER" {% if user.roles == 'ROLE_USER' %} selected{% endif %}>ROLE_USER</option>
+        <option value="ROLE_AUTEUR" {% if user.roles == 'ROLE_AUTEUR' %} selected{% endif %}>ROLE_AUTEUR</option>
+    </select>
+
+
+    {{ form_label(form.image) }}
+    {{ form_errors(form.image) }}
+    {{ form_widget(form.image) }} {# Permet de créer les champs #}
 
                 <div class="text-center">
                     {{ form_row(form.modifier) }}
