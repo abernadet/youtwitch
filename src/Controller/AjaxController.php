@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Message;
+use App\Entity\User;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Service\TwitchApiService;
 use App\Service\TextFormatService;
 use Symfony\Component\Security\Core\User\UserInterface;
+use  Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class AjaxController extends Controller
 {
@@ -207,4 +211,33 @@ class AjaxController extends Controller
             'detailsGaming'=>$detailsGaming
         ]);
     }
+
+    /**
+     * @Route("/user/ajax/message", name="ajax-message")
+     */
+
+    public function AddReponseMessage(Request $request)
+    {
+
+        $message = new Message();
+
+        $texte = $request->request->get('message', '');
+        $idUser = $request->request->get('idUser', null);
+        $sujet = $request->request->get('sujet', '');
+        $lautre = $this->getDoctrine()->getRepository(User::class)->find($idUser);
+
+        $message->setContenu($texte);
+        $message->setRecipient($lautre);
+        $message->setSender($this->getUser());
+        $message->setDateenvoi(new \DateTime(date('Y-m-d H:i:s')));
+        $message->setSujet($sujet);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($message);
+        $em->flush();
+
+        return $this->redirectToRoute('message');
+
+    }
+
 }

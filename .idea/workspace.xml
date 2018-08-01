@@ -2,42 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4ff8a4d-e2bd-48d0-bd62-87a28d34805f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/1bd629b93b2272faadd72e7b011060c5.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/48d7efd49aba4f171953d11445a753cb.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/images/9284c9961a67481bc3363a66acb430f2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AjaxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AjaxController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MessageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MessageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MessageType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/UserUpdateType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserUpdateType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180730081819.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180730131104.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180730140838.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180730144655.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180731073224.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180731073228.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180731130820.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180731133232.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180731133407.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MessageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MessageRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Includes/navBurger.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Includes/navBurger.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/add.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/update.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/user.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/user.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ajax/youtube.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ajax/youtube.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/includes/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/nav.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180801102652.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20180801102652.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180801104322.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20180801104322.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20180801114327.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Migrations/Version20180801114327.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/message/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/message/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/message/message.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/message/message.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/message/messages.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/message/messages.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/update.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/video_player/twitch_clip.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video_player/twitch_clip.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/video_player/twitch_stream.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video_player/twitch_stream.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/video_player/twitch_video.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video_player/twitch_video.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/visionnage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/visionnage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/youtube/detailschan.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/youtube/detailschan.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,8 +28,8 @@
       <file leaf-file-name="MessageController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/MessageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+            <state relative-caret-position="620">
+              <caret line="37" column="44" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="44" />
               <folding>
                 <element signature="e#34#96#0#PHP" expanded="true" />
               </folding>
@@ -63,11 +37,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <file leaf-file-name="AjaxController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/AjaxController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+            <state relative-caret-position="4600">
+              <caret line="238" column="8" selection-start-line="238" selection-start-column="8" selection-end-line="238" selection-end-column="49" />
+              <folding>
+                <element signature="e#34#57#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/message/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/layout.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="720">
+              <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -75,8 +70,26 @@
       <file leaf-file-name="messages.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/message/messages.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+            <state relative-caret-position="600">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/message/add.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="message.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/message/message.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -106,12 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/js/search.js" />
-        <option value="$PROJECT_DIR$/templates/home/search.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/YoutubeController.php" />
-        <option value="$PROJECT_DIR$/templates/youtube/search.html.twig" />
-        <option value="$PROJECT_DIR$/assets/js/test.js" />
-        <option value="$PROJECT_DIR$/config/services.yaml" />
         <option value="$PROJECT_DIR$/templates/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/video.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
@@ -136,9 +143,7 @@
         <option value="$PROJECT_DIR$/src/Repository/UserRepository.php" />
         <option value="$PROJECT_DIR$/src/Entity/Message.php" />
         <option value="$PROJECT_DIR$/templates/message/countmail.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/MessageController.php" />
         <option value="$PROJECT_DIR$/templates/message/messages.html.twig" />
-        <option value="$PROJECT_DIR$/templates/message/message.html.twig" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/src/Controller/ChatController.php" />
         <option value="$PROJECT_DIR$/src/Entity/Chat.php" />
@@ -153,15 +158,18 @@
         <option value="$PROJECT_DIR$/composer.lock" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/src/Form/MessageType.php" />
-        <option value="$PROJECT_DIR$/templates/message/message.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/MessageController.php" />
         <option value="$PROJECT_DIR$/src/Repository/MessageRepository.php" />
         <option value="$PROJECT_DIR$/templates/message/messages.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/AjaxController.php" />
         <option value="$PROJECT_DIR$/templates/ajax/youtube.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Form/UserType.php" />
         <option value="$PROJECT_DIR$/templates/youtube/detailschan.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/MessageController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/MessageController.php" />
+        <option value="$PROJECT_DIR$/templates/message/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/AjaxController.php" />
+        <option value="$PROJECT_DIR$/templates/message/message.html.twig" />
+        <option value="$PROJECT_DIR$/templates/message/message.html.twig" />
       </list>
     </option>
   </component>
@@ -300,16 +308,16 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="289" />
-    <option name="y" value="-13" />
-    <option name="width" value="1440" />
-    <option name="height" value="780" />
+    <option name="x" value="838" />
+    <option name="width" value="948" />
+    <option name="height" value="1100" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -389,13 +397,18 @@
               <item name="youtwitch" type="b2602c69:ProjectViewProjectNode" />
               <item name="youtwitch" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="twitch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="youtwitch" type="b2602c69:ProjectViewProjectNode" />
+              <item name="youtwitch" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="youtube" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -441,11 +454,12 @@
       <workItem from="1532937191199" duration="17851000" />
       <workItem from="1533022796127" duration="19646000" />
       <workItem from="1533108580472" duration="7161000" />
+      <workItem from="1533131116980" duration="103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120646000" />
+    <option name="totallyTimeSpent" value="127611000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -458,7 +472,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.116145834" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3296875" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -468,7 +482,6 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -478,22 +491,22 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.116145834" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32943678" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.116145834" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,15 +527,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../promo7/symfony/src/Form/ArticleType.php" />
-    <entry file="file://$PROJECT_DIR$/../promo7/symfony/src/Security/Voter/ArticleVoter.php" />
-    <entry file="file://$PROJECT_DIR$/src/Repository/UserRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../promo7/symfony/src/Form/UserFormType.php" />
     <entry file="file://$PROJECT_DIR$/templates/user/user.html.twig">
       <provider selected="true" editor-type-id="text-editor">
@@ -530,9 +534,6 @@
           <caret line="28" column="90" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="90" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/message/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/message/add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
@@ -587,9 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -597,9 +595,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="80" column="39" selection-start-line="80" selection-start-column="39" selection-end-line="80" selection-end-column="39" />
-          <folding>
-            <element signature="e#34#81#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -607,9 +602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -655,13 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/visionnage.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1520">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/php.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1429" />
@@ -671,13 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="636">
           <caret line="453" column="77" selection-start-line="453" selection-start-column="77" selection-end-line="453" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -723,13 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/AjaxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2301">
-          <caret line="206" column="26" selection-start-line="206" selection-start-column="13" selection-end-line="206" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-216" />
@@ -754,13 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/message/add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2400">
@@ -772,13 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/message/message.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -817,26 +774,81 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1220">
+          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/TwitchController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/twitch/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/visionnage.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1520">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+        <state relative-caret-position="620">
+          <caret line="37" column="44" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="44" />
           <folding>
             <element signature="e#34#96#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AjaxController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4600">
+          <caret line="238" column="8" selection-start-line="238" selection-start-column="8" selection-end-line="238" selection-end-column="49" />
+          <folding>
+            <element signature="e#34#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/message/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/message/messages.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        <state relative-caret-position="600">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/message/add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/message/message.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
         </state>
       </provider>
     </entry>

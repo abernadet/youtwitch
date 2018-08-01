@@ -1,24 +1,63 @@
 {% extends 'layout.html.twig' %}
+
 {% block title %}{{ message.sujet }} - YouTwitch{% endblock %}
 
 {% block content %}
 
-    <a href="{{ path('all-messages') }}" class="btn btn-orange">Retour</a>
-    <div class="container">
-        <h6>Expéditeur</h6>
-            <p>{{ message.sender }}</p>
 
-        <h6>Sujet</h6>
-            <p>{{ message.sujet }}</p>
+    <a href="{{ path('all-messages') }}">Retour</a>
+<div class="container">
+   <h6>Expéditeur</h6> <p>{{ message.sender.username }}</p>
+    <h6>Sujet</h6> <p>{{ message.sujet }}</p>
+    <h6>Message</h6> <p>{{ message.contenu }} <br> Envoyé le {{ message.dateenvoi | date('d-m-Y') }} à {{ message.dateenvoi | date('H:i:s') }}</p>
+
+    <button type="submit" class="btn btn-primary">Répondre</button>
+</div>
+
+    <div class="container">
+       <form id="form">
+            <div class="form-group">
+                <label>Message</label>
+                <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <input type="hidden" name="idUser" value="{{ message.sender.id }}">
+                <input type="hidden" name="sujet" value="{{ message.sujet }}">
+            </div>
+            <button id="envoyer" class="btn btn-primary">Envoyer</button>
+        </form>
+    <div id="result-message"></div>
+    </div>
 
         <h6>Message</h6>
         <div class="card">
             <p class="card-body">{{ message.contenu }}<br><br><span class="font-italic font-weight-light">Envoyé le {{ message.dateenvoi | date('d-m-Y') }} à {{ message.dateenvoi | date('H:i:s') }}</span></p>
         </div>
-
-        <div class="text-center">
-            <button type="submit" class="btn btn-outline-orange mt-3" id="repondre">Répondre</button>
-        </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-outline-orange mt-3" id="repondre">Répondre</button>
     </div>
-    
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function(){
+            $('#envoyer').on('click', function(event){
+                event.preventDefault();
+                url = "{{ path('ajax-message', {id : message.id}) }}";
+                $.ajax({
+                    type: 'POST',
+                    data: $('#form').serialize(),
+                    url: url,
+                    timeout: 5000,
+                    dataType: 'html',
+                    success: function(data){
+                        $('#result-message').html(data);
+                    },
+                    error: function(error){
+                        $('#result-message').html('erreur ajax post');
+                    }
+                })
+            })
+        })
+    </script>
+
 {% endblock %}
