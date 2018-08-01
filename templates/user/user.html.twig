@@ -32,6 +32,9 @@
                 {% endif %}{% if user.twitchLogin %}
                     <p><strong>Login Twitch</strong> : {{ user.twitchLogin }}</p>
                 {% endif %}
+                {% if user.YoutubeLogin %}
+                    <p><strong>Login Youtube</strong> : {{ user.YoutubeLogin }}</p>
+                {% endif %}
             </div>
             <div class="col-6 col-md-4">
                 <a class="nav-link orange" href="{{ path('user-update',{id : user.id})}}">

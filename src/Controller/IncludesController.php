@@ -9,8 +9,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class IncludesController extends Controller
 {
+    private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
     /**
-     * 
+     *
      */
     public function showSidebar(UserInterface $user, TwitchApiService $twitch_api)
     {
@@ -36,10 +37,50 @@ class IncludesController extends Controller
             $live_streams_user_id = [];
         }
 
+        // Affichage Subs youtube
+        $name = $user->getYoutubeLogin();
+        if ($name) {
+            $url = "https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails&forUsername=$name&key=$this->Gkey";
+
+            try {
+                $json = file_get_contents($url);
+                $obj = json_decode($json);
+                $ids = $obj->items;
+                // dump($ids);
+                foreach ($ids as $id) {
+                    $idChannels[] = $id->id;
+                }
+            } catch (\Exception $e) {
+                $idChannels = [];
+            }
+            //dump($idChannels);
+            foreach ($idChannels as $idChannel) {
+                $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$idChannel&key=$this->Gkey";
+                //dump($urlSub);
+            }
+            try {
+                $jsonSub = file_get_contents($urlSub);
+                $objSub = json_decode($jsonSub);
+                $subs = $objSub->items;
+            } catch (\Exception $e) {
+                $subs = [];
+
+            }
+            if (empty($subs)) {
+                $text = 'c\'est vide';
+            } else {
+                $text = 'ya un truc';
+            }
+        }else
+        {
+            $subs = [];
+        }
+
         return $this->render('includes/nav.html.twig', [
             'follows' => $follows,
             'live_streams' => $live_streams,
-            'streams_user_id' => $live_streams_user_id
+            'streams_user_id' => $live_streams_user_id,
+            'subs'=>$subs
         ]);
     }
 }

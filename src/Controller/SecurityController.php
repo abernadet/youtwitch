@@ -41,6 +41,7 @@ class SecurityController extends Controller
             $user->setPassword($mdpEncoded);
             $user->eraseCredentials();
             $user->setRoles(array("ROLE_USER"));
+            $user->setYoutubeLogin(substr($form->getYoutbeLogin(),31,24));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

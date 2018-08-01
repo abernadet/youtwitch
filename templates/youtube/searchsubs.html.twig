@@ -1,6 +1,4 @@
 {% block content %}
-    {{ url }}
-    {{ text }}
     {% for sub in subs %}
         <a href=""><img src="{{ sub.snippet.thumbnails.default.url }}" style="padding-top: 5px"></a><h3>{{  sub.snippet.title }}</h3><br><hr>
     {% endfor %}

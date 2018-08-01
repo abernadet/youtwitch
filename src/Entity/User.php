@@ -179,7 +179,7 @@ class User implements UserInterface, \Serializable
         return $this->twitchLogin;
     }
 
-    public function setTwitchLogin(string $twitchLogin): self
+    public function setTwitchLogin($twitchLogin): self
     {
         $this->twitchLogin = $twitchLogin;
 
@@ -389,7 +389,7 @@ class User implements UserInterface, \Serializable
         return $this->YoutubeLogin;
     }
 
-    public function setYoutubeLogin(string $YoutubeLogin): self
+    public function setYoutubeLogin($YoutubeLogin): self
     {
         $this->YoutubeLogin = $YoutubeLogin;
 

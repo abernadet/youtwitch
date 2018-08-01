@@ -3,15 +3,18 @@
 namespace App\Controller;
 
 
+use App\Entity\User;
+use http\Env\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 
 class YoutubeController extends Controller
 {
     private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
     /**
-     * @Route("youtube/search/", name="YsearchAccueil")
+     * @Route("/user/youtube/search", name="YsearchAccueil")
      */
     public function index()
     {
@@ -20,17 +23,34 @@ class YoutubeController extends Controller
     }
 
     /**
-     * @Route("/youtube/searchsubs/{id}", name="YsearchSubs")
+     *
      */
-    public function getUrSubs($id)
+    public function getUrSubs(UserInterface $user)
     {
 
-        $url = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&key=$this->Gkey";
+        $name = $user->getYoutubeLogin();
+        $url = "https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails&forUsername=$name&key=$this->Gkey";
 
         try {
             $json = file_get_contents($url);
             $obj = json_decode($json);
-            $subs = $obj->items;
+            $ids = $obj->items;
+            dump($ids);
+            foreach ($ids as $id){
+                $idChannels[] = $id->id;
+            }
+        } catch (\Exception $e) {
+            $idChannels = [];
+        }
+        dump($idChannels);
+        foreach ($idChannels as $idChannel) {
+            $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$idChannel&key=$this->Gkey";
+            //dump($urlSub);
+        }
+        try {
+            $jsonSub = file_get_contents($urlSub);
+            $objSub = json_decode($jsonSub);
+            $subs = $objSub->items;
         } catch (\Exception $e) {
             $subs = [];
 
@@ -40,15 +60,17 @@ class YoutubeController extends Controller
         }else{
             $text = 'ya un truc';
         }
-        return $this->render('youtube/searchsubs.html.twig', [
-            'subs' => $subs, 'url' => $url,'text'=>$text
+        return $this->render('includes/nav.html.twig', [
+            'subs'=>$subs,
+            'urlSub'=>$urlSub,
+            'text'=>$text
         ]);
     }
 
 
 
     /**
-     * @Route("/youtube/searchBar/{terme}", name="YsearchBar")
+     * @Route("/user/youtube/searchBar/{terme}", name="YsearchBar")
      */
     public function searchBar($terme)
     {
@@ -100,7 +122,7 @@ class YoutubeController extends Controller
      }*/
 
     /**
-     * @Route("/youtube/channel/{channelId}", name="OwnerChan", defaults={"channelId"=1})
+     * @Route("/user/youtube/channel/{channelId}", name="OwnerChan", defaults={"channelId"=1})
      */
     public function DetailChan ($channelId){
         $url = "https://www.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics%2CcontentDetails&id=$channelId&key=$this->Gkey";
@@ -161,7 +183,7 @@ class YoutubeController extends Controller
     }
 
     /**
-     * @Route("/video_player/youtube/{idVideo}", name="YVod", defaults={"idVideo"=0})
+     * @Route("/user/video_player/youtube/{idVideo}", name="YVod", defaults={"idVideo"=0})
      */
     public function YShowVod($idVideo){
         $url= "https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics&id=$idVideo&key=$this->Gkey";

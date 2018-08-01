@@ -32,6 +32,10 @@ class UserType extends AbstractType
                 'label' => 'Identifiant de votre chaine Twitch',
                 'required' => false
                 ))
+            ->add('YoutubeLogin', TextType::class, array(
+                'label' => 'Lien de votre chaine Youtube',
+                'required' => false
+            ))
             ->add('ajouter', SubmitType::class,array
             ('label' => 'Inscrivez-vous !', 'attr' => ['class' => 'btn btn-orange col-4']))
         ;
