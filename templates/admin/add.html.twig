@@ -34,9 +34,8 @@
                     <option value="ROLE_AUTEUR">ROLE_AUTEUR</option>
                 </select>
 
-                {{ form_label(form.image) }}
-                {{ form_errors(form.image) }}
-                {{ form_widget(form.image) }} {# Permet de créer les champs #}
+                <label for="image">Changer l'avatar</label>
+                {{ form_row(form.image, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Choisir une image'}}) }} {#permet de créer les champs#}
 
                 <span class="text-danger">* champ obligatoire</span>
                 <div class="text-center">
