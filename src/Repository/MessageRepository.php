@@ -29,6 +29,10 @@ class MessageRepository extends ServiceEntityRepository
         return $flag_count->getSingleScalarResult();
     }
 
+    public function notifications(){
+
+    }
+
 //    /**
 //     * @return Message[] Returns an array of Message objects
 //     */

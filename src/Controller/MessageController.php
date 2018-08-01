@@ -81,5 +81,11 @@ class MessageController extends Controller
         ]);
 
     }
+    /**
+     * @Route ("/notifications", name="notifications")
+     */
+    public function notifications(){
+
+    }
 
 }
