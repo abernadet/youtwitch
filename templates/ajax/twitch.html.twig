@@ -62,6 +62,7 @@
                                                 <a href="{{ path('twitch-clip', {'login': follow_data.login, 'slug': clip.slug}) }}">View more</a>
                                             </figcaption>
                                         </figure>
+                                        <h6 class="text-muted thumbnail-title d-block col-12 text-center">{{ clip.title|length > 35 ? clip.title|slice(0, 35) ~ '...' : clip.title  }}</h6>
                                     </div>
 
                                 {% endfor %}
@@ -83,6 +84,7 @@
 
                                 {% for replay in follow_data.replay_data %}
 
+                                <div class="d-flex flex-column justify-content-start miniature">
                                     <div class="grid">
                                         <figure class="effect-duke">
                                             {% if replay.thumbnail_url is empty %}
@@ -95,7 +97,9 @@
                                                 <a href="{{ path('twitch-video', {'login': follow_data.login, 'vid_id': replay.id}) }}">View more</a>
                                             </figcaption>
                                         </figure>
+                                        <h6 class="text-muted thumbnail-title d-block col-12 text-center">{{ replay.title|length > 30 ? replay.title|slice(0, 30) ~ '...' : replay.title  }}</h6>
                                     </div>
+                                </div>
 
                                 {% endfor %}
 
