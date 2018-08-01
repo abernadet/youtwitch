@@ -147,6 +147,12 @@
                 menu.css('display', 'none');
             }
         });
+
+        function updateSidebarHeight(){
+            $('#menu-principal').css('height', $(window).height() - 48);
+        }
+        
+        setInterval(updateSidebarHeight, 500)
     })
 
     </script>

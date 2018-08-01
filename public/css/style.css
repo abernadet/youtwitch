@@ -257,6 +257,14 @@ a#online-users-dropdown{
     text-decoration: none !important;
 }
 
+body{
+    height: 100%;
+}
+
+#menu-principal{
+    height: 100%;
+}
+
 
 .dropdown-icon{
     position: relative;
