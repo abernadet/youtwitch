@@ -12,6 +12,8 @@
 
     </ul>
 </nav>
+
+
 <section class="d-flex justify-content-around flex-wrap">
     {% for BestYVidAllTime in BestYVidsAllTime %}
     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ BestYVidAllTime.id.videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -24,12 +26,14 @@
 <section class="mt-3">
     <h3 class="ss-titre">Vidéos les plus populaires d'hier</h3>
     <div class="d-flex justify-content-around flex-wrap mt-3">
-        {% for BestYvid in BestYvids %}
+        {% for key, BestYvid in BestYVids %}
             <div class="grid">
                 <figure class="effect-duke">
                     <img src="{{ BestYvid.snippet.thumbnails.medium.url }}" alt="Miniature" title="Miniature">
                     <figcaption>
-                        <p>{{ BestYvid.snippet.title|slice(0, 30) }}...</p>
+                        <p>{{ BestYvid.snippet.title|truncate(20,true) }}<br>
+                            {% set viewCount = details3[key].0.statistics.viewCount %}
+                            {{ viewCount|number_format(0, '', ' ') }} vues</p>
                         <a data-fancybox href="https://www.youtube.com/watch?v={{ BestYvid.id.videoId }}">View more</a>
                     </figcaption>
                 </figure>

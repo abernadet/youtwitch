@@ -2,69 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4ff8a4d-e2bd-48d0-bd62-87a28d34805f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/jquery.fancybox.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/jquery.fancybox.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/4b16b0303e2640708f96174e82a104fe.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/5c525d37a2642affd0b77aa691effcb3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/60f5d2fadff6f2c0193a821e5a60c040.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/968e8630c5f87360133cbcc066b63874.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/c8122d11ca49e2b8f110b7c1d36faeba.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/MessageController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/MessageType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20180730081819.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20180730131104.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20180730140838.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20180730144655.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20180731130820.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20180731133232.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20180731133407.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/MessageRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/chat/chat.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/chat/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/includes/test.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/lost_password/changemotdepasse.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/message/add.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/message/countmail.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/message/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/message/message.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/message/messages.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/youtwitch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/youtwitch.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ChatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ChatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Chat.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Chat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ChatType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChatType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/UserUpdateType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserUpdateType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LostPasswordRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LostPasswordRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/TwitchApiService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TwitchApiService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Security/newPassword.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Security/newPassword.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/User/askEmail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/User/askEmail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/add.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/update.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ajax/twitch.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ajax/twitch.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/ajax/youtube.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ajax/youtube.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/includes/nav.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/includes/nav.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lost_password/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lost_password/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/propos.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/propos.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/rgpd.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/rgpd.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/update.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/video_player/twitch_clip.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video_player/twitch_clip.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/video_player/twitch_video.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video_player/twitch_video.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/visionnage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/visionnage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/youtube/detailschan.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/youtube/detailschan.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -90,22 +29,26 @@
       <file leaf-file-name="AjaxController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/AjaxController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="110" column="35" selection-start-line="110" selection-start-column="35" selection-end-line="110" selection-end-column="35" />
+            <state relative-caret-position="767">
+              <caret line="135" column="22" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="composer.lock" pinned="false" current-in-tab="true">
+      <file leaf-file-name="composer.lock" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composer.lock">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="detailschan.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/youtube/detailschan.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="52" selection-start-line="28" selection-start-column="71" selection-end-line="29" selection-end-column="52" />
+            <state relative-caret-position="612">
+              <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -113,8 +56,35 @@
       <file leaf-file-name="youtube.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/ajax/youtube.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+            <state relative-caret-position="378">
+              <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="636">
+              <caret line="453" column="77" selection-start-line="453" selection-start-column="77" selection-end-line="453" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchresult.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/youtube/searchresult.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="160" selection-start-line="6" selection-start-column="160" selection-end-line="6" selection-end-column="179" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/layout.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -144,7 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../my-project/templates/article/articles.html.twig" />
         <option value="$PROJECT_DIR$/src/Repository/HomeRepository.php" />
         <option value="$PROJECT_DIR$/public/js/playlist_updates.js" />
         <option value="$PROJECT_DIR$/public/js/auth.js" />
@@ -172,7 +141,6 @@
         <option value="$PROJECT_DIR$/templates/admin/update.html.twig" />
         <option value="$PROJECT_DIR$/templates/propos.html.twig" />
         <option value="$PROJECT_DIR$/templates/layout.html.twig" />
-        <option value="$PROJECT_DIR$/composer.lock" />
         <option value="$PROJECT_DIR$/vendor/cboden/ratchet/src/Ratchet/Server/chat.php" />
         <option value="$PROJECT_DIR$/templates/chat/chat.html.twig" />
         <option value="$PROJECT_DIR$/templates/message/add.html.twig" />
@@ -184,7 +152,6 @@
         <option value="$PROJECT_DIR$/src/Controller/MessageController.php" />
         <option value="$PROJECT_DIR$/templates/message/messages.html.twig" />
         <option value="$PROJECT_DIR$/templates/message/message.html.twig" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/src/Controller/ChatController.php" />
         <option value="$PROJECT_DIR$/src/Entity/Chat.php" />
         <option value="$PROJECT_DIR$/src/Form/ChatType.php" />
@@ -195,6 +162,9 @@
         <option value="$PROJECT_DIR$/templates/user/update.html.twig" />
         <option value="$PROJECT_DIR$/templates/visionnage.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
+        <option value="$PROJECT_DIR$/composer.lock" />
+        <option value="$PROJECT_DIR$/templates/ajax/youtube.html.twig" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
       </list>
     </option>
   </component>
@@ -332,7 +302,7 @@
       <path value="$PROJECT_DIR$/vendor/react/cache" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="289" />
     <option name="y" value="-13" />
     <option name="width" value="1440" />
@@ -350,6 +320,17 @@
             <path>
               <item name="youtwitch" type="b2602c69:ProjectViewProjectNode" />
               <item name="youtwitch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="youtwitch" type="b2602c69:ProjectViewProjectNode" />
+              <item name="youtwitch" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="youtwitch" type="b2602c69:ProjectViewProjectNode" />
+              <item name="youtwitch" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="youtwitch" type="b2602c69:ProjectViewProjectNode" />
@@ -432,10 +413,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119820000" />
+    <option name="totallyTimeSpent" value="120645000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -491,31 +472,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../promo7/symfony/src/Entity/Message.php" />
-    <entry file="file://$PROJECT_DIR$/../promo7/symfony/config/routes/annotations.yaml" />
-    <entry file="file://$PROJECT_DIR$/templates/admin/add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/chat/chat.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/AdminUpdateType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../promo7/symfony/src/Form/CategoryType.php" />
-    <entry file="file://$PROJECT_DIR$/../promo7/symfony/src/Controller/AdminController.php" />
     <entry file="file://$PROJECT_DIR$/../promo7/symfony/src/Controller/AjaxController.php" />
     <entry file="file://$PROJECT_DIR$/templates/video.html.twig">
       <provider selected="true" editor-type-id="text-editor">
@@ -579,13 +535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/MessageRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -635,13 +584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="162" column="17" lean-forward="true" selection-start-line="162" selection-start-column="17" selection-end-line="162" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -715,6 +657,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="366" column="5" selection-start-line="366" selection-start-column="5" selection-end-line="366" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/php.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1429" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.lock">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/YoutubeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AjaxController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="135" column="22" selection-start-line="135" selection-start-column="13" selection-end-line="135" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/youtube/detailschan.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/youtube/searchresult.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="160" selection-start-line="6" selection-start-column="160" selection-end-line="6" selection-end-column="179" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ajax/youtube.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="636">
+          <caret line="453" column="77" selection-start-line="453" selection-start-column="77" selection-end-line="453" selection-end-column="77" />
         </state>
       </provider>
     </entry>
