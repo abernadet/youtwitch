@@ -13,24 +13,24 @@
     <ul class="list-group">
         {% for message in messages %}
             {% if app.user.username == message.sender or app.user.username == message.recipient %}
-            <div class="card">
-                <li class="card-body d-flex justify-content-around" style="list-style: none">
-                    <div>
-                        <strong>Expediteur : </strong> {{ message.sender}}
-                        <br><strong>Destinataire : </strong>{{ message.recipient }}
-                        <br><strong>Sujet : </strong>{{ message.sujet }}
-                    </div>
-                    <div>
-                        <strong>Date d'envoi : </strong>{{ message.dateenvoi | date('d-m-Y') }}
-                        {% if message.lu %}
-                            <p style="color: #DF691A;">Message Lu</p>
-                        {% else %}
-                            <p style="color: #DF691A;">Message Non Lu</p>
-                        {% endif %}
-                    </div>
-                    <a href="{{ path('message', {id : message.id}) }}" class="lien">Lire</a>
-                </li>
-            </div>
+                <div class="card">
+                    <li class="card-body d-flex justify-content-around" style="list-style: none">
+                        <div>
+                            <strong>Expediteur : </strong> {{ message.sender}}
+                            <br><strong>Destinataire : </strong>{{ message.recipient }}
+                            <br><strong>Sujet : </strong>{{ message.sujet }}
+                        </div>
+                        <div>
+                            <strong>Date d'envoi : </strong>{{ message.dateenvoi | date('d-m-Y') }}
+                            {% if message.lu %}
+                                <p style="color: #DF691A;">Message Lu</p>
+                            {% else %}
+                                <p style="color: #DF691A;">Message Non Lu</p>
+                            {% endif %}
+                        </div>
+                        <a href="{{ path('message', {id : message.id}) }}" class="lien">Lire</a>
+                    </li>
+                </div><br>
             {% else %}
                 <h6>Vous n'avez pas de message</h6>
             {% endif %}
