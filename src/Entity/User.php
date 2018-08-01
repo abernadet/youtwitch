@@ -127,6 +127,11 @@ class User implements UserInterface, \Serializable
      */
     private $MessagesReceived;
 
+    /**
+     * @ORM\Column(type="string", length=255, name="YoutubeLogin",nullable = true)
+     */
+    private $YoutubeLogin;
+
     public function __construct()
     {
         $this->isActive = true; //par défaut, un user est actif
@@ -387,6 +392,18 @@ class User implements UserInterface, \Serializable
     {
         return $this->username;
 
+    }
+
+    public function getYoutubeLogin(): ?string
+    {
+        return $this->YoutubeLogin;
+    }
+
+    public function setYoutubeLogin(string $YoutubeLogin): self
+    {
+        $this->YoutubeLogin = $YoutubeLogin;
+
+        return $this;
     }
 }
 
