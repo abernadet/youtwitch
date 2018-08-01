@@ -12,8 +12,6 @@
     <link rel="icon" href="{{ asset('img/icon.png') }}" />
     <script src="{{ asset('js/jquery-3.3.1.js') }}"></script>
     <script src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
-    <script src="{{ asset('js/js.cookie.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Permanent+Marker|Rock+Salt" rel="stylesheet">
     {% block css %}{% endblock %}
     <meta name="viewport" content="initial-scale=1">
@@ -39,7 +37,8 @@
     </div>
 </div>
 
-{#{{ include('includes/footer.html.twig') }}#}
+<script src="{{ asset('js/js.cookie.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 <script>
     $(function(){
