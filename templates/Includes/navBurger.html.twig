@@ -1,9 +1,9 @@
 {# Début Nav Smartphone #}
 <div id="burger" class="burger bg-dark w-100">
     <div class="container">
-    <div id="svg-burger">
-        <i class="fas fa-bars fa-2x orange"></i>
-    </div>
+        <div id="svg-burger">
+            <i class="fas fa-bars fa-2x orange"></i>
+        </div>
     </div>
 </div>
 <nav id="menu-principal" class="nav-burger bg-light">
@@ -24,30 +24,7 @@
                 <i class="fas fa-search isize ml-3"></i>
             </div>
         </div>
-        {% block js %}
-            <script>
-                $('body').on('keyup','#check2',function(e){
-                    e.preventDefault();
-                    var url2 = "{{  path('YsearchBar',{terme:'exemple'}) }}";
-                    console.log(url2);
-                    url2 = url2.replace('exemple',$('#check2').val());
-                    console.log(url2);
 
-                    $.ajax({
-                        type:'get',
-                        url:url2,
-                        timeout:'3000',
-                        dataType:'html',
-                        success: function(data){
-                            $('#resultYoutube').html(data);
-                        },
-                        error: function (error){
-                            console.log(error.responseText);
-                        }
-                    })
-                })
-            </script>
-        {% endblock %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a class="btn btn-orange my-2 my-sm-0 mr-3 ml-3" href="{{ path('logout') }}">Déconnexion</a>
@@ -126,4 +103,48 @@
         </ul>
     </div>
 </nav>
+
+{% block js %}
+<script>
+$(function(){
+
+    //Searchbar
+    $('body').on('keyup','#check2',function(e){
+        e.preventDefault();
+        var url2 = "{{  path('YsearchBar',{terme:'exemple'}) }}";
+        console.log(url2);
+        url2 = url2.replace('exemple',$('#check2').val());
+        console.log(url2);
+
+        $.ajax({
+            type:'get',
+            url:url2,
+            timeout:3000,
+            dataType:'html',
+            success: function(data){
+                $('#resultYoutube').html(data);
+            },
+            error: function (error){
+                console.log(error.responseText);
+            }
+        })
+    })
+
+    //Menu burger
+    var menu = $("#menu-principal");
+    console.log('non');
+    $("#svg-burger").onclick = function(){
+        console.log('oui');
+        if (menu.style.display !== "block") {
+            console.log('display block');
+            menu.style.display = 'block';
+        }else{
+            console.log('display none');
+            menu.style.display = 'none';
+        }
+    };
+})
+    
+</script>
+{% endblock %}
 {# Fin Nav Smartphone #}

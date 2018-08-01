@@ -18,7 +18,7 @@
 
     <section class="d-flex justify-content-center">
         <p class="font-italic font-weight-bold"><a href="#" class="mr-5 lien">{% block chanelName %}{% endblock %}</a></p>
-        <p><b>Vues :</b> {% block view %}{% endblock %}</p>
+        <p>{% block view %}{% endblock %}</p>
     </section>
 
     <hr class="bg-orange">
@@ -34,15 +34,18 @@
         <div class="d-flex justify-content-between mb-3 flex-wrap">
             {% for clip in clips.clips %}
 
-                <div class="grid">
-                    <figure class="effect-duke">
-                        <img src="{{ clip.thumbnails.small }}" alt="miniature du clip">
-                        <figcaption>
-                            <p>{{ clip.game|slice(0, 35) }} <br> le {{ clip.created_at|date('d M') }}</p>
-                            <a href="{{ path('twitch-clip', {'login': login, 'slug': clip.slug}) }}">View more</a>
-                        </figcaption>
-                    </figure>
-                </div>
+                <div class="d-flex flex-column justify-content-start miniature">
+                    <div class="grid">
+                        <figure class="effect-duke">
+                            <img src="{{ clip.thumbnails.small }}" alt="miniature du clip">
+                            <figcaption class="thumbnail-size">
+                                <p>{{ clip.game|length > 35 ? clip.game|slice(0, 35) ~ '...' : clip.game }} <br> le {{ clip.created_at|date('d M') }}</p>
+                                <a href="{{ path('twitch-clip', {'login': login, 'slug': clip.slug}) }}">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <h6 class="text-muted d-block col-12 text-center">{{ clip.title|length > 35 ? clip.title|slice(0, 35) ~ '...' : clip.title  }}</h6>
+                </div>  
 
             {% endfor %}
         </div>
@@ -58,18 +61,21 @@
     {% else %}
 
         <h5 class="ml-4 mt-5 mb-2 ss-titre">Replays récents : </h5>
-        <div class="d-flex justify-content-between mb-3 flex-wrap miniature">
+        <div class="d-flex justify-content-between mb-3 flex-wrap">
 
             {% for replay in replays %}
 
-                <div class="grid">
-                    <figure class="effect-duke">
-                        <img src="{{ replay.thumbnail_url }}" alt="miniature du clip">
-                        <figcaption>
-                            <p>Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</p>
-                            <a href="{{ path('twitch-video', {'vid_id': replay.id, 'login': login}) }}">View more</a>
-                        </figcaption>
-                    </figure>
+                <div class="d-flex flex-column justify-content-start miniature">
+                    <div class="grid">
+                        <figure class="effect-duke">
+                            <img src="{{ replay.thumbnail_url }}" alt="miniature du clip">
+                            <figcaption>
+                                <p>Le {{ replay.created_at|date('d M') }} à {{ replay.created_at|date('G:i') }}</p>
+                                <a href="{{ path('twitch-video', {'vid_id': replay.id, 'login': login}) }}">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <h6 class="text-muted d-block col-12 text-center">{{ replay.title|length > 35 ? replay.title|slice(0, 35) ~ '...' : replay.title  }}</h6>
                 </div>
 
             {% endfor %}

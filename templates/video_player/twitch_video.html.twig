@@ -2,7 +2,9 @@
 
 {% block chanelName %}{{ display_name }}{% endblock %}
 {% block titleLive %}{{ video_data.title }}{% endblock %}
-{% block view %}{{ video_data.view_count }}{% endblock %}
+{% block view %}
+    <b>Vues : {{ video_data.view_count }}</b>
+{% endblock %}
 
 {% block video %}
 {% if vid_id %}

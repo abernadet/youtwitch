@@ -1,5 +1,12 @@
 {# Début Nav #}
-<nav class="col-md-2 d-none d-md-block bg-light sidebar mt-5">
+<div id="burger" class="burger bg-dark w-100">
+    <div class="container">
+        <div id="svg-burger">
+            <i class="fas fa-bars fa-2x orange"></i>
+        </div>
+    </div>
+</div>
+<nav id="menu-principal" class="col-md-2 bg-light sidebar mt-5">
     <div class="sidebar-sticky">
         <ul class="nav flex-column mt-3">
             <li class="nav-item">
@@ -102,27 +109,43 @@
         </ul>
     </div>
 </nav>
-<script>
-$(function(){
+{% block js %}
+    <script>
+    $(function(){
 
-    $('#offline-users-dropdown').on('click', function(e){
-        e.preventDefault();
-        if ($('#offline-users').css('display') === "none") {
-            $('#offline-users').css('display', 'block');
-        } else {
-            $('#offline-users').css('display', 'none');
-        }
+        // Show/Hide offline users
+        $('#offline-users-dropdown').on('click', function(e){
+            e.preventDefault();
+            if ($('#offline-users').css('display') === "none") {
+                $('#offline-users').css('display', 'block');
+            } else {
+                $('#offline-users').css('display', 'none');
+            }
+        })
+
+        // Show/Hide online users
+        $('#online-users-dropdown').on('click', function(e){
+            e.preventDefault();
+            if ($('.online-users').css('display') === "none") {
+                $('.online-users').css('display', 'block');
+            } else {
+                $('.online-users').css('display', 'none');
+            }
+        })
+
+        // Show/Hide Menu
+        var menu = $("#menu-principal");
+        $("#svg-burger").on('click', function(e){
+            if(menu.css('display') === 'none') {
+                console.log('none to block');
+                menu.css('display', 'block');
+            }else{
+                console.log('block to none');
+                menu.css('display', 'none');
+            }
+        });
     })
 
-    $('#online-users-dropdown').on('click', function(e){
-        e.preventDefault();
-        if ($('.online-users').css('display') === "none") {
-            $('.online-users').css('display', 'block');
-        } else {
-            $('.online-users').css('display', 'none');
-        }
-    })
-
-})
-</script>
+    </script>
+{% endblock %}
 {# Fin Nav #}
