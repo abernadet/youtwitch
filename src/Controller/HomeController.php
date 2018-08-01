@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Entity\Message as Message;
+use App\Form\MessageType;
 use App\Service\TwitchApiService;
 use App\Service\TextFormatService;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class HomeController extends Controller
 {
@@ -50,6 +53,8 @@ class HomeController extends Controller
     /**
      * @Route("/user/twitch_stream", name="twitch-stream")
      */
+
+
     public function playTwitchStream(TwitchApiService $twitch_api, TextFormatService $text_format, Request $request)
     {
         $params = $request->query->all();
@@ -183,7 +188,9 @@ class HomeController extends Controller
             'display_name' => $user_display_name,
             'video_data' => ($video_data->data)[0]
         ]);
+
     }
+
 
     /**
      * @Route("/user/propos", name="propos")

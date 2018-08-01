@@ -28,12 +28,13 @@ class UserUpdateType extends AbstractType
             ))
             ->add('email', EmailType::class)
             ->add('image', FileType::class, array('label' => 'Ajouter une image',
-                                                    'attr' => ['class' => 'form-control-file'],
                                                     'required' => false ))
             ->add('phone', TextType::class, array('label' => 'Votre numéro de téléphone', 'required' => false))
             ->add('address', TextType::class, array('label' => 'Votre adresse', 'required' => false))
             ->add('birthdate', BirthdayType::class, array('label' => 'Votre date de naissance'))
             ->add('twitchLogin', TextType::class, array('label' => 'Identifiant de votre chaine Twitch', 'required' => false))
+            ->add('twitchLogin', TextType::class, array('label' => 'Identifiant de votre chaine Twitch',
+                                                                    'required' => false))
             ->add('Modifier', SubmitType::class,array
             ('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange col-3']));
     }

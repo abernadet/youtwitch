@@ -18,6 +18,7 @@ class Chat
     private $id;
 
     /**
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      */
     private $user;
@@ -33,15 +34,19 @@ class Chat
      */
     private $date_envoie;
 
+
     public function getId()
     {
         return $this->id;
     }
 
+
     public function getUser()
+
     {
         return $this->user;
     }
+
 
     public function setUser(User $user)
     {
@@ -52,6 +57,7 @@ class Chat
 
     public function getMessage(): ?string
     {
+
         return $this->message;
     }
 

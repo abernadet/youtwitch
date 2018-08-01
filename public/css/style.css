@@ -151,6 +151,7 @@ main{
 .burger{display: none;}
 
 .nav-burger{
+    z-index:1;
     display: none;
     z-index: 1;
 }

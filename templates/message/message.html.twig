@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Article{% endblock %}
+{% block content %}
+
+    <a href="{{ path('all-messages') }}">Retour</a>
+<div class="container">
+   <h6>Expéditeur</h6> <p>{{ message.sender }}</p>
+    <h6>Message</h6> <p>{{ message.contenu }} <br> Envoyé le {{ message.dateenvoi | date('d-m-Y') }} à {{ message.dateenvoi | date('H:i:s') }}</p>
+
+        <button type="submit" class="btn btn-primary">Répondre</button>
+</div>
+
+
+
+
+
+{% endblock %}
