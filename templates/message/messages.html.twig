@@ -5,13 +5,14 @@
 
     <h6>Vous pouvez envoyer un mail à vos contacts</h6>
 
-    <a href="{{ path('message-add') }}"><button type="button" class="btn btn-outline-secondary">Envoyer un message</button></a>
-    <a href="{{ path('message-add') }}"><button type="button" class="btn btn-outline-secondary">Messages envoyés</button></a>
+    <a href="{{ path('message-add') }}" class="btn btn-outline-secondary">Envoyer un message</a>
+    <a href="#" class="btn btn-outline-secondary">Messages envoyés</a>
 
     <hr class="bg-orange">
 
     <ul class="list-group">
         {% for message in messages %}
+            {% if app.user.username == message.sender or app.user.username == message.recipient %}
             <div class="card">
                 <li class="card-body d-flex justify-content-around" style="list-style: none">
                     <div>
@@ -30,6 +31,9 @@
                     <a href="{{ path('message', {id : message.id}) }}" class="lien">Lire</a>
                 </li>
             </div>
+            {% else %}
+                <h6>Vous n'avez pas de message</h6>
+            {% endif %}
         {%  endfor %}
     </ul>
 
