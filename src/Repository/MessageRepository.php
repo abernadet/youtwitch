@@ -18,6 +18,16 @@ class MessageRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Message::class);
     }
+//champ lu de type boolean, message false n'a pas été lu, quand la personne va lire le message je le mettrai a true.
+    public function countMail($user){
+        $count_dql = $this->createQueryBuilder('c')
+            ->select('count(c.contenu)')
+            ->andWhere('c.lu != 1')
+            ->andWhere('c.recipient = :user')
+            ->setParameter('user', $user);
+        $flag_count = $count_dql->getQuery();
+        return $flag_count->getSingleScalarResult();
+    }
 
 //    /**
 //     * @return Message[] Returns an array of Message objects

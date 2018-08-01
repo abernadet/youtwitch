@@ -28,10 +28,23 @@ class Message
      */
     private $dateenvoi;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="message")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="messagesSent")
      */
-    private $user;
+    private $sender;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="MessagesReceived")
+     */
+    private $recipient;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default"=false})
+     */
+    private $lu;
+
+
 
     public function getId()
     {
@@ -61,16 +74,43 @@ class Message
 
         return $this;
     }
-    public function getUser(): ?User
+
+
+    public function getSender(): ?User
     {
-        return $this->user;
+        return $this->sender;
     }
 
-    public function setUser(?User $user): self
+    public function setSender(?User $sender): self
     {
-
-        $this->user = $user;
+        $this->sender = $sender;
 
         return $this;
     }
+
+    public function getRecipient(): ?User
+    {
+        return $this->recipient;
+    }
+
+    public function setRecipient(?User $recipient): self
+    {
+        $this->recipient = $recipient;
+
+        return $this;
+    }
+
+    public function getLu(): ?bool
+    {
+        return $this->lu;
+    }
+
+    public function setLu(bool $lu): self
+    {
+        $this->lu = $lu;
+
+        return $this;
+    }
+
+
 }

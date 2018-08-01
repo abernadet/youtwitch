@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Ajout d'un utilisateur - YouTwitch{% endblock %}
+
+{% block content %}
+    <section class="d-flex justify-content-center">
+        <div class="card col-8 bg-dark mt-5">
+            <div class="card-body">
+
+                <h3 class="card-title titleOrange" style="text-align: center;font-weight: bold;">Ajouter un utilisateur</h3>
+                <br>
+
+                {{ form_start(form, {'attr' : {'class' : 'text-light'}}) }} {# Permet de créer la balise <form> #}
+
+                {{ form_label(form.username) }}
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.username, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+
+                {{ form_label(form.message) }}
+                {{ form_errors(form.message) }}
+                {{ form_widget(form.message, {'attr' : {'class' : 'mb-3'}}) }} {# Permet de créer les champs #}
+
+
+                {{ form_end(form) }} {# Va fermer la balise </form> #}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{#
+
+<div class="col-sm-3 col-sm-offset-4 frame">
+    <ul></ul>
+    <div>
+        <div class="msj-rta macro">
+            <div class="text text-r" style="background:whitesmoke !important">
+                <input class="mytext" placeholder="Type a message"/>
+            </div>
+
+        </div>
+        <div style="padding:10px;">
+            <span class="glyphicon glyphicon-share-alt"></span>
+        </div>
+    </div>
+</div>
+
+#}
+
+

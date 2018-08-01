@@ -41,7 +41,7 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=255, unique = true)
+     * @ORM\Column(type="string", length=191, unique = true)
      * @Assert\NotBlank()
      */
     private $email;
@@ -78,15 +78,28 @@ class User implements UserInterface, \Serializable
      */
     private $message;
 
+
     /**
      * @ORM\Column(type="string", length=255, name="twitchLogin", nullable = true)
      */
     private $twitchLogin;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="sender")
+     */
+    private $messagesSent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="recipient")
+     */
+    private $MessagesReceived;
+
 
     public function __construct()
     {
-        $this->isActive = true; //par défaut, un user est actif
+        $this->isActive = true;
+        $this->messagesSent = new ArrayCollection();
+        $this->MessagesReceived = new ArrayCollection(); //par défaut, un user est actif
 
     }
 
@@ -223,4 +236,75 @@ class User implements UserInterface, \Serializable
         return $this->message;
     }
 
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessagesSent(): Collection
+    {
+        return $this->messagesSent;
+    }
+
+    public function addMessagesSent(Message $messagesSent): self
+    {
+        if (!$this->messagesSent->contains($messagesSent)) {
+            $this->messagesSent[] = $messagesSent;
+            $messagesSent->setSender($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessagesSent(Message $messagesSent): self
+    {
+        if ($this->messagesSent->contains($messagesSent)) {
+            $this->messagesSent->removeElement($messagesSent);
+            // set the owning side to null (unless already changed)
+            if ($messagesSent->getSender() === $this) {
+                $messagesSent->setSender(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessagesReceived(): Collection
+    {
+        return $this->MessagesReceived;
+    }
+
+    public function addMessagesReceived(Message $messagesReceived): self
+    {
+        if (!$this->MessagesReceived->contains($messagesReceived)) {
+            $this->MessagesReceived[] = $messagesReceived;
+            $messagesReceived->setRecipient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessagesReceived(Message $messagesReceived): self
+    {
+        if ($this->MessagesReceived->contains($messagesReceived)) {
+            $this->MessagesReceived->removeElement($messagesReceived);
+            // set the owning side to null (unless already changed)
+            if ($messagesReceived->getRecipient() === $this) {
+                $messagesReceived->setRecipient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /*
+     * Méthode qui permet d'éviter le bug object to string conversion:
+     * si on essaie d'afficher l'objet c'est le username qui sera affiché
+     */
+    public function __toString():string
+    {
+        return $this->username;
+    }
 }
+

@@ -28,6 +28,14 @@ class UserRepository extends ServiceEntityRepository
         return $querybuilder->execute();
     }
 
+    public function userList(User $user){
+            $querybuilder = $this->createQueryBuilder('u')
+                ->andWhere('u.id != :user')
+                ->setParameter('user', $user->getId())
+                ->getQuery();
+            return $querybuilder->execute();
+    }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */
