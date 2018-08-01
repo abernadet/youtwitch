@@ -259,6 +259,10 @@ a#offline-users-dropdown{
     text-decoration: none !important;
 }
 
+a#youtube-users-dropdown{
+    text-decoration: none !important;
+}
+
 h6.d-inline.sidebar-heading.d-flex.justify-content-start.align-items-center.px-3.mt-4.mb-3.text-muted-bis:hover{
     color: black;
 }
