@@ -11,6 +11,8 @@
     <hr class="bg-orange">
 
     <ul class="list-group">
+        {{ dump(app.user) }}
+        {{ dump(messages) }}
         {% for message in messages %}
             {% if app.user.username == message.sender or app.user.username == message.recipient %}
             <div class="card">
@@ -22,11 +24,18 @@
                     </div>
                     <div>
                         <strong>Date d'envoi : </strong>{{ message.dateenvoi | date('d-m-Y') }}
-                        {% if message.lu %}
-                            <p style="color: #DF691A;">Message Lu</p>
-                        {% else %}
+                        {% if not message.lu and message.recipient.id == app.user.id  %}
                             <p style="color: #DF691A;">Message Non Lu</p>
                         {% endif %}
+
+                        {% if message.lu and message.sender.id == app.user.id  %}
+                            <p style="color: #DF691A;">Accusé de réception : <i class="fas fa-check"></i></p>
+                        {% endif %}
+
+                        {% if not message.lu and message.sender.id == app.user.id  %}
+                            <p style="color: #DF691A;">Accusé de réception : <i class="fas fa-times"></i></p>
+                        {% endif %}
+
                     </div>
                     <a href="{{ path('message', {id : message.id}) }}" class="lien">Lire</a>
                 </li>

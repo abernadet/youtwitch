@@ -77,9 +77,7 @@
                             </figcaption>
                         </figure>
                     </div>
-                    <h6 class="text-muted thumbnail-title d-block text-center w-100 tooltip">
-                        {{ replay.title|length > 35 ? replay.title|slice(0, 35) ~ '...' : replay.title  }}
-                    </h6>
+                    <h6 class="text-muted thumbnail-title d-block text-center w-100">{{ replay.title|length > 35 ? replay.title|slice(0, 35) ~ '...' : replay.title  }}</h6>
                 </div>
 
             {% endfor %}
