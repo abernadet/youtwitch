@@ -2,28 +2,42 @@
 
 <nav class="container mb-3">
     <ul class="nav nav-tabs">
+
         <li class="nav-item">
-            <a class="nav-link" id="youtube" href="{{ path('video') }}">Youtube</a>
+            <a class="nav-link active" id="youtube" href="{{ path('video') }}">Youtube</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" id="twitch" href="{{ path('twitch') }}">Twitch</a>
+            <a class="nav-link lien" id="twitch" href="{{ path('twitch') }}">Twitch</a>
         </li>
+
     </ul>
 </nav>
 
+
 <section class="d-flex justify-content-around flex-wrap">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/1TsVjvEkc4s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/kbMqWXnpXcA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    {% for BestYVidAllTime in BestYVidsAllTime %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ BestYVidAllTime.id.videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    {% endfor %}
 </section>
 
-<section class="mt-5">
-    <h3>Vidéos les plus populaires d'hier</h3>
+<hr class="bg-orange">
+
+<section class="mt-3">
+    <h3 class="ss-titre">Vidéos les plus populaires d'hier</h3>
     <div class="d-flex justify-content-around flex-wrap mt-3">
-        {% for BestYvid in BestYvids %}
-        <a href="{{ path('YVod', {idVideo: BestYvid.id.videoId}) }}" class="text-dark col-3">
-            <img src="{{ BestYvid.snippet.thumbnails.medium.url }}" alt="Miniature" title="Miniature">
-            <p class="mt-1">{{ BestYvid.snippet.title }}</p>
-        </a>
+        {% for key, BestYvid in BestYVids %}
+            <div class="grid">
+                <figure class="effect-duke">
+                    <img src="{{ BestYvid.snippet.thumbnails.medium.url }}" alt="Miniature" title="Miniature">
+                    <figcaption>
+                        <p>{{ BestYvid.snippet.title|truncate(20,true) }}<br>
+                            {% set viewCount = details3[key].0.statistics.viewCount %}
+                            {{ viewCount|number_format(0, '', ' ') }} vues</p>
+                        <a data-fancybox href="https://www.youtube.com/watch?v={{ BestYvid.id.videoId }}">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
         {% endfor %}
     </div>
 </section>

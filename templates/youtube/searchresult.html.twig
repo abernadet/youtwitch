@@ -4,7 +4,7 @@
 
         {% for result in results %}
             <a href="{{ path('OwnerChan', {channelId: result.snippet.channelId}) }}" class="list-group-item list-group-item-action"> |
-                <img src="{{ result.snippet.thumbnails.default.url }}" style="padding: 5px">{{  result.snippet.title }}</a>
+                <img src="{{ result.snippet.thumbnails.default.url }}" style="padding: 5px"><b>{{  result.snippet.title }}</b> -- {{  result.snippet.description|truncate(100,true) }}</a>
         {% endfor %}
 
     {% endif %}

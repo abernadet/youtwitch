@@ -10,6 +10,7 @@ use  Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 
+
 class ChatController extends Controller
 {
     /**
@@ -26,6 +27,7 @@ class ChatController extends Controller
      */
     public function AddChat(Request $request){
         $chat = new Chat();
+
 
         $message = $request->request->get('message', null);
 
@@ -55,6 +57,29 @@ class ChatController extends Controller
         $chats = array_reverse($chats);
 
         return $this->render('chat/resultchat.html.twig', array('chats'=> $chats));
+
+
+        $form= $this->createForm(chatType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isvalid()){
+            $chat =$form->getData();
+            $chat->setDateenvoi(new \DateTime(date('Y-m-d H:i:s')));
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($chat);
+            $entityManager->flush();
+            $this->addFlash('success', 'Message envoyé');
+            return $this->redirectToRoute('chat-add');
+        }
+        return $this->render('chat/chat.html.twig',
+                array('form' => $form->createView()));
+    }
+    /**
+     * @Route("/chat/{id}", name="chat", requirements={"id"="\d+"})
+     */
+    public function show($id){
+        $repository = $this->getDoctrine()->getRepository(Chat::class);
+        $chat = $repository->find($id);
+        return $this->render('chat/chat.html.twig', array('chat'=> $chat));
 
     }
 }

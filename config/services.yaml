@@ -8,6 +8,10 @@ parameters:
     users_images_directory: '%kernel.project_dir%/public/uploads/images'
 
 services:
+    twig.extension.text:
+          class: Twig_Extensions_Extension_Text
+          tags:
+              - { name: twig.extension }
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -15,6 +19,7 @@ services:
         public: false       # Allows optimizing the container by removing unused services; this also means
                             # fetching services directly from the container via $container->get() won't work.
                             # The best practice is to be explicit about your dependencies anyway.
+
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -38,3 +43,5 @@ services:
             #fait référence à notre paramètre crée plus haut
               $directory : '%users_images_directory%'
     #J'enregistre le service de google
+
+

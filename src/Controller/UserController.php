@@ -47,6 +47,7 @@ class UserController extends Controller
         }
         $form = $this->createForm(UserUpdateType::class,$user);
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isvalid()){
             $user = $form->getData();
             if($user->getImage()){

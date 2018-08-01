@@ -95,8 +95,11 @@ class AdminController extends Controller
         $form = $this->createForm(AdminUpdateType::class, $user);
         $form->handleRequest($request);
 
+
+
         if($form->isSubmitted() && $form->isValid()){
             $user = $form->getData();
+            $user->getRoles();
 
             $roles = $request->request->get('roles');
             $user->setRoles($roles);
@@ -118,7 +121,7 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin');
         }
 
-        return $this->render('admin/update.html.twig', array('form' => $form->createView()));
+        return $this->render('admin/update.html.twig', array('form' => $form->createView(), 'user' => $user));
     }
 
     /**

@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class YoutubeController extends Controller
 {
-private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
+    private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
     /**
      * @Route("youtube/search/", name="YsearchAccueil")
      */
@@ -76,28 +76,28 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
     /*
      * @Route("/youtube/search/{terme}", name="Ysearch")
      */
-   /* public function search($terme)
-    {
+    /* public function search($terme)
+     {
 
-        $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=$terme&type=channel&key=$this->Gkey";
+         $url = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=$terme&type=channel&key=$this->Gkey";
 
-        try {
-            $json = file_get_contents($url);
-            $obj = json_decode($json);
-            $results = $obj->items;
-        } catch (\Exception $e) {
-            $results = [];
+         try {
+             $json = file_get_contents($url);
+             $obj = json_decode($json);
+             $results = $obj->items;
+         } catch (\Exception $e) {
+             $results = [];
 
-        }
-        if (empty($results)){
-            $text='c\'est vide';
-        }else{
-            $text = 'ya un truc';
-        }
-        return $this->render('youtube/searchresult.html.twig', [
-            'results' => $results, 'url' => $url,'text'=>$text
-        ]);
-    }*/
+         }
+         if (empty($results)){
+             $text='c\'est vide';
+         }else{
+             $text = 'ya un truc';
+         }
+         return $this->render('youtube/searchresult.html.twig', [
+             'results' => $results, 'url' => $url,'text'=>$text
+         ]);
+     }*/
 
     /**
      * @Route("/youtube/channel/{channelId}", name="OwnerChan", defaults={"channelId"=1})
@@ -134,9 +134,9 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
             $details2 = [];
             $idVideos[] = [];
         }
-            foreach ($idVideos as $idVideo) {
-                $urls3[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideo&key=$this->Gkey";
-            }
+        foreach ($idVideos as $idVideo) {
+            $urls3[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideo&key=$this->Gkey";
+        }
 
         try {
             foreach ($urls3 as $url3) {
@@ -144,7 +144,7 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
                 $obj3 = json_decode($json3);
 
                 $details3[] = $obj3->items;
-               // dump($details3);
+                // dump($details3);
             }
         } catch (\Exception $e) {
             $details3 = [];
@@ -164,7 +164,7 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
      * @Route("/video_player/youtube/{idVideo}", name="YVod", defaults={"idVideo"=0})
      */
     public function YShowVod($idVideo){
-       $url= "https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics&id=$idVideo&key=$this->Gkey";
+        $url= "https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics&id=$idVideo&key=$this->Gkey";
 
         try {
             $json = file_get_contents($url);
@@ -185,14 +185,6 @@ private $Gkey = 'AIzaSyC14ed967GfZtOwI8D98w7v0-3yjdpQx9M';
             'infoVideos' => $infoVideos, 'url3' => $url,'text'=>$text
         ]);
     }
-
-
-
-        ##A FAIRE : Pour la recherche par mot, si y a un espace le remplacer par un +
-        ## Ne prend pas en compte les espaces sinon.
-
-
-
-    }
+}
 
 

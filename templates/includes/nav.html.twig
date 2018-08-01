@@ -1,3 +1,4 @@
+
 {# Début Nav #}
 <div id="burger" class="burger bg-dark w-100">
     <div class="container">
@@ -15,8 +16,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#">
-                    <i class="fab fa-gripfire"></i> Tendances
+                <a class="nav-link text-dark" href="{{ path('all-messages') }}">
+                    <i class="fas fa-envelope"></i> Messages
+
                 </a>
             </li>
             <li class="nav-item">
@@ -42,6 +44,7 @@
             </a>
         </h5>
             
+
             {# Chaines suivies en ligne #}
         <a id="online-users-dropdown" href="#">
             <h6 class="d-inline sidebar-heading d-flex justify-content-start align-items-center px-3 mt-4 mb-3 text-muted-bis">
@@ -104,11 +107,12 @@
                 <a class="nav-link text-dark" href="{{ path('propos') }}">A propos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('rgpd') }}">Confidantialité</a>
+                <a class="nav-link text-dark" href="{{ path('rgpd') }}">Confidentialité</a>
             </li>
         </ul>
     </div>
 </nav>
+<<<<<<< HEAD
 {% block js %}
     <script>
     $(function(){
@@ -132,6 +136,20 @@
                 $('.online-users').css('display', 'none');
             }
         })
+=======
+
+<script>
+$(function(){
+
+    $('#offline-users-dropdown').on('click', function(e){
+        e.preventDefault();
+        if ($('#offline-users').css('display') === "none") {
+            $('#offline-users').css('display', 'block');
+        } else {
+            $('#offline-users').css('display', 'none');
+        }
+    })
+>>>>>>> 0dea7e4b203eb5133e30737924269a0e173d6aeb
 
         // Show/Hide Menu
         var menu = $("#menu-principal");
@@ -146,6 +164,16 @@
         });
     })
 
+<<<<<<< HEAD
     </script>
 {% endblock %}
 {# Fin Nav #}
+=======
+})
+</script>
+{# Fin Nav #}
+
+{# Fin Nav #}
+
+
+>>>>>>> 0dea7e4b203eb5133e30737924269a0e173d6aeb
