@@ -2,7 +2,7 @@
 
 {% block chanelName %}{{ display_name }}{% endblock %}
 {% block titleLive %}{{ stream_data.title }}{% endblock %}
-{% block view %}{{ stream_data.viewer_count }}{% endblock %}
+{% block view %}<b>Viewers : {{ stream_data.viewer_count }}</b>{% endblock %}
 
 {% block video %}
 <div class="d-flex justify-content-center mb-4 mt-4">

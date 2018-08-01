@@ -26,8 +26,9 @@
                 <figure class="effect-duke">
                     <img src="{{ detail2.snippet.thumbnails.medium.url }}" class="zoom" style="padding-bottom: 5px">
                     <figcaption>
-                        <p>{{ detail2.snippet.title|slice(0, 35) }}<br>{% set viewCount = details3[key].0.statistics.viewCount %}
+                        <p>{{ detail2.snippet.title|truncate(20,true) }}<br>{% set viewCount = details3[key].0.statistics.viewCount %}
                             {{ viewCount|number_format(0, '', ' ') }} vues</p>
+
                         <a data-fancybox href="https://www.youtube.com/watch?v={{ detail2.snippet.resourceId.videoId }}">View more</a>
                     </figcaption>
                 </figure>

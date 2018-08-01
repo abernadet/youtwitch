@@ -80,16 +80,21 @@ class HomeController extends Controller
             $replay->thumbnail_url = $text_format->format_twitch_video_thumbnail_url($replay->thumbnail_url);
         }
 
-        $stream_data = $twitch_api->getLiveStreamFromLogin($login);
-
-        dump(($stream_data->data)[0]); 
+        $stream = $twitch_api->getLiveStreamFromLogin($login);
+        $stream_data = $stream->data;
+        if(empty($stream->data)){
+            $stream_data["title"] = 'Offline';
+            $stream_data["viewer_count"] = 0;
+        }else{
+            $stream_data = $stream_data[0];
+        }
 
         return $this->render('video_player/twitch_stream.html.twig', [
             'clips' => $clips,
             'login' => $login,
             'display_name' => $user_display_name,
             'replays' => $replay_tab,
-            'stream_data' => ($stream_data->data)[0]
+            'stream_data' => $stream_data
         ]);
     }
 

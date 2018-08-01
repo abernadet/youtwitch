@@ -27,7 +27,7 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {{ render(controller('App\\Controller\\IncludesController::showSidebar'))}}
         {% endif %}
-        {{ include('includes/navBurger.html.twig') }}
+        {# include('includes/navBurger.html.twig') #}
         <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-3">
             <h1 class="text-center mt-5 mb-3 titleFont">{% block titlepage %}{% endblock %}</h1>
             {{ include('includes/chat.html.twig') }}
@@ -57,12 +57,11 @@
             url = "{{ path('chat-add') }}";
 
             $.ajax({
-                // On peut paramétrer notre requête ajax
-                type: 'POST', // On utilise POST
+                type: 'POST',
                 data: $('#message').serialize(),
                 url: url,
-                timeout: 5000, // Si pas de réponse au bout de 5 secondes, erreur
-                dataType: 'html', // On s'attend à récupérer du HTML
+                timeout: 5000,
+                dataType: 'html',
                 success: function(result){
                     $('#result-chat').html(result);
                     $('body #message').val("");
@@ -77,22 +76,6 @@
 </script>
 
 <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
-<script>
-    // Je stocks les éléments dans des variables
-    let burger = document.getElementById('svg-burger');
-    let menu = document.getElementById("menu-principal");
-    // Quand je clique sur le burger je vérifie
-    // Si j'ai le menu caché donc différent de block alors je l'affiche
-    // Sinon je le cache car il est affiché
-    burger.onclick = function(){
-        if (menu.style.display !== "block") {
-            // Ici j'attribue la propriété display avec la valeur block pour afficher le bloc
-            menu.style.display = 'block';
-        }else{
-            menu.style.display = 'none';
-        }
-    };
-</script>
 
 {% block js %}{% endblock %}
 
