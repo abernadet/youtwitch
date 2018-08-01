@@ -75,12 +75,6 @@ class User implements UserInterface, \Serializable
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user")
-     */
-    private $message;
-
-
-    /**
      * @ORM\Column(type="string", length=255, name="twitchLogin", nullable = true)
      */
     private $twitchLogin;
@@ -263,7 +257,6 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-
     /**
      * @return Collection|Tabo[]
      */
@@ -286,10 +279,7 @@ class User implements UserInterface, \Serializable
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
-    }
-
-    public function getMessage() : Collection{
-        return $this->message;
+        return $this;
     }
 
     /**
@@ -324,7 +314,6 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-
     public function getAddress(): ?string
     {
         return $this->address;
@@ -333,6 +322,7 @@ class User implements UserInterface, \Serializable
     public function setAddress(?string $address): self
     {
         $this->address = $address;
+        return $this;
     }
 
     /**

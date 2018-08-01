@@ -33,9 +33,8 @@
                     {{ form_errors(form.birthdate) }}
                     {{ form_widget(form.birthdate, {'attr' : {'class' : 'mb-3'}}) }} {#permet de créer les champs#}
 
-                    {{ form_label(form.image) }}
-                    {{ form_errors(form.image) }}
-                    {{ form_widget(form.image, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Choisir une image'}}) }} {#permet de créer les champs#}
+                    <label for="image">Changer d'avatar</label>
+                    {{ form_row(form.image, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Choisir une image'}}) }} {#permet de créer les champs#}
 
                     {{ form_label(form.twitchLogin) }}
                     {{ form_errors(form.twitchLogin) }}
