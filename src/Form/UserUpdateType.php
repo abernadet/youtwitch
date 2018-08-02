@@ -32,7 +32,7 @@ class UserUpdateType extends AbstractType
             ->add('birthdate', BirthdayType::class, array('label' => 'Votre date de naissance'))
             ->add('image', FileType::class, array('label' => 'Ajouter une image', 'required' => false ))
             ->add('twitchLogin', TextType::class, array('label' => 'Identifiant de votre chaine Twitch', 'required' => false))
-            ->add('YoutubeLogin', TextType::class, array('label' => 'Nom de votre chaine Youtube', 'required' => false))
+            ->add('YoutubeLogin', TextType::class, array('label' => 'Lien de votre chaine Youtube *Pensez à mettre vos abonnements publique*', 'required' => false))
             ->add('Modifier', SubmitType::class,array
             ('label' => 'Modifier', 'attr' => ['class' => 'btn btn-orange col-3 text-center']));
     }
