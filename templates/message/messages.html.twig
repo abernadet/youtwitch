@@ -9,11 +9,46 @@
 
     <hr class="bg-orange">
 
+    <h5>Messages Reçus :</h5>
     <ul class="list-group">
-        {% if not messages %}
-            <h6>Vous n'avez pas de message</h6>
+        {% if received_messages is empty %}
+            <h6>Vous n'avez pas reçu de message</h6>
         {% endif %}
-        {% for message in messages %}
+        {% for message in received_messages %}
+            <div class="card">
+                <li class="card-body d-flex justify-content-around" style="list-style: none">
+                    <div>
+                        <strong>Expediteur : </strong> {{ message.sender}}
+                        <br><strong>Destinataire : </strong>{{ message.recipient }}
+                        <br><strong>Sujet : </strong>{{ message.sujet }}
+                    </div>
+                    <div>
+                        <strong>Date d'envoi : </strong>{{ message.dateenvoi | date('d-m-Y') }}
+                        {% if not message.lu and message.recipient.id == app.user.id  %}
+                            <p style="color: #DF691A;">Message Non Lu</p>
+                        {% endif %}
+
+                        {% if message.lu and message.sender.id == app.user.id  %}
+                            <p style="color: #DF691A;">Accusé de réception : <i class="fas fa-check"></i></p>
+                        {% endif %}
+
+                        {% if not message.lu and message.sender.id == app.user.id  %}
+                            <p style="color: #DF691A;">Accusé de réception : <i class="fas fa-times"></i></p>
+                        {% endif %}
+
+                    </div>
+                    <a href="{{ path('message', {id : message.id}) }}" class="lien">Lire</a>
+                </li>
+            </div><br>
+        {%  endfor %}
+    </ul>
+
+    <h5>Messages Envoyés :</h5>
+    <ul class="list-group">
+        {% if sent_messages is empty %}
+            <h6>Vous n'avez pas envoyé de message</h6>
+        {% endif %}
+        {% for message in sent_messages %}
             <div class="card">
                 <li class="card-body d-flex justify-content-around" style="list-style: none">
                     <div>

@@ -48,7 +48,7 @@
                         {% else %}
 
                             <h5 class="mb-3 myFont">Clips récents : </h5>
-                            <div class="d-flex justify-content-around flex-wrap mb-3">
+                            <div class="d-flex justify-content-start flex-wrap mb-3 mx-3">
 
 
 
@@ -80,11 +80,11 @@
                         {% else %}
 
                             <h5 class="mb-3 myFont">Replays récents :</h5>
-                            <div class="d-flex justify-content-around flex-wrap mb-3">
+                            <div class="d-flex justify-content-start flex-wrap mb-3 mx-3">
 
                                 {% for replay in follow_data.replay_data %}
 
-                                <div class="d-flex flex-column justify-content-start miniature">
+
                                     <div class="grid">
                                         <figure class="effect-duke">
                                             {% if replay.thumbnail_url is empty %}
@@ -99,7 +99,6 @@
                                         </figure>
                                         <h6 class="text-muted thumbnail-title d-block col-12 text-center">{{ replay.title|length > 30 ? replay.title|slice(0, 30) ~ '...' : replay.title  }}</h6>
                                     </div>
-                                </div>
 
                                 {% endfor %}
 

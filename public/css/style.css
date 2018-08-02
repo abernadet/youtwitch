@@ -1,3 +1,8 @@
+.main{
+    position: absolute;
+    left: 300px;
+}
+
 .form-control-dark {
     color: #fff;
     background-color: rgba(255, 255, 255, .1);
@@ -515,6 +520,10 @@ figure.effect-duke:hover h2,figure.effect-duke:hover p{opacity:1;-webkit-transfo
 }
 
 @media (max-width: 576px){
+    .main{
+        position: relative;
+        left: 0;
+    }
     /*On cache le menu et on fait apparaitre l'icone burger */
     #menu-principal{
         display: none;

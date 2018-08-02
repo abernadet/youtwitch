@@ -46,8 +46,23 @@ class MessageRepository extends ServiceEntityRepository
         return $rez['COUNT(m.id)'];
     }
 
+    public function findConvMessages(User $user1, User $user2)
+    {
+        $bdd = $this->getEntityManager()->getConnection();
 
+        $sql = '
+        SELECT * 
+        FROM message m 
+        WHERE (m.sender_id = :user1_id OR m.recipient_id = :user1_id) 
+        AND (m.sender_id = :user2_id OR m.recipient_id = :user2_id)
+        ';  
 
+        $stmt = $bdd->prepare($sql);
+        $stmt->execute(['user1_id' => $user1->getId(), 'user2_id' => $user2->getId()]);
+
+        $result = $stmt->fetch();
+        return $result;
+    }
 
     /*
     public function findBySender(int $user1, int $user2){
