@@ -10,8 +10,10 @@
     <hr class="bg-orange">
 
     <ul class="list-group">
+        {% if not messages %}
+            <h6>Vous n'avez pas de message</h6>
+        {% endif %}
         {% for message in messages %}
-            {% if app.user.username == message.sender or app.user.username == message.recipient %}
             <div class="card">
                 <li class="card-body d-flex justify-content-around" style="list-style: none">
                     <div>
@@ -37,9 +39,6 @@
                     <a href="{{ path('message', {id : message.id}) }}" class="lien">Lire</a>
                 </li>
             </div><br>
-            {% else %}
-                <h6>Vous n'avez pas de message</h6>
-            {% endif %}
         {%  endfor %}
     </ul>
 

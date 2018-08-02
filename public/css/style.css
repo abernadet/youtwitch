@@ -5,7 +5,9 @@
 }
 
 .back-image{
-    background-image: url("../img/fond1.jpg");
+    background: url("../img/fond1.jpg") no-repeat center fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
 }
 
 .btn-outline-orange{
@@ -76,6 +78,10 @@
 .titleOrange {
     color: #DF691A;
     font-family: 'Permanent Marker', cursive;
+}
+
+.myFont{
+    font-family: 'Audiowide', cursive;
 }
 
 .titleForm{
@@ -279,8 +285,22 @@ body{
     position: fixed;
     min-width: 290px;
     z-index: 1029;
+    overflow-y: scroll;
 }
 
+#menu-principal::-webkit-scrollbar{
+    width: 5px;
+}
+
+#menu-principal::-webkit-scrollbar-thumb {
+    width: 5px;
+    background-color: #7d7d7d;
+}
+
+#menu-principal::-webkit-scrollbar-track {
+    width: 5px;
+    background-color:#d3d3d3;
+}
 
 .dropdown-icon{
     position: relative;
