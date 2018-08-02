@@ -45,6 +45,27 @@
 <hr class="bg-orange">
 
 <section class="mt-3">
+    <h3 class="ss-titre myFont">Vidéos populaires – <span style="color: #DF691A;">DE LA SEMAINE </span></h3>
+    <div class="d-flex justify-content-around flex-wrap mt-3">
+        {% for key, BestWeekVid in BestWeekVids %}
+            <div class="grid">
+                <figure class="effect-duke">
+                    <img src="{{ BestWeekVid.snippet.thumbnails.medium.url }}" alt="Miniature" title="Miniature">
+                    <figcaption>
+                        <p>{{ BestWeekVid.snippet.title|truncate(20,true) }}<br>
+                            {% set viewCount = detailsLastWeek[key].0.statistics.viewCount %}
+                            {{ viewCount|number_format(0, '', ' ') }} vues</p>
+                        <a data-fancybox href="https://www.youtube.com/watch?v={{ BestWeekVid.id.videoId }}">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="bg-orange">
+
+<section class="mt-3">
     <h3 class="ss-titre myFont">Vidéos populaires – <span style="color: #DF691A;">SPORT</span></h3>
     <div class="d-flex justify-content-around flex-wrap mt-3">
         {% for key, BestSVid in BestSVids %}
@@ -77,6 +98,27 @@
                             {% set viewCount = detailsGaming[key].0.statistics.viewCount %}
                             {{ viewCount|number_format(0, '', ' ') }} vues</p>
                         <a data-fancybox href="https://www.youtube.com/watch?v={{ GamingVid.snippet.resourceId.videoId }}">View more</a>
+                    </figcaption>
+                </figure>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="bg-orange">
+
+<section class="mt-3">
+    <h3 class="ss-titre myFont">Dernières vidéos – <span style="color: #DF691A;">MUSIQUE</span></h3>
+    <div class="d-flex justify-content-around flex-wrap mt-3">
+        {% for key, MusiqueVid in MusiqueVids %}
+            <div class="grid">
+                <figure class="effect-duke">
+                    <img src="{{ MusiqueVid.snippet.thumbnails.medium.url }}" alt="Miniature" title="Miniature">
+                    <figcaption>
+                        <p>{{ MusiqueVid.snippet.title|truncate(20,true) }}<br>
+                            {% set viewCount = detailsMusique[key].0.statistics.viewCount %}
+                            {{ viewCount|number_format(0, '', ' ') }} vues</p>
+                        <a data-fancybox href="https://www.youtube.com/watch?v={{ MusiqueVid.snippet.resourceId.videoId }}">View more</a>
                     </figcaption>
                 </figure>
             </div>
