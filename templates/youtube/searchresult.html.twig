@@ -1,5 +1,4 @@
 {% block content %}
-    {# url #}
     {% if results %}
 
         {% for result in results %}
@@ -15,11 +14,12 @@
         $(function() {
 
             $('body').on('click','.ownerYt',function(e){
-                var url = "{{  path('YsearchCount',{terme:'exemple'}) }}";
+                var url = "{{  path('YsearchCount',{number:'exemple'}) }}";
                 console.log(url);
-                url = url.replace('exemple',$('#idY').val());
+                url = url.replace('exemple',$(".idY").val());
                 console.log(url);
                 $('.searchY').css('display', 'block');
+
                 $.ajax({
                     type:'get',
                     url:url,
