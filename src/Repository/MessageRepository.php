@@ -29,10 +29,37 @@ class MessageRepository extends ServiceEntityRepository
         return $flag_count->getSingleScalarResult();
     }
 
-    public function notifications(){
+    public function countMail2($user)
+    {
+        $conn = $this->getEntityManager()->getConnection();
 
+        $sql = '
+        SELECT COUNT(m.id) FROM message m
+        WHERE (m.lu IS NULL OR m.lu = 0)
+        AND recipient_id = :iduser
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['iduser' => $user->getId()]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        $rez = $stmt->fetch();
+        return $rez['COUNT(m.id)'];
     }
 
+
+
+
+    /*
+    public function findBySender(int $user1, int $user2){
+        $querybuilder = $this->createQueryBuilder('m')
+            ->andWhere('m.recipient_id = :user1 OR m.recipient_id = :user2')
+            ->andWhere('m.sender_id = :user1 OR m.sender_id = :user2')
+            ->setParameter('user1', $user1)
+            ->setParameter('user2', $user2)
+            ->getQuery();
+        return $querybuilder->execute();
+    }
+*/
 //    /**
 //     * @return Message[] Returns an array of Message objects
 //     */

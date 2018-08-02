@@ -16,11 +16,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="{{ path('all-messages') }}">
+                <a class="nav-link text-dark" href="{{ path('all-messages')  }}">
                     <i class="fas fa-envelope"></i> Messages
-
+                    {{ render(controller(
+                        'App\\Controller\\MessageController::countMail'
+                    )) }}
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{ path('show-user') }}">
                     <i class="fas fa-user-tie"></i> Mon profil

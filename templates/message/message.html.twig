@@ -4,11 +4,22 @@
 
     <a href="{{ path('all-messages') }}">Retour</a>
 <div class="container">
+
    <h6>Expéditeur</h6> <p>{{ message.sender.username }}</p>
     <h6>Sujet</h6> <p>{{ message.sujet }}</p>
     <h6>Message</h6> <p>{{ message.contenu }} <br> Envoyé le {{ message.dateenvoi | date('d-m-Y') }} à {{ message.dateenvoi | date('H:i:s') }}</p>
+    <hr>
+    <h5>Répondre</h5>
+    <hr>
 
-    <button type="submit" class="btn btn-primary">Répondre</button>
+
+    <div id="result-message">
+        {% for messages in message %}
+            <h6>Expéditeur</h6> <p>{{ messages.sender.username }}</p>
+            <h6>Sujet</h6> <p>{{ messages.sujet }}</p>
+            <h6>Message</h6> <p>{{ messages.contenu }} <br> Envoyé le {{ messages.dateenvoi | date('d-m-Y') }} à {{ messages.dateenvoi | date('H:i:s') }}</p>
+        {% endfor %}
+    </div>
 </div>
 
     <div class="container">
@@ -18,10 +29,11 @@
                 <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <input type="hidden" name="idUser" value="{{ message.sender.id }}">
                 <input type="hidden" name="sujet" value="{{ message.sujet }}">
+                <input type="hidden" name="idMessage" value="{{ message.id }}">
             </div>
-            <button id="envoyer" class="btn btn-primary">Envoyer</button>
+            <button id="envoyer" class="btn btn-primary">Répondre</button>
         </form>
-    <div id="result-message"></div>
+
     </div>
 
 
@@ -34,6 +46,7 @@
             $('#envoyer').on('click', function(event){
                 event.preventDefault();
                 url = "{{ path('ajax-message', {id : message.id}) }}";
+                console.log($('form').serialize());
                 $.ajax({
                     type: 'POST',
                     data: $('#form').serialize(),

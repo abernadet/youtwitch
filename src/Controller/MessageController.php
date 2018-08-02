@@ -35,7 +35,7 @@ class MessageController extends Controller
     //messagesSent et MessagesReceived se chargeront seulement de les afficher.
 
     /**
-     * @Route("/message/{id}", name="message", requirements={"id"="\d+"} )
+     * @Route("/message/{id}", name="message", requirements={"id"="\d+"})
      */
     public function show($id){
         $repository= $this->getDoctrine()->getRepository(Message::class);
@@ -76,18 +76,15 @@ class MessageController extends Controller
     public function countMail(){
         $repo= $this->getDoctrine()->getRepository(Message::class);
 
-        $count = $repo->countMail($this->getUser());
+        $count = $repo->countMail2($this->getUser());
 
         return $this->render('message/countmail.html.twig',[
             'count' => $count
         ]);
 
     }
-    /**
-     * @Route ("/notifications", name="notifications")
-     */
-    public function notifications(){
-
-    }
+    //nouveau controller sans route compter le nombre de nouveaux mesages pour l'utilisateur connecté
+//renvoie une vue qui va afficher le nombre de message
+//Layout je veux executer un controller(regarder sur la doc de twig)
 
 }
