@@ -1,6 +1,1 @@
-{% extends "layout.html.twig" %}
-{% block content %}
-{{ dump(count) }}
-    {{ count }}
-
-{% endblock %}
+{% if count %}<strong class="orange">({{ count }})</strong>{% endif %}

@@ -65,4 +65,5 @@ class UserController extends Controller
             array('form' => $form->createView())
         );
     }
+
 }

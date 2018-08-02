@@ -217,10 +217,11 @@ class AjaxController extends Controller
      * @Route("/user/ajax/message", name="ajax-message")
      */
 
-    public function AddReponseMessage(Request $request)
+    public function AddReponseMessage(Request $request, UserInterface $user)
     {
 
         $message = new Message();
+
 
         $texte = $request->request->get('message', '');
         $idUser = $request->request->get('idUser', null);
@@ -239,6 +240,7 @@ class AjaxController extends Controller
         $em->flush();
 
         return new Response('ok');
+
 
     }
 
