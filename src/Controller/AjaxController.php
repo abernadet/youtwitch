@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Service\TwitchApiService;
@@ -223,6 +224,7 @@ class AjaxController extends Controller
 
         $texte = $request->request->get('message', '');
         $idUser = $request->request->get('idUser', null);
+        $idMessage = $request->request->get('idMessage', null);
         $sujet = $request->request->get('sujet', '');
         $lautre = $this->getDoctrine()->getRepository(User::class)->find($idUser);
 
@@ -236,7 +238,7 @@ class AjaxController extends Controller
         $em->persist($message);
         $em->flush();
 
-        return $this->redirectToRoute('message');
+        return new Response('ok');
 
     }
 

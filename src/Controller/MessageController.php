@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class MessageController extends Controller
 {
     /**
-     * @Route("/message", name="message")
+     * @Route("/message", name="message-list")
      */
     public function index()
     {
@@ -22,7 +22,7 @@ class MessageController extends Controller
         ]);
     }
     /**
-     * @Route("/messages", name="all-messages")
+     * @Route("/user/messages", name="all-messages")
      */
 
     public function showAll(){
@@ -35,7 +35,7 @@ class MessageController extends Controller
     //messagesSent et MessagesReceived se chargeront seulement de les afficher.
 
     /**
-     * @Route("/message/{id}", name="message", requirements={"id"="\d+"} )
+     * @Route("/user/message/{id}", name="message", requirements={"id"="\d+"} )
      */
     public function show($id){
         $repository= $this->getDoctrine()->getRepository(Message::class);
@@ -45,7 +45,7 @@ class MessageController extends Controller
         return $this->render('message/message.html.twig', array('message' => $message));
     }
     /**
-     * @Route("/message/add", name="message-add")
+     * @Route("/user/message/add", name="message-add")
      */
 
     public function AddMessage(Request $request, TokenStorageInterface $tokenStorage){
