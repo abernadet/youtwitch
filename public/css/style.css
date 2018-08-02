@@ -288,7 +288,6 @@ body{
 
 #menu-principal::-webkit-scrollbar-thumb {
     width: 5px;
-    border-radius: 10px;
     background-color: #7d7d7d;
 }
 
