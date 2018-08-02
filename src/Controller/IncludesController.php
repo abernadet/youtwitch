@@ -38,26 +38,11 @@ class IncludesController extends Controller
         }
 
         // Affichage Subs youtube
-        $name = $user->getYoutubeLogin();
-        if ($name) {
-            $url = "https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails&forUsername=$name&key=$this->Gkey";
 
-            try {
-                $json = file_get_contents($url);
-                $obj = json_decode($json);
-                $ids = $obj->items;
-                // dump($ids);
-                foreach ($ids as $id) {
-                    $idChannels[] = $id->id;
-                }
-            } catch (\Exception $e) {
-                $idChannels = [];
-            }
-            //dump($idChannels);
-            foreach ($idChannels as $idChannel) {
-                $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$idChannel&key=$this->Gkey";
-                //dump($urlSub);
-            }
+        $id = $user->getYoutubeLogin();
+        if ($id){
+                $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&key=$this->Gkey";
+
             try {
                 $jsonSub = file_get_contents($urlSub);
                 $objSub = json_decode($jsonSub);

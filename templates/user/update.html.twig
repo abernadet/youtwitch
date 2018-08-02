@@ -40,6 +40,10 @@
                     {{ form_errors(form.twitchLogin) }}
                     {{ form_widget(form.twitchLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Rentrez un Pseudo'}}) }} {#permet de créer les champs#}
 
+                    {{ form_label(form.YoutubeLogin) }}
+                    {{ form_errors(form.YoutubeLogin) }}
+                    {{ form_widget(form.YoutubeLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Cliquez sur votre avatar en haut a droite puis -> "Afficher ma chaîne" -> Copier l\'URL'}}) }} {#permet de créer les champs#}
+
                     <div class="text-center">
                         {{ form_row(form.Modifier) }}
                         {# Va générer le label, les erreurs et le champ Content en une instruction #}

@@ -55,6 +55,7 @@ class UserController extends Controller
                 $fileName = $uploader->upload($file, $fileName);
             }
             $user->setImage($fileName);
+            $user->setYoutubeLogin(substr($user->getYoutubeLogin(),32,24));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
             $this->addFlash('orange', 'Profil Modifié ! ');

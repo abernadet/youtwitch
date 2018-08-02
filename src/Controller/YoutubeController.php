@@ -22,31 +22,23 @@ class YoutubeController extends Controller
         return $this->render('youtube/search.html.twig');
     }
 
+    /***********************************
+     A FAIIIIIIIRE
+
+     Modifier l'integration dans la base lors de l'update d'un profil pour le lien youtube
+     Comme la gestion du formulaire a l'inscritpion dans security controller
+     ***********************************/
+
+
     /**
      *
      */
     public function getUrSubs(UserInterface $user)
     {
 
-        $name = $user->getYoutubeLogin();
-        $url = "https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails&forUsername=$name&key=$this->Gkey";
-
-        try {
-            $json = file_get_contents($url);
-            $obj = json_decode($json);
-            $ids = $obj->items;
-            dump($ids);
-            foreach ($ids as $id){
-                $idChannels[] = $id->id;
-            }
-        } catch (\Exception $e) {
-            $idChannels = [];
-        }
-        dump($idChannels);
-        foreach ($idChannels as $idChannel) {
-            $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$idChannel&key=$this->Gkey";
+        $id = $user->getYoutubeLogin();
+            $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&key=$this->Gkey";
             //dump($urlSub);
-        }
         try {
             $jsonSub = file_get_contents($urlSub);
             $objSub = json_decode($jsonSub);

@@ -80,20 +80,6 @@ class User implements UserInterface, \Serializable
     private $twitchLogin;
 
     /**
-     * //on indique a doctrine la relation oneToMany
-     * @ORM\OneToMany(targetEntity="App\Entity\Tabo", mappedBy="user")
-     * ceci ne va pas rajouter de champs dans la table
-     */
-    private $Tabo;
-
-    /**
-     * //on indique a doctrine la relation oneToMany
-     * @ORM\OneToMany(targetEntity="App\Entity\Yabo", mappedBy="user")
-     * ceci ne va pas rajouter de champs dans la table
-     */
-    private $Yabo;
-
-    /**
      * @ORM\Column(type="string", length=10, nullable=true)
      * @Assert\Regex("#0[1-9][0-9]{8}#")
      */
@@ -129,8 +115,6 @@ class User implements UserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true; //par défaut, un user est actif
-        $this->Tabo = new ArrayCollection();
-        $this->Yabo = new ArrayCollection();
     }
 
     public function getId()
@@ -260,20 +244,6 @@ class User implements UserInterface, \Serializable
         $this->image = $image;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|Tabo[]
-     */
-    public function getTabo(): Collection{
-        return $this->Tabo;
-    }
-
-    /**
-     * @return Collection|Yabo[]
-     */
-    public function getYabo(): Collection{
-        return $this->Yabo;
     }
 
     public function getPhone(): ?string
