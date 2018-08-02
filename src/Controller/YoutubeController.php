@@ -22,12 +22,26 @@ class YoutubeController extends Controller
         return $this->render('youtube/search.html.twig');
     }
 
-    /***********************************
-     A FAIIIIIIIRE
+    /**
+     * @Route("/user/youtube/searchCount/{channelId}", name="YsearchCount", defaults={"channelId"=1})
+     */
+    public function searchCount($channelId)
+    {
+        $url = "https://www.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics%2CcontentDetails&id=$channelId&key=$this->Gkey";
+        try {
+            $json = file_get_contents($url);
+            $obj = json_decode($json);
+            $details = $obj->items;
 
-     Modifier l'integration dans la base lors de l'update d'un profil pour le lien youtube
-     Comme la gestion du formulaire a l'inscritpion dans security controller
-     ***********************************/
+
+
+        } catch (\Exception $e) {
+            $details = [];
+        }
+        return $this->render('youtube/searchCount.html.twig',[
+            'details'=>$details
+        ]);
+    }
 
 
     /**

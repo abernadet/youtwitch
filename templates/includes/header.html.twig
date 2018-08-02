@@ -37,12 +37,49 @@
                         })
                     })
 
-                    // Show/Hide Youtube channel
-                    $('#check2').on('blur', function(e){
+
+                    $('body').on('keyup','#check2',function(e){
                         e.preventDefault();
+                        var url2 = "{{  path('YsearchBar',{terme:'exemple'}) }}";
+                        console.log(url2);
+                        url2 = url2.replace('exemple',$('#check2').val());
+                        url2 = url2.replace(/ /g, '+');
+                        console.log(url2);
+                        $('.searchY').css('display', 'block');
+                        $.ajax({
+                            type:'get',
+                            url:url2,
+                            timeout:'3000',
+                            dataType:'html',
+                            success: function(data){
+                                $('#resultYoutube').html(data);
+                            },
+                            error: function (error){
+                                console.log(error.responseText);
+                            }
+                        })
+                    })
+
+                    // Permet de faire le click avant l'execution du blur
+                    $('body').on('mousedown', '.ownerYt', function(){
+                        event.preventDefault();
+                        //console.log('fggsfg');
+                        $(this).click();
+                    })
+
+                    // Show/Hide Youtube research
+                    $('#check2').on('blur', function(e){
                         console.log($(this));
                         if ($('.searchY').css('display') === "block") {
                             $('.searchY').css('display', 'none');
+                        }
+                    })
+
+                    // Show/Hide Youtube research
+                    $('#check2').on('focus', function(e){
+                        console.log($(this));
+                        if ($('.searchY').css('display') === "none") {
+                            $('.searchY').css('display', 'block');
                         }
                     })
                 })
