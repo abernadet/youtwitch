@@ -29,8 +29,16 @@ class MessageRepository extends ServiceEntityRepository
         return $flag_count->getSingleScalarResult();
     }
 
-    public function notifications(){
-
+    public function findBySujet(Message $message){
+        $querybuilder = $this->createQueryBuilder('c')
+            ->select('c.sujet', 'c.sender_id', 'c.recipient_id', 'c.dateenvoi')
+            ->andWhere('c.sujet = :sujet', 'c.sender_id = :sender_id', 'c.recipient_id = :recipient_id', 'c.dateenvoi = :dateenvoi')
+            ->setParameter('sujet', $message)
+            ->setParameter('sender_id', $message)
+            ->setParameter('$recipient_id', $message)
+            ->orderBy('dateenvoie', 'DESC')
+            ->getQuery();
+        return $querybuilder->execute();
     }
 
 //    /**

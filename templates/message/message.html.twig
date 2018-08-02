@@ -22,7 +22,7 @@
             </div><br>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary mt-3 mb-3">Répondre</button>
+            <button type="submit" class="btn btn-orange mt-3 mb-3">Répondre</button>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
                 <input type="hidden" name="idMessage" value="{{ message.id }}">
             </div>
             <div class="text-center">
-                <button id="envoyer" class="btn btn-primary">Envoyer</button>
+                <button id="envoyer" class="btn btn-orange">Envoyer</button>
             </div>
         </form>
         <div id="result-message"></div>
@@ -59,7 +59,7 @@
                     success: function(data){
                         if(data === 'ok'){
                             $('#conversation').append($('<div class="card"><div class="card-body"><p>' + $('#messageReponse').val() + '</p><p class="font-italic font-weight-light">Envoyé le {{ message.dateenvoi | date('d-m-Y') }}' +
-                            ' à {{ message.dateenvoi | date('H:i:s') }} par {{ app.user.username }}</p></div>'));
+                            ' à {{ message.dateenvoi | date('H:i:s') }} par {{ app.user.username }}</p></div></div><br>'));
                         }
                         $('#result-message').html(data);
                     },
