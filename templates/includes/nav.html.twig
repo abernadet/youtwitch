@@ -135,18 +135,20 @@
         </a>
 
 
-            <ul id="twitch-scrollbar" class="youtube-users nav flex-column flex-nowrap mb-2 scrollbar">
-                {% if subs %}
-                    {% for sub in subs %}
-                        <a class="twitch-sidebar-link" href="{{ path('OwnerChan', {channelId: sub.snippet.resourceId.channelId}) }}">
-                            <div class="d-flex mb-2 ml-3">
-                                <img class="mr-2" height="30" width="30" src="{{ sub.snippet.thumbnails.default.url }}"> <span class="mr-2">{{  sub.snippet.title }}</span>
-                                <hr>
-                            </div>
-                        </a>
-                    {% endfor %}
-                {% endif %}
-            </ul>
+        <ul id="twitch-scrollbar" class="youtube-users nav flex-column flex-nowrap mb-2 scrollbar">
+
+            {% if subs %}
+                {% for sub in subs %}
+
+                    <a class="twitch-sidebar-link" href="{{ path('OwnerChan', {channelId: sub.snippet.resourceId.channelId}) }}">
+                        <div class="d-flex mb-2 ml-3">
+                            <img class="mr-2" height="30" width="30" src="{{ sub.snippet.thumbnails.default.url }}"> <span class="mr-2">{{  sub.snippet.title }}</span>
+                            <hr>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% endif %}
+        </ul>
 
         <div class="mt-5"  style="font-family: 'Rock Salt', cursive;">
             <ul class="nav flex-column mt-3">
@@ -157,6 +159,7 @@
                     <a class="nav-link text-dark" href="{{ path('rgpd') }}">Confidentialité</a>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>

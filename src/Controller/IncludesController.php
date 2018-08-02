@@ -41,7 +41,7 @@ class IncludesController extends Controller
 
         $id = $user->getYoutubeLogin();
         if ($id){
-                $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&key=$this->Gkey";
+                $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&&maxResults=50&key=$this->Gkey";
 
             try {
                 $jsonSub = file_get_contents($urlSub);

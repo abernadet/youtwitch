@@ -37,7 +37,7 @@ class YoutubeController extends Controller
     {
 
         $id = $user->getYoutubeLogin();
-            $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&key=$this->Gkey";
+            $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&maxResults=50&key=$this->Gkey";
             //dump($urlSub);
         try {
             $jsonSub = file_get_contents($urlSub);
