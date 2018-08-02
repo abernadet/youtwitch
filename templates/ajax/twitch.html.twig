@@ -43,11 +43,11 @@
                         {# Clips récents pour chaque streamer #}
                         {% if follow_data.clip_data is empty %}
 
-                            <h5 class="text-muted mb-5 h-150">Aucun clip récent</h5>
+                            <h5 class="text-muted mb-5 h-150 myFont">Aucun clip récent</h5>
 
                         {% else %}
 
-                            <h5 class="mb-3">Clips récents : </h5>
+                            <h5 class="mb-3 myFont">Clips récents : </h5>
                             <div class="d-flex justify-content-around flex-wrap mb-3">
 
 
@@ -75,11 +75,11 @@
 
                         {% if follow_data.replay_data is empty %}
 
-                            <h5 class="text-muted mb-5 h-150">Aucun replay récent</h5>
+                            <h5 class="text-muted mb-5 h-150 myFont">Aucun replay récent</h5>
 
                         {% else %}
 
-                            <h5 class="mb-3">Replays récents :</h5>
+                            <h5 class="mb-3 myFont">Replays récents :</h5>
                             <div class="d-flex justify-content-around flex-wrap mb-3">
 
                                 {% for replay in follow_data.replay_data %}
