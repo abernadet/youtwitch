@@ -90,7 +90,7 @@ class SecurityController extends Controller
                 if ($mailer->send($message)) {
                     $this->addFlash('dark', "L'e-mail a bien été envoyé !");
                 }else{
-                    $this->addFlash('danger',"Erreur lors de l'envoi de l'e-mail veuillez verifier votre adresse e-mail.");
+                    $this->addFlash('danger',"Erreur lors de l'envoi. Veuillez verifier votre adresse e-mail.");
                 }
             }else{
                 $this->addFlash('danger',"Ton e-mail n'existe pas dons notre base de données.");

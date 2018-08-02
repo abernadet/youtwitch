@@ -44,6 +44,22 @@ class MessageController extends Controller
         $this->getDoctrine()->getManager()->flush();
         return $this->render('message/message.html.twig', array('message' => $message));
     }
+    ########## JE N'ARRIVE PAS A FAIRE LA METHODE POUR AFFICHER TOUS LES MESSAGES DE LA CONVERSATION ##########
+    /*public function show(Message $message,Request $request){
+        if($message) {
+            $repository = $this->getDoctrine()->getRepository(Message::class);
+            $messages = $repository->findBySujet($message->getSujet());
+            dump($messages);
+            if ($messages) {
+                $message = $repository->find($id);
+                $message->setLu(true);
+                $this->getDoctrine()->getManager()->flush();
+            }
+        }
+        return $this->render('message/message.html.twig', array('conversation' => $conversation));
+    }*/
+    ############################################################################################################
+
     /**
      * @Route("/user/message/add", name="message-add")
      */
