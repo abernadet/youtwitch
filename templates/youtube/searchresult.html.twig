@@ -3,10 +3,38 @@
     {% if results %}
 
         {% for result in results %}
-            <a href="{{ path('OwnerChan', {channelId: result.snippet.channelId}) }}" class="list-group-item list-group-item-action"> |
-                <img src="{{ result.snippet.thumbnails.default.url }}" style="padding: 5px"><b>{{  result.snippet.title }}</b> -- {{  result.snippet.description|truncate(100,true) }}</a>
+            <a href="{{ path('OwnerChan', {channelId: result.snippet.channelId}) }}" class="list-group-item list-group-item-action ownerYt"> |
+                <img src="{{ result.snippet.thumbnails.default.url }}" style="padding: 5px"><b>{{  result.snippet.title }}</b> -- {{  result.snippet.description|truncate(100,true) }}
+                <input type="text" name="idY" class="idY" value="{{result.snippet.channelId}}" style="display: none">
+            </a>
+
         {% endfor %}
 
     {% endif %}
+    <script>
+        $(function() {
+
+            $('body').on('click','.ownerYt',function(e){
+                var url = "{{  path('YsearchCount',{terme:'exemple'}) }}";
+                console.log(url);
+                url = url.replace('exemple',$('#idY').val());
+                console.log(url);
+                $('.searchY').css('display', 'block');
+                $.ajax({
+                    type:'get',
+                    url:url,
+                    timeout:'3000',
+                    dataType:'html',
+                    success: function(data){
+                        // rien a afficher juste une insertion dans la base
+                    },
+                    error: function (error){
+                        console.log(error.responseText);
+                    }
+                })
+            })
+
+        })
+    </script>
 
 {% endblock %}
