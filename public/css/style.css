@@ -279,8 +279,23 @@ body{
     position: fixed;
     min-width: 290px;
     z-index: 1029;
+    overflow-y: scroll;
 }
 
+#menu-principal::-webkit-scrollbar{
+    width: 5px;
+}
+
+#menu-principal::-webkit-scrollbar-thumb {
+    width: 5px;
+    border-radius: 10px;
+    background-color: #7d7d7d;
+}
+
+#menu-principal::-webkit-scrollbar-track {
+    width: 5px;
+    background-color:#d3d3d3;
+}
 
 .dropdown-icon{
     position: relative;
