@@ -16,8 +16,8 @@
 
 <section class="d-flex justify-content-around flex-wrap">
     {% for BestYVidAllTime in BestYVidsAllTime %}
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ BestYVidAllTime.id.videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ BestYVidAllTime.id.videoId }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <br>
     {% endfor %}
 </section>
 
