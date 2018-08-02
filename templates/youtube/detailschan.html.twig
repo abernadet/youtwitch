@@ -21,14 +21,12 @@
     <h6 class="text-center mb-4 font-italic titleFont">Les dernieres vidéos :</h6>
     <section class="d-flex justify-content-around flex-wrap">
         {% for key, detail2 in details2 %}
-
             <div class="grid">
                 <figure class="effect-duke">
                     <img src="{{ detail2.snippet.thumbnails.medium.url }}" class="zoom" style="padding-bottom: 5px">
                     <figcaption>
                         <p>{{ detail2.snippet.title|truncate(20,true) }}<br>{% set viewCount = details3[key].0.statistics.viewCount %}
                             {{ viewCount|number_format(0, '', ' ') }} vues</p>
-
                         <a data-fancybox href="https://www.youtube.com/watch?v={{ detail2.snippet.resourceId.videoId }}">View more</a>
                     </figcaption>
                 </figure>
