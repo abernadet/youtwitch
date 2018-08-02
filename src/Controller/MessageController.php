@@ -27,7 +27,7 @@ class MessageController extends Controller
 
     public function showAll(){
         $repository = $this->getDoctrine()->getRepository(Message::class);
-        $messages = $repository->findAll();
+        $messages = $repository->findBy(['recipient' => $this->getUser()]);
         return $this->render('message/messages.html.twig' ,
                             array('messages' => $messages));
     }
@@ -77,7 +77,7 @@ class MessageController extends Controller
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
-            $this->addFlash('success', 'Message ajouté !');
+            $this->addFlash('success', 'Message envoyé !');
             return $this->redirectToRoute('all-messages');
         }
         return $this->render('message/add.html.twig',

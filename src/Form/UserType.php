@@ -33,7 +33,7 @@ class UserType extends AbstractType
                 'required' => false
                 ))
             ->add('YoutubeLogin', TextType::class, array(
-                'label' => 'Lien de votre chaine Youtube *Pensez à mettre vos abonnements publique*',
+                'label' => 'Lien de votre chaine Youtube (Pensez à mettre vos abonnements publique)',
                 'required' => false
             ))
             ->add('ajouter', SubmitType::class,array
