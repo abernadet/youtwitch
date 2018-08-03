@@ -36,10 +36,10 @@
                 {{ form_widget(form.birthdate, {'attr' : {'class' : 'mb-3'}}) }} {#permet de créer les champs#}
 
                 {{ form_label(form.twitchLogin) }}
-                {{ form_widget(form.twitchLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Se trouve après "twitch.tv/" sur la page de votre chaine'} }) }}
+                {{ form_widget(form.twitchLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Identifiant de votre chaine Twitch'} }) }}
 
                 {{ form_label(form.YoutubeLogin) }}
-                {{ form_widget(form.YoutubeLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Cliquez sur votre avatar puis -> "Afficher ma chaîne" -> Copier l\'URL '} }) }}
+                {{ form_widget(form.YoutubeLogin, {'attr' : {'class' : 'mb-3', 'placeholder' : 'Lien de votre chaine Youtube (Pensez à mettre vos abonnements publique)'} }) }}
 
                 <span class="text-danger">* champ obligatoire</span>
                 <div class="text-center">
