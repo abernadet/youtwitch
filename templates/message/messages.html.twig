@@ -23,7 +23,7 @@
                         <br><strong>Sujet : </strong>{{ message.sujet }}
                     </div>
                     <div>
-                        <strong>Date d'envoi : </strong>{{ message.dateenvoi | date('d-m-Y') }}
+                        <strong>Date d'envoi : </strong>{{ message.dateenvoi | date('d-m-Y') }} à {{ message.dateenvoi | date('H:i:s') }}
                         {% if not message.lu and message.recipient.id == app.user.id  %}
                             <p style="color: #DF691A;">Message Non Lu</p>
                         {% endif %}
