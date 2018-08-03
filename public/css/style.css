@@ -504,6 +504,52 @@ figure.effect-duke p{position:absolute;bottom:0;left:0;margin:20px;padding:20px;
 figure.effect-duke:hover h2,figure.effect-duke:hover p{opacity:1;-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}
 /*Fin effet*/
 
+/****************** Supprimer user dans zone admin *********************/
+
+.fc-container .fancybox-bg {
+    background: #eee;
+}
+
+.fancybox-is-open.fc-container .fancybox-bg {
+    opacity: 0.95;
+}
+
+.fc-content {
+    margin: 20px;
+    max-width: 550px;
+    padding: 50px;
+    box-shadow: 10px 10px 60px -25px;
+    border-radius: 4px;
+}
+
+.fc-content h3 {
+    margin-top: 0;
+    font-size: 1.6em;
+    letter-spacing: normal;
+}
+
+.fc-content p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.fc-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Custom animation */
+.fancybox-fx-material.fancybox-slide--previous,
+.fancybox-fx-material.fancybox-slide--next {
+    transform: translateY(-60px) scale(1.1);
+    opacity: 0;
+}
+
+.fancybox-fx-material.fancybox-slide--current {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+/****************** Fin Supprimer user dans zone admin *********************/
+
 @media (min-width: 577px){
     #menu-principal{
         display: block !important;
