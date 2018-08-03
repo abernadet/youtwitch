@@ -81,6 +81,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\Length(max=10, maxMessage="Le numéro de téléphone n'est pas valide")
      * @Assert\Regex("#0[1-9][0-9]{8}#")
      */
     private $phone;
