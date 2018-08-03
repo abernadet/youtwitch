@@ -32,7 +32,6 @@ class MessageRepository extends ServiceEntityRepository
     public function countMail2($user)
     {
         $conn = $this->getEntityManager()->getConnection();
-
         $sql = '
         SELECT COUNT(m.id) FROM message m
         WHERE (m.lu IS NULL OR m.lu = 0)

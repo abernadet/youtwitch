@@ -11,7 +11,7 @@
 
     <ul class="list-group">
         {% for message in messages %}
-            {% if app.user.username == message.sender or app.user.username == message.recipient %}
+            {% if  app.user.username == message.recipient %}
             <div class="card">
                 <li class="card-body d-flex justify-content-around" style="list-style: none">
                     <div>

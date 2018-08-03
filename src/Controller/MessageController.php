@@ -75,9 +75,7 @@ class MessageController extends Controller
      */
     public function countMail(){
         $repo= $this->getDoctrine()->getRepository(Message::class);
-
         $count = $repo->countMail2($this->getUser());
-
         return $this->render('message/countmail.html.twig',[
             'count' => $count
         ]);
