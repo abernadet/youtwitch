@@ -20,7 +20,7 @@
             <section class="followed-user d-flex mt-5">
 
                 <div class="col-md-2 d-flex flex-column align-self-start">
-                    <a class="titleOrange" href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">
+                    <a class="titleOrange myFont" href="{{ path('twitch-stream', {'login': follow_data.login, 'display_name': follow_data.display_name}) }}">
                         <h4>
                             {% if follow_data.user_id in streams_user_id %}
                                 <i style="color:green" class="mr-1 fas fa-circle"></i>
@@ -43,12 +43,12 @@
                         {# Clips récents pour chaque streamer #}
                         {% if follow_data.clip_data is empty %}
 
-                            <h5 class="text-muted mb-5 h-150">Aucun clip récent</h5>
+                            <h5 class="text-muted mb-5 h-150 myFont">Aucun clip récent</h5>
 
                         {% else %}
 
-                            <h5 class="mb-3">Clips récents : </h5>
-                            <div class="d-flex justify-content-around flex-wrap mb-3">
+                            <h5 class="mb-3 myFont">Clips récents : </h5>
+                            <div class="d-flex justify-content-start flex-wrap mb-3 mx-3">
 
 
 
@@ -75,16 +75,16 @@
 
                         {% if follow_data.replay_data is empty %}
 
-                            <h5 class="text-muted mb-5 h-150">Aucun replay récent</h5>
+                            <h5 class="text-muted mb-5 h-150 myFont">Aucun replay récent</h5>
 
                         {% else %}
 
-                            <h5 class="mb-3">Replays récents :</h5>
-                            <div class="d-flex justify-content-around flex-wrap mb-3">
+                            <h5 class="mb-3 myFont">Replays récents :</h5>
+                            <div class="d-flex justify-content-start flex-wrap mb-3 mx-3">
 
                                 {% for replay in follow_data.replay_data %}
 
-                                <div class="d-flex flex-column justify-content-start miniature">
+
                                     <div class="grid">
                                         <figure class="effect-duke">
                                             {% if replay.thumbnail_url is empty %}
@@ -99,7 +99,6 @@
                                         </figure>
                                         <h6 class="text-muted thumbnail-title d-block col-12 text-center">{{ replay.title|length > 30 ? replay.title|slice(0, 30) ~ '...' : replay.title  }}</h6>
                                     </div>
-                                </div>
 
                                 {% endfor %}
 

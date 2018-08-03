@@ -27,9 +27,10 @@ class MessageController extends Controller
 
     public function showAll(){
         $repository = $this->getDoctrine()->getRepository(Message::class);
-        $messages = $repository->findAll();
+        $recieved_messages = $repository->findBy(['recipient' => $this->getUser()]);
+        $sent_messages = $repository->findBy(['sender' => $this->getUser()]);
         return $this->render('message/messages.html.twig' ,
-                            array('messages' => $messages));
+                            array('sent_messages' => $sent_messages, 'received_messages' => $recieved_messages));
     }
     //Appeler un show All pour faire afficher l'ensemble de mes Users
     //messagesSent et MessagesReceived se chargeront seulement de les afficher.
@@ -42,8 +43,25 @@ class MessageController extends Controller
         $message = $repository->find($id);
         $message->setLu(true);
         $this->getDoctrine()->getManager()->flush();
+        dump($message);
         return $this->render('message/message.html.twig', array('message' => $message));
     }
+    ########## JE N'ARRIVE PAS A FAIRE LA METHODE POUR AFFICHER TOUS LES MESSAGES DE LA CONVERSATION ##########
+    /*public function show(Message $message,Request $request){
+        if($message) {
+            $repository = $this->getDoctrine()->getRepository(Message::class);
+            $messages = $repository->findBySujet($message->getSujet());
+            dump($messages);
+            if ($messages) {
+                $message = $repository->find($id);
+                $message->setLu(true);
+                $this->getDoctrine()->getManager()->flush();
+            }
+        }
+        return $this->render('message/message.html.twig', array('conversation' => $conversation));
+    }*/
+    ############################################################################################################
+
     /**
      * @Route("/user/message/add", name="message-add")
      */
@@ -61,7 +79,7 @@ class MessageController extends Controller
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($message);
             $entityManager->flush();
-            $this->addFlash('success', 'Message ajouté !');
+            $this->addFlash('success', 'Message envoyé !');
             return $this->redirectToRoute('all-messages');
         }
         return $this->render('message/add.html.twig',

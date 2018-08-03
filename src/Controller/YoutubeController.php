@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\TrendingSearch;
 use App\Entity\User;
 use http\Env\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,12 +23,47 @@ class YoutubeController extends Controller
         return $this->render('youtube/search.html.twig');
     }
 
-    /***********************************
-     A FAIIIIIIIRE
+    /**
+     * @Route("/user/youtube/searchCount/{number}", name="YsearchCount")
+     */
+    public function searchCount($number)
+    {
+        $url = "https://www.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics%2CcontentDetails&id=$number&key=$this->Gkey";
+        try {
 
-     Modifier l'integration dans la base lors de l'update d'un profil pour le lien youtube
-     Comme la gestion du formulaire a l'inscritpion dans security controller
-     ***********************************/
+            $json = file_get_contents($url);
+            $obj = json_decode($json);
+            $name = $obj->items[0]->snippet->localized->title;
+            $repository = $this->getDoctrine()->getRepository(TrendingSearch::class);
+            $utilisateur = $repository->findOneBy(['id_youtube' => $number]);
+            dump($utilisateur);
+            //$utilisateurId = $utilisateur->getIdYoutube();
+            /*if ($utilisateurId != $number){
+                $trendingSearch= new TrendingSearch();
+                $trendingSearch->setIdYoutube($number);
+                $trendingSearch->setName($name);
+                $trendingSearch->setNumberSearch(1);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($trendingSearch);
+                $entityManager->flush();
+            }else{
+                /*$numberSearch = $owner->getNumberSearch();
+                //dump($trendingSearch);
+                $numberSearch=$numberSearch+1;
+                $owner->setNumberSearch($numberSearch);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($owner);
+                $entityManager->flush();*/
+            //}
+
+        } catch (\Exception $e) {
+            $name = [];
+        }
+        return $this->render('youtube/searchCount.html.twig',[
+            'name'=>$name,
+
+        ]);
+    }
 
 
     /**
@@ -37,8 +73,8 @@ class YoutubeController extends Controller
     {
 
         $id = $user->getYoutubeLogin();
-            $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&maxResults=50&key=$this->Gkey";
-            //dump($urlSub);
+        $urlSub = "https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&channelId=$id&maxResults=50&key=$this->Gkey";
+        //dump($urlSub);
         try {
             $jsonSub = file_get_contents($urlSub);
             $objSub = json_decode($jsonSub);

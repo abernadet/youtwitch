@@ -89,11 +89,17 @@ class AjaxController extends Controller
         $dateHier = new \DateTime(date('Y-m-d'));
         $dateHier=$dateHier->modify('-1 day');
         $dateHier=$dateHier->format('Y-m-d');
+        $dateLastMonday = strtotime("last Monday");
+        $dateNextSunday= strtotime("next Thursday");
+        $dateLastMonday = date('Y-m-d', $dateLastMonday);
+        $dateNextSunday = date('Y-m-d', $dateNextSunday);
 
         $urlLasteDay = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=4&order=viewCount&publishedAfter=".$dateHier."T00%3A00%3A00Z&publishedBefore=".$dateJour."T00%3A00%3A00Z&key=$this->Ykey";
+        $urlLastweek = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&order=viewCount&type=video&&publishedAfter=".$dateLastMonday."T00%3A00%3A00Z&publishedBefore=".$dateNextSunday."T00%3A00%3A00Z&key=$this->Ykey";
         $urlBestAllTime = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&order=viewCount&publishedAfter=1900-01-01T00%3A00%3A00Z&type=video&key=$this->Ykey";
-        $urlBestVSport = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=4&playlistId=PL8fVUTBmJhHJrW5cGIlxHUsmhDmkZbMmp&key=$this->Ykey";
-        $urlGaming = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=4&playlistId=PLiCvVJzBupKl5hVmeyeM3RxQUHP-0I4CZ&key=$this->Ykey";
+        $urlBestVSport = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=8&playlistId=PL8fVUTBmJhHJrW5cGIlxHUsmhDmkZbMmp&key=$this->Ykey";
+        $urlGaming = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=8&playlistId=PLiCvVJzBupKl5hVmeyeM3RxQUHP-0I4CZ&key=$this->Ykey";
+        $urlMusique = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=8&playlistId=PLFgquLnL59anhpY5GjP1IPYrDF7UtL7gv&key=$this->Ykey";
 
         // affichage des vidéos les plus vues postée la veille
         try {
@@ -127,6 +133,42 @@ class AjaxController extends Controller
         }else{
             $text = 'ya un truc';
         }
+
+        // affichage des vidéos les plus vues postée la veille
+        try {
+            $json = file_get_contents($urlLastweek);
+            $obj = json_decode($json);
+            $BestWeekVids = $obj->items;
+            foreach($BestWeekVids as $BestWeekVid){ // On récupère l'id de la vidéo pour aller chercher le nombre de vues derrière
+                $idVideos[] = $BestWeekVid->id->videoId;
+            }
+        } catch (\Exception $e) {
+            $BestWeekVids = [];
+            $idVideos = [];
+
+        }
+        // On boucle sur la nouvelle requete pour avoir le nombre de vues
+        foreach ($idVideos as $idVideo) {
+            $urlsLastWeek[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idVideo&key=$this->Ykey";
+        }
+        try {
+            foreach ($urlsLastWeek as $urlLastWeek) {
+                $jsonLastWeek = file_get_contents($urlLastWeek);
+                $objlastWeek = json_decode($jsonLastWeek);
+                $detailsLastWeek[] = $objlastWeek->items;
+                // dump($details3);
+            }
+        } catch (\Exception $e) {
+            $detailsLastWeek = [];
+        }
+        if (empty($BestWeekVids)){
+            $text='c\'est vide';
+        }else{
+            $text = 'ya un truc';
+        }
+
+
+
 
         // Affichage des deux vidéos les plus vues de tout les temps
         try {
@@ -200,6 +242,34 @@ class AjaxController extends Controller
         }
 
 
+        // On affiche les dernieres vidéos musique
+        try {
+            $json = file_get_contents($urlMusique);
+            $obj = json_decode($json);
+            $MusiqueVids = $obj->items;
+
+            foreach($MusiqueVids as $MusiqueVid){ // On récupère l'id de la vidéo pour aller chercher le nombre de vues derrière
+                $idMusiquesGaming[] = $MusiqueVid->snippet->resourceId->videoId;;
+            }
+        } catch (\Exception $e) {
+            $MusiqueVids = [];
+            $idMusiquesGaming = [];
+        }
+        // On boucle sur la nouvelle requete pour avoir le nombre de vues
+        foreach ($idMusiquesGaming as $idMusiqueGaming) {
+            $urlsMusique[] = "https://www.googleapis.com/youtube/v3/videos?part=snippet%2C+statistics&id=$idMusiqueGaming&key=$this->Ykey";
+        }
+        try {
+            foreach ($urlsMusique as $urlMusique) {
+                $jsonMusique = file_get_contents($urlMusique);
+                $objMusique = json_decode($jsonMusique);
+                $detailsMusique[] = $objMusique->items;
+                // dump($details3);
+            }
+        } catch (\Exception $e) {
+            $detailsMusique = [];
+        }
+
         // On retourne toutes les données dans la vue
         return $this->render('ajax/youtube.html.twig',[
             'BestYVids'=>$BestYVids,
@@ -209,7 +279,11 @@ class AjaxController extends Controller
             'detailsSport'=>$detailsSport,
             'BestSVids'=>$BestSVids,
             'GamingVids'=>$GamingVids,
-            'detailsGaming'=>$detailsGaming
+            'detailsGaming'=>$detailsGaming,
+            'detailsMusique'=>$detailsMusique,
+            'MusiqueVids'=>$MusiqueVids,
+            'detailsLastWeek'=>$detailsLastWeek,
+            'BestWeekVids'=>$BestWeekVids
         ]);
     }
 
